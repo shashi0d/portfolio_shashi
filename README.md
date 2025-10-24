@@ -1,87 +1,141 @@
-# Welcome to React Router!
+# Shashidhara Narayanappa Portfolio Website
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern, minimalist portfolio website for Shashidhara Narayanappa, an innovative HCI researcher and design enthusiast, built with React Router and Tailwind CSS.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **Clean, Minimalist Design**: Elegant and sophisticated design aesthetic focused on showcasing HCI research and development work
+- **Responsive Layout**: Fully responsive design that works on desktop, tablet, and mobile devices
+- **Multiple Pages**: 
+  - Home page with main statement and work showcase
+  - Dynamic case study pages for individual projects
+  - Contact page with professional information
+- **Modern Tech Stack**: Built with React Router v7, TypeScript, and Tailwind CSS
+- **Performance Optimized**: Fast loading with optimized assets and modern build tools
+
+## Pages
+
+### Home Page
+- Main landing page with Shashidhara's role and research focus
+- Work section showcasing VR research, interactive kiosk CMS, and metaverse projects
+- About section with education, research experience, and technical skills
+- Clean typography and centered layout
+- Fixed header and footer
+
+### Dynamic Case Study Pages
+- Individual project pages accessible via `/work/project-1`, `/work/project-2`, etc.
+- Detailed case studies including:
+  - VR Emotional Recognition Research (SETH Lab, Indiana University)
+  - Interactive Display Kiosk CMS (Zero Distance Metaverse)
+  - Web Metaverse Application (Zero Distance Metaverse)
+- Comprehensive project information with achievements, challenges, and technologies
+
+### Contact Page
+- Professional contact information including email, phone, LinkedIn, and portfolio
+- Contact form with subject selection for different types of inquiries
+- Current role and location information
+
+## Tech Stack
+
+- **Framework**: React Router v7
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Build Tool**: Vite
+- **Development**: React Router Dev Server
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
 ### Installation
 
-Install the dependencies:
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd knowshashi
+```
 
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
-
+3. Start the development server:
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+4. Open your browser and navigate to `http://localhost:5173`
 
-## Building for Production
+### Available Scripts
 
-Create a production build:
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run typecheck` - Run TypeScript type checking
 
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+├── components/          # Reusable components
+│   ├── Header.tsx      # Navigation header
+│   └── Footer.tsx      # Footer component
+├── routes/             # Page components
+│   ├── home.tsx        # Home page with work showcase
+│   ├── work.tsx        # Work page (redirects to home)
+│   ├── work/[projectId].tsx # Dynamic case study pages
+│   └── contact.tsx     # Contact page
+├── app.css             # Global styles
+├── root.tsx            # Root layout
+└── routes.ts           # Route configuration
 ```
 
-## Styling
+## Design Features
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- **Typography**: Uses Inter font family for clean, modern typography
+- **Color Scheme**: Minimalist gray and white color palette
+- **Layout**: Fixed header and footer with scrollable content
+- **Spacing**: Generous white space and consistent spacing
+- **Interactions**: Subtle hover effects and transitions
 
----
+## Content Highlights
 
-Built with ❤️ using React Router.
+### Professional Experience
+- **Graduate VR Research and Development** at SETH Lab, Indiana University (2024-Present)
+- **Lead Full Stack Developer** at Zero Distance Metaverse Pvt. Ltd. (2022-2024)
+- **Software Developer** at Zero Distance Metaverse Pvt. Ltd. (2021-2022)
+
+### Education
+- **M.S., Human Computer Interaction** - Indiana University (Expected May 2026)
+- **B.E., Computer Science and Engineering** - Visvesvaraya Technological University (2020)
+
+### Key Skills
+- VR Technologies (Meta Quest Pro, Unity, Unreal Engine)
+- Full Stack Development (React, Next.js, Node.js, Firebase)
+- UX Research & Design (Figma, User Interviews, Usability Testing)
+- HCI Research Methods (Literature Review, Qualitative Analysis)
+
+## Customization
+
+The website is built to be easily customizable:
+
+- Update content in the respective page components
+- Modify styling using Tailwind CSS classes
+- Add new projects by updating the project data in the dynamic case study component
+- Replace placeholder images with actual project screenshots
+
+## Contact Information
+
+- **Email**: shashidharprakash33@gmail.com
+- **Phone**: +1 (317) 384-4975
+- **LinkedIn**: linkedin.com/in/meetshashi
+- **Portfolio**: shashidhara-n.vercel.app
+- **Location**: Indianapolis, Indiana, United States
+
+## License
+
+This project is for educational and portfolio purposes.
