@@ -40,12 +40,12 @@ export function WorkCarousel({ projects }: WorkCarouselProps) {
   const handlePrevSlide = (projectId: string) => {
     const project = projects.find(p => p.id === projectId);
     if (!project) return;
-    
+
     const current = currentSlide[projectId] || 0;
-    const prev = current === 0 ? project.images.length - 1 : current - 1;
+    const prevIndex = current === 0 ? project.images.length - 1 : current - 1;
     setCurrentSlide(prev => {
       const newState = { ...prev };
-      newState[projectId] = prev;
+      newState[projectId] = prevIndex;
       return newState;
     });
   };

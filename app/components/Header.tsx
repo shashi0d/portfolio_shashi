@@ -17,19 +17,33 @@ export function Header() {
           
           {/* Navigation */}
           <nav className="flex items-center space-x-8">
-            <Link 
-              to="/work" 
+            <Link
+              to="/work"
               className={`text-sm font-medium transition-colors ${
-                location.pathname.startsWith("/work") 
-                  ? "text-gray-900" 
+                location.pathname.startsWith("/work")
+                  ? "text-gray-900"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
               WORK
             </Link>
-            <Link 
-              to="/contact" 
-              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            <Link
+              to="/about"
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/about"
+                  ? "text-gray-900"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              ABOUT
+            </Link>
+            <Link
+              to="/contact"
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/contact"
+                  ? "text-gray-900"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
             >
               CONTACT
             </Link>

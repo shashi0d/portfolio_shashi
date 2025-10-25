@@ -230,7 +230,7 @@ const projectData: Record<string, ProjectData> = {
 };
 
 function getProjectData(projectId: string): ProjectData {
-  return projectData[projectId] || projectData["project-1"];
+  return projectData[projectId] || projectData["genai-ux"];
 }
 
 export default function ProjectPage({ params }: Route.ComponentProps) {

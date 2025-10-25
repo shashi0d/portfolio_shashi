@@ -12,10 +12,38 @@ export function meta({}: Route.MetaArgs) {
 
 const projects = [
   {
+    id: "genai-ux",
+    title: "Opportunities and Challenges for Generative AI in UX Design",
+    description: "Investigated how UX professionals and students integrate GenAI tools across the design lifecycle through 25 retrospective interviews, revealing stark differences between ideation success and prototyping limitations.",
+    years: "2025",
+    role: "Secondary Author, Interview Lead",
+    scope: "Qualitative Research, Thematic Analysis, Academic Writing",
+    media: [
+      { name: "ACM IUI '26", url: "#" },
+      { name: "Case Study", url: "/work/genai-ux" }
+    ],
+    hasVideo: false,
+    images: ["/images/genai-ux/image1.png", "/images/genai-ux/image2.png", "/images/genai-ux/image3.png"]
+  },
+  {
+    id: "vr-emotion",
+    title: "Emotion Recognition in Virtual Reality Using Meta Quest Pro",
+    description: "Building the first VR emotion dataset with spontaneous facial expressions. Designed the complete research pipeline in Unity, conducting 50 participant sessions to capture genuine emotional reactions across six basic emotions.",
+    years: "2024–Present",
+    role: "Lead Researcher & VR Developer",
+    scope: "VR Development, Research Design, Data Collection, Unity Development",
+    media: [
+      { name: "SETH Lab", url: "#" },
+      { name: "IEEE VR / Meaningful XR", url: "#" }
+    ],
+    hasVideo: false,
+    images: ["/images/vr-emotion/image1.png", "/images/vr-emotion/image2.png", "/images/vr-emotion/image3.png"]
+  },
+  {
     id: "wanderindy",
-    title: "WanderIndy - Citywide Storybook",
-    description: "Led research and design for a citywide exploration platform that turns Indianapolis into a living memory map. Designed mood-based trails, stamp challenges, and interactive kiosks to connect digital, physical, and personal exploration experiences.",
-    years: "2024",
+    title: "WanderIndy – Urban Exploration Wayfinding System",
+    description: "Transformed Indianapolis into an interactive storybook through mood-based trails, stamp challenges, and sensor kiosks. Led kiosk design and field research to make hidden neighborhoods discoverable.",
+    years: "2025",
     role: "UX Research & Design Lead",
     scope: "User Research, Interaction Design, Prototyping, Public Space Design, Accessibility",
     media: [
@@ -24,34 +52,6 @@ const projects = [
     ],
     hasVideo: false,
     images: ["/images/wanderindy/image1.png", "/images/wanderindy/Image2.png", "/images/wanderindy/Image3.png"]
-  },
-  {
-    id: "project-1",
-    title: "VR Emotional Recognition Research",
-    description: "Leading research study focused on emotional recognition in VR environments using Meta Quest Pro headset. Integrating advanced facial and emotion recognition algorithms for real-time user responses to enhance empathetic interactions.",
-    years: "2024–Present",
-    role: "Graduate VR Research and Development",
-    scope: "VR Development, HCI Research, Qualitative Methods, Literature Review",
-    media: [
-      { name: "SETH Lab", url: "#" },
-      { name: "Indiana University", url: "#" }
-    ],
-    hasVideo: false,
-    images: ["/images/vr-emotion-recognition/Image1.png"]
-  },
-  {
-    id: "project-2",
-    title: "Interactive Display Kiosk CMS",
-    description: "Developed a comprehensive CMS for an Interactive Display Kiosk application in Unity, showcasing innovative brand storytelling through interactive design. Increased usability and ease of access by 40%.",
-    years: "2022–2024",
-    role: "Lead Full Stack Developer",
-    scope: "Unity Development, CMS Design, Interactive Design, Project Management",
-    media: [
-      { name: "Zero Distance Metaverse", url: "#" },
-      { name: "Unity Technologies", url: "#" }
-    ],
-    hasVideo: false,
-    images: []
   }
 ];
 
