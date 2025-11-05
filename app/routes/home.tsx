@@ -1,6 +1,7 @@
 import type { Route } from "./+types/home";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { StackScroll } from "../components/StackScroll";
 import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
@@ -101,131 +102,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Work Section */}
+      {/* Work Section - Stack Scroll */}
       <section className="py-24 px-10">
         <div className="max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <div key={project.id} className="mb-48 last:mb-0">
-              <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-8 items-start w-full px-6">
-                {/* Project Details - 30% */}
-                <div className="lg:col-span-3 space-y-6">
-                  <div className="space-y-4">
-                    <h3 className="text-3xl font-medium text-gray-900 hover:text-gray-700 transition-colors">
-                      <Link to={`/work/${project.id}`} className="hover:underline">
-                        {project.title}
-                      </Link>
-                    </h3>
-                    <p className="text-lg text-gray-700 leading-relaxed">{project.description}</p>
-                  </div>
-                  
-                  {/* Project Info */}
-                  <div className="space-y-4 pt-6 border-t border-gray-200">
-                    <div className="grid grid-cols-2 gap-4 text-sm">
-                      <div>
-                        <span className="text-gray-500">Years</span>
-                        <p className="text-gray-900 font-medium">{project.years}</p>
-                      </div>
-                      <div>
-                        <span className="text-gray-500">Role</span>
-                        <p className="text-gray-900 font-medium">{project.role}</p>
-                      </div>
-                    </div>
-                    <div>
-                      <span className="text-gray-500 text-sm">Scope</span>
-                      <p className="text-gray-900 font-medium">{project.scope}</p>
-                    </div>
-                    
-                    {/* Media Links */}
-                    {project.media && (
-                      <div>
-                        <span className="text-gray-500 text-sm">Media</span>
-                        <div className="flex flex-wrap gap-4 mt-2">
-                          {project.media.map((link, i) => (
-                            <a
-                              key={i}
-                              href={link.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-900 hover:text-gray-600 transition-colors flex items-center gap-1"
-                            >
-                              {link.name} ↗
-                            </a>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                {/* Project Images - 70% */}
-                <div className="lg:col-span-7 space-y-8">
-                  {project.images && project.images.length > 0 ? (
-                    project.images.length === 1 ? (
-                      /* Single Large Image Display */
-                      <div className="relative w-full flex justify-center">
-                        <div className="max-w-full rounded-2xl overflow-hidden">
-                          <img 
-                            src={project.images[0]} 
-                            alt={`${project.title} - Project Image`}
-                            className="w-auto h-auto max-w-full max-h-[600px] object-contain"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                              target.nextElementSibling?.classList.remove('hidden');
-                            }}
-                          />
-                          <div className="hidden w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
-                            <div className="text-center">
-                              <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-2 flex items-center justify-center">
-                                <span className="text-lg">📱</span>
-                              </div>
-                              <span className="text-sm">Project Image</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      /* Multiple Images - Show First Image */
-                      <div className="relative w-full flex justify-center">
-                        <div className="max-w-full rounded-2xl overflow-hidden">
-                          <img 
-                            src={project.images[0]} 
-                            alt={`${project.title} - Project Image`}
-                            className="w-auto h-auto max-w-full max-h-[600px] object-contain"
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                              target.nextElementSibling?.classList.remove('hidden');
-                            }}
-                          />
-                          <div className="hidden w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
-                            <div className="text-center">
-                              <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-2 flex items-center justify-center">
-                                <span className="text-lg">📱</span>
-                              </div>
-                              <span className="text-sm">Project Image</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  ) : (
-                    /* Fallback for projects without images */
-                    <div className="bg-gray-100 rounded-lg aspect-[4/3] hover:bg-gray-200 transition-colors">
-                      <div className="w-full h-full flex items-center justify-center text-gray-400">
-                        <div className="text-center">
-                          <div className="w-16 h-16 bg-gray-300 rounded-full mx-auto mb-2 flex items-center justify-center">
-                            <span className="text-2xl">📱</span>
-                          </div>
-                          <span className="text-sm">Project Screenshots</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
+          <StackScroll projects={projects} />
         </div>
       </section>
 
