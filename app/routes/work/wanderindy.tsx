@@ -1,63 +1,17 @@
-import type { Route } from "./+types/[projectId]";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Link } from "react-router";
-import { genaiUxProject } from "./data/genai-ux";
-import { vrEmotionProject } from "./data/vr-emotion";
 import { wanderIndyProject } from "./data/wanderindy";
 
-// Project data lookup function
-function getProjectData(projectId: string) {
-  switch (projectId) {
-    case "genai-ux":
-      return genaiUxProject;
-    case "vr-emotion":
-      return vrEmotionProject;
-    case "wanderindy":
-      return wanderIndyProject;
-    default:
-      return null;
-  }
-}
-
-export function meta({ params }: Route.MetaArgs) {
-  const project = getProjectData(params.projectId);
-  if (!project) {
-    return [
-      { title: "Project Not Found - Shashidhara Narayanappa" },
-      { name: "description", content: "The requested project could not be found." },
-    ];
-  }
+export function meta() {
   return [
-    { title: `${project.title} - Shashidhara Narayanappa` },
-    { name: "description", content: project.description },
+    { title: `${wanderIndyProject.title} - Shashidhara Narayanappa` },
+    { name: "description", content: wanderIndyProject.description },
   ];
 }
 
-
-
-
-
-export default function ProjectPage({ params }: Route.ComponentProps) {
-  const project = getProjectData(params.projectId);
-
-  if (!project) {
-    return (
-      <div className="min-h-screen bg-white">
-        <Header />
-        <div className="py-32 px-8">
-          <div className="max-w-6xl mx-auto text-center">
-            <h1 className="text-5xl font-light text-black mb-6">Project Not Found</h1>
-            <p className="text-xl text-black mb-12">The requested project could not be found.</p>
-            <Link to="/" className="text-black hover:text-gray-600 transition-colors text-lg">
-              ← Back to Work
-            </Link>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
+export default function WanderIndyPage() {
+  const project = wanderIndyProject;
 
   return (
     <div className="min-h-screen bg-white">
@@ -196,3 +150,4 @@ export default function ProjectPage({ params }: Route.ComponentProps) {
     </div>
   );
 }
+
