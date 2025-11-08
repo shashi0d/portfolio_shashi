@@ -28,17 +28,16 @@ function StackCard({ project, index, totalCards }: { project: Project; index: nu
       if (!cardRef.current) return;
 
       const rect = cardRef.current.getBoundingClientRect();
-      const stickyTop = 60 + index * 20; // Sticky position for this card
-      const windowHeight = window.innerHeight;
+      const stickyTop = 80 + index * 100; // Sticky position for this card (100px apart for title visibility)
 
       // Calculate when this card should start scaling down
       const distanceFromStickyPoint = rect.top - stickyTop;
 
       // Scale down as the card gets covered by the next card
       if (rect.top <= stickyTop) {
-        const progress = Math.max(0, Math.min(1, -distanceFromStickyPoint / 200));
+        const progress = Math.max(0, Math.min(1, -distanceFromStickyPoint / 300));
         const newScale = 1 - progress * 0.05; // Scale down to 0.95
-        const newOpacity = 1 - progress * 0.2; // Fade slightly
+        const newOpacity = 1 - progress * 0.1; // Fade slightly
         setScale(newScale);
         setOpacity(newOpacity);
       } else {
@@ -56,12 +55,12 @@ function StackCard({ project, index, totalCards }: { project: Project; index: nu
   return (
     <div
       ref={cardRef}
-      className="stack-card"
+      className="stack-card relative"
       style={{
         position: 'sticky',
-        top: `${60 + index * 20}px`,
-        marginBottom: index === totalCards - 1 ? '0' : '60vh',
-        zIndex: 10 + index,
+        top: `${80 + index * 100}px`, // 100px spacing to show titles
+        marginBottom: index === totalCards - 1 ? '0' : '70vh',
+        zIndex: 50 + index, // Higher base z-index
       }}
     >
       <motion.div
