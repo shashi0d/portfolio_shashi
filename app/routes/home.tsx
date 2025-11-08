@@ -52,6 +52,23 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
 
         {/* Content */}
         <div className="space-y-4">
+          {/* Category Badges */}
+          <div className="flex flex-wrap gap-2">
+            {project.categories.map((category) => (
+              <span
+                key={category}
+                className="px-3 py-1 text-xs font-semibold rounded-md border-2"
+                style={{
+                  borderColor: project.color,
+                  color: project.color,
+                  backgroundColor: `${project.color}10`
+                }}
+              >
+                {category}
+              </span>
+            ))}
+          </div>
+
           <div className="flex items-start justify-between gap-4">
             <div className="space-y-2 flex-1">
               <h3 className="text-2xl md:text-3xl font-medium text-gray-900 group-hover:text-gray-600 transition-colors">

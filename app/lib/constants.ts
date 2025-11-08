@@ -10,6 +10,7 @@ export const COLORS = {
   genai: '#3B82F6',      // Electric Blue
   vrEmotion: '#8B5CF6',  // Deep Purple
   wanderIndy: '#F97316', // Warm Coral
+  growthOps: '#10B981',  // Emerald Green
 } as const;
 
 export const TYPOGRAPHY = {
@@ -20,7 +21,24 @@ export const TYPOGRAPHY = {
   },
 } as const;
 
+export const PROJECT_CATEGORIES = {
+  RESEARCH: 'Research',
+  DESIGN: 'Design',
+  DEVELOPMENT: 'Development',
+} as const;
+
 export const PROJECTS = [
+  {
+    id: "growthops",
+    title: "GrowthOps Dashboard",
+    shortTitle: "SMB Operations",
+    description: "Unified dashboard transforming operational chaos into clarity for small business founders",
+    year: "2024",
+    role: "Technical Architecture & Integration Strategy",
+    color: COLORS.growthOps,
+    tags: ["User Research", "Dashboard Design", "AI Integration"],
+    categories: [PROJECT_CATEGORIES.RESEARCH, PROJECT_CATEGORIES.DESIGN],
+  },
   {
     id: "genai-ux",
     title: "GenAI in UX Design",
@@ -30,6 +48,7 @@ export const PROJECTS = [
     role: "Research Lead",
     color: COLORS.genai,
     tags: ["Qualitative Research", "AI", "UX"],
+    categories: [PROJECT_CATEGORIES.RESEARCH],
   },
   {
     id: "vr-emotion",
@@ -40,6 +59,7 @@ export const PROJECTS = [
     role: "Lead Researcher",
     color: COLORS.vrEmotion,
     tags: ["VR Development", "Data Collection", "Unity"],
+    categories: [PROJECT_CATEGORIES.RESEARCH, PROJECT_CATEGORIES.DEVELOPMENT],
   },
   {
     id: "wanderindy",
@@ -50,5 +70,6 @@ export const PROJECTS = [
     role: "UX Lead",
     color: COLORS.wanderIndy,
     tags: ["Interaction Design", "Public Space", "Prototyping"],
+    categories: [PROJECT_CATEGORIES.RESEARCH, PROJECT_CATEGORIES.DESIGN],
   },
 ] as const;
