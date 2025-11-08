@@ -63,9 +63,9 @@ export function StackScroll({ projects }: StackScrollProps) {
           className="stack-card"
           style={{
             position: 'sticky',
-            top: `${80 + index * 30}px`,
-            marginBottom: index === projects.length - 1 ? '0' : '50vh',
-            zIndex: projects.length - index,
+            top: `${80 + index * 40}px`,
+            marginBottom: index === projects.length - 1 ? '0' : '100vh',
+            zIndex: 10 + index,
           }}
         >
           <div
