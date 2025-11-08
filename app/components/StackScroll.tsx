@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Project {
   id: string;
@@ -21,28 +21,22 @@ interface StackScrollProps {
 function StackCard({ project, index, totalCards }: { project: Project; index: number; totalCards: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const [opacity, setOpacity] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
       if (!cardRef.current) return;
 
       const rect = cardRef.current.getBoundingClientRect();
-      const stickyTop = 80 + index * 100; // Sticky position for this card (100px apart for title visibility)
+      const stickyTop = 100; // All cards stick to same position
 
       // Calculate when this card should start scaling down
-      const distanceFromStickyPoint = rect.top - stickyTop;
-
-      // Scale down as the card gets covered by the next card
-      if (rect.top <= stickyTop) {
-        const progress = Math.max(0, Math.min(1, -distanceFromStickyPoint / 300));
-        const newScale = 1 - progress * 0.05; // Scale down to 0.95
-        const newOpacity = 1 - progress * 0.1; // Fade slightly
+      if (rect.top <= stickyTop && rect.top > 0) {
+        // Card is stuck, check if next card is approaching
+        const progress = Math.max(0, Math.min(1, (stickyTop - rect.top) / 100));
+        const newScale = 1 - progress * 0.05; // Scale down slightly to 0.95
         setScale(newScale);
-        setOpacity(newOpacity);
       } else {
         setScale(1);
-        setOpacity(1);
       }
     };
 
@@ -50,7 +44,11 @@ function StackCard({ project, index, totalCards }: { project: Project; index: nu
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [index]);
+  }, []);
+
+  // Calculate padding-top to show previous card titles
+  // First card: no padding, subsequent cards: add padding to reveal previous titles
+  const paddingTop = index > 0 ? `${index * 80}px` : '0px';
 
   return (
     <div
@@ -58,16 +56,16 @@ function StackCard({ project, index, totalCards }: { project: Project; index: nu
       className="stack-card relative"
       style={{
         position: 'sticky',
-        top: `${80 + index * 100}px`, // 100px spacing to show titles
-        marginBottom: index === totalCards - 1 ? '0' : '70vh',
-        zIndex: 50 + index, // Higher base z-index
+        top: '100px', // ALL cards stick to the SAME position!
+        marginBottom: index === totalCards - 1 ? '0' : '100vh',
+        zIndex: 100 + index, // Each card has higher z-index
+        paddingTop: paddingTop, // This creates space to show previous card titles
       }}
     >
       <motion.div
         className="bg-white rounded-xl md:rounded-2xl shadow-2xl overflow-hidden mx-auto max-w-6xl"
         style={{
           transform: `scale(${scale})`,
-          opacity: opacity,
           transformOrigin: 'top center',
         }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
