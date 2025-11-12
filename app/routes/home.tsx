@@ -119,11 +119,11 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center min-h-[90vh] px-6 md:px-10">
+      <section id="main-content" className="relative flex items-center justify-center min-h-[90vh] px-6 md:px-10">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

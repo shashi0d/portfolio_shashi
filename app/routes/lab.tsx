@@ -142,7 +142,7 @@ export default function Lab() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pb-24 px-6 md:px-10">
+      <section id="main-content" className="pt-32 pb-16 md:pb-24 px-6 md:px-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

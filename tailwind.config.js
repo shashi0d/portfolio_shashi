@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Figtree', 'system-ui', 'sans-serif'],
+      },
       gridTemplateColumns: {
         '16': 'repeat(16, minmax(0, 1fr))',
       },

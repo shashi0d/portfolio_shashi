@@ -15,10 +15,10 @@ export default function Contact() {
       <Header />
       <Footer />
       
-      <main className="pt-24 pb-32 px-6">
+      <main id="main-content" className="pt-24 pb-32 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl font-light text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
               Let's collaborate on innovative HCI research
             </h1>
             <p className="text-xl text-gray-700">
@@ -85,33 +85,37 @@ export default function Contact() {
             {/* Contact Form */}
             <div>
               <h2 className="text-2xl font-medium text-gray-900 mb-6">Send a message</h2>
-              <form className="space-y-6">
+              <form className="space-y-6" aria-label="Contact form">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Name
+                    Name <span className="text-red-600" aria-label="required">*</span>
                   </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
+                    required
+                    aria-required="true"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-colors"
                     placeholder="Your name"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
+                    Email <span className="text-red-600" aria-label="required">*</span>
                   </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
+                    required
+                    aria-required="true"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-colors"
                     placeholder="your.email@example.com"
                   />
                 </div>
-                
+
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                     Subject
@@ -129,23 +133,25 @@ export default function Contact() {
                     <option value="other">Other</option>
                   </select>
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
+                    Message <span className="text-red-600" aria-label="required">*</span>
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={6}
+                    required
+                    aria-required="true"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-colors resize-none"
                     placeholder="Tell me about your project or research interest..."
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
-                  className="w-full bg-gray-900 text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors font-medium"
+                  className="w-full bg-gray-900 text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
                 >
                   Send Message
                 </button>

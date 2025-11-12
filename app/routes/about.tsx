@@ -15,7 +15,7 @@ export default function About() {
       <Header />
       <Footer />
 
-      <main className="pt-24 pb-32 px-6">
+      <main id="main-content" className="pt-24 pb-32 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-8">
             <h1 className="text-4xl md:text-5xl font-light text-gray-900 leading-tight">
