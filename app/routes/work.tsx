@@ -42,7 +42,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg"
+        className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:border-gray-300 dark:border-gray-600 hover:shadow-lg"
       >
         {/* Image Container */}
         <div className="relative overflow-hidden bg-white aspect-[16/10]">
@@ -73,16 +73,16 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
                 </span>
               ))}
             </div>
-            <span className="text-sm font-medium text-gray-500 flex-shrink-0">{project.year}</span>
+            <span className="text-sm font-medium text-gray-500 dark:text-gray-400 flex-shrink-0">{project.year}</span>
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
+          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 dark:text-gray-400 transition-colors">
             {project.title}
           </h3>
 
           {/* Description - Single line */}
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed line-clamp-2">
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -93,7 +93,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
 
 export default function Work() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -107,7 +107,7 @@ export default function Work() {
             <h1 className="text-4xl md:text-6xl font-medium text-gray-900 leading-tight mb-6">
               Selected Work
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
               Research and design projects exploring the intersection of technology and human behavior
             </p>
           </motion.div>

@@ -52,7 +52,7 @@ export default function VrEmotionPage() {
   const accentColor = COLORS.vrEmotion;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -208,7 +208,7 @@ export default function VrEmotionPage() {
                 <p>
                   I'm conducting all 50 sessions myself. <strong>30 participants complete, 20 to go.</strong> Each 30-minute session requires careful calibration, patient guidance, and meticulous data collection. It's exhausting. It's exhilarating.
                 </p>
-                <p className="font-medium text-gray-900">Every session generates:</p>
+                <p className="font-medium text-gray-900 dark:text-gray-100">Every session generates:</p>
                 <ul className="space-y-2 list-disc list-inside">
                   <li>63 facial action unit values captured at 30 Hz</li>
                   <li>RGB avatar frames showing real-time expressions</li>
@@ -248,15 +248,15 @@ export default function VrEmotionPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 border border-gray-200 rounded-xl">
                 <h4 className="font-medium text-gray-900 mb-2">Frame-Based Classification</h4>
-                <p className="text-sm text-gray-600">Using CNNs on avatar images</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Using CNNs on avatar images</p>
               </div>
               <div className="p-6 border border-gray-200 rounded-xl">
                 <h4 className="font-medium text-gray-900 mb-2">Time-Series Modeling</h4>
-                <p className="text-sm text-gray-600">LSTM approaches on AU vectors</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">LSTM approaches on AU vectors</p>
               </div>
               <div className="p-6 border border-gray-200 rounded-xl">
                 <h4 className="font-medium text-gray-900 mb-2">Multi-Modal Fusion</h4>
-                <p className="text-sm text-gray-600">Enhanced accuracy combining approaches</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Enhanced accuracy combining approaches</p>
               </div>
             </div>
           </div>
@@ -273,19 +273,19 @@ export default function VrEmotionPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div>
                 <div className="text-5xl font-medium text-gray-900 mb-2">30/50</div>
-                <div className="text-lg text-gray-600">Participants Completed</div>
+                <div className="text-lg text-gray-600 dark:text-gray-400">Participants Completed</div>
               </div>
               <div>
                 <div className="text-5xl font-medium text-gray-900 mb-2">~54,000</div>
-                <div className="text-lg text-gray-600">Data Points per Session</div>
+                <div className="text-lg text-gray-600 dark:text-gray-400">Data Points per Session</div>
               </div>
               <div>
                 <div className="text-5xl font-medium text-gray-900 mb-2">63</div>
-                <div className="text-lg text-gray-600">Facial Action Units</div>
+                <div className="text-lg text-gray-600 dark:text-gray-400">Facial Action Units</div>
               </div>
             </div>
 
-            <div className="space-y-4 text-lg text-gray-900">
+            <div className="space-y-4 text-lg text-gray-900 dark:text-gray-100">
               <p className="text-2xl font-medium">
                 First publicly available VR emotion dataset with spontaneous (not posed) expressions.
               </p>

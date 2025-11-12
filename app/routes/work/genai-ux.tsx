@@ -58,7 +58,7 @@ export default function GenaiUxPage() {
   const accentColor = COLORS.genai;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -217,10 +217,10 @@ export default function GenaiUxPage() {
               <p>
                 A recurring theme emerged: design fixation. When designers relied too heavily on AI's first suggestions, they converged too early on mediocre ideas. The AI became a crutch rather than a collaborator.
               </p>
-              <blockquote className="border-l-4 pl-6 italic text-xl text-gray-900" style={{ borderLeftColor: accentColor }}>
+              <blockquote className="border-l-4 pl-6 italic text-xl text-gray-900 dark:text-gray-100" style={{ borderLeftColor: accentColor }}>
                 "I always do something on my own first because I don't want to get influenced by its first response."
               </blockquote>
-              <p className="text-base text-gray-600">— Senior UX Designer, 8 years experience</p>
+              <p className="text-base text-gray-600 dark:text-gray-400">— Senior UX Designer, 8 years experience</p>
             </div>
           </div>
         </div>

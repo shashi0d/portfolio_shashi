@@ -58,7 +58,7 @@ function ToolCard({ tool, index }: { tool: typeof TOOLS[number]; index: number }
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group relative block p-6 bg-white border border-gray-200 rounded-xl hover:border-gray-300 hover:shadow-lg transition-all duration-300"
+      className="group relative block p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-gray-300 dark:border-gray-600 hover:shadow-lg transition-all duration-300"
     >
       {/* Icon */}
       <div className="flex items-start justify-between mb-4">
@@ -76,17 +76,17 @@ function ToolCard({ tool, index }: { tool: typeof TOOLS[number]; index: number }
       {/* Content */}
       <div className="space-y-2">
         {/* Category */}
-        <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+        <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">
           {tool.category}
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+        <h3 className="text-xl font-medium text-gray-900 group-hover:text-gray-600 dark:text-gray-400 transition-colors">
           {tool.name}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-600 leading-relaxed">
+        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
           {tool.description}
         </p>
       </div>
@@ -102,7 +102,7 @@ export default function Tools() {
   }));
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -116,7 +116,7 @@ export default function Tools() {
             <h1 className="text-4xl md:text-6xl font-medium text-gray-900 leading-tight mb-6">
               Tools
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
               AI-powered tools that accelerate my design and research workflow. From ideation to implementation, these tools help transform ideas into reality.
             </p>
           </motion.div>

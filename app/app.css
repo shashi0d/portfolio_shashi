@@ -20,9 +20,9 @@ html, body {
   }
 }
 
-/* Enhanced focus indicators for accessibility */
+/* Enhanced focus indicators for accessibility - BLACK not blue */
 *:focus-visible {
-  @apply outline-2 outline-offset-2 outline-gray-900;
+  @apply outline-2 outline-offset-2 outline-black dark:outline-white;
 }
 
 a:focus-visible,
@@ -30,7 +30,21 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  @apply outline-2 outline-offset-2 outline-gray-900;
+  @apply outline-2 outline-offset-2 outline-black dark:outline-white;
+}
+
+/* Remove any default blue colors */
+input:focus,
+textarea:focus,
+select:focus {
+  @apply ring-black dark:ring-white ring-2;
+  border-color: black;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: white;
 }
 
 /* Custom scrollbar */

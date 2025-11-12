@@ -52,7 +52,7 @@ export default function GrowthOpsPage() {
   const accentColor = COLORS.growthOps;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
 
       {/* Hero Section */}
@@ -102,9 +102,9 @@ export default function GrowthOpsPage() {
             </div>
 
             {/* Team Credits */}
-            <div className="mt-12 pt-8 border-t border-gray-200">
+            <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
               <p className="text-sm text-gray-500 mb-3">Project Team</p>
-              <p className="text-base text-gray-700">
+              <p className="text-base text-gray-700 dark:text-gray-300">
                 <span className="font-medium">Team JARS:</span> Jayanthi Sai Krishna Reddy Kotapati, Akshay Sonawane, Roopa K R, Shashidhara D Narayanappa
               </p>
             </div>
@@ -158,15 +158,15 @@ export default function GrowthOpsPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-4xl font-medium mb-2" style={{ color: accentColor }}>Visualize</div>
-                <p className="text-gray-700">See everything that matters in one place</p>
+                <p className="text-gray-700 dark:text-gray-300">See everything that matters in one place</p>
               </div>
               <div>
                 <div className="text-4xl font-medium mb-2" style={{ color: accentColor }}>Analyze</div>
-                <p className="text-gray-700">AI-powered insights from your data</p>
+                <p className="text-gray-700 dark:text-gray-300">AI-powered insights from your data</p>
               </div>
               <div>
                 <div className="text-4xl font-medium mb-2" style={{ color: accentColor }}>Act</div>
-                <p className="text-gray-700">Make confident decisions faster</p>
+                <p className="text-gray-700 dark:text-gray-300">Make confident decisions faster</p>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default function GrowthOpsPage() {
                 <p>
                   Each 30-minute session exposed consistent pain points: context switching fatigue, data reconciliation errors, and the mental burden of remembering which tool held which metric.
                 </p>
-                <p className="font-medium text-gray-900">
+                <p className="font-medium text-gray-900 dark:text-gray-100">
                   The insight: It wasn't about adding more features. It was about reducing cognitive load.
                 </p>
               </div>
@@ -247,10 +247,10 @@ export default function GrowthOpsPage() {
                   <p>
                     Built-in AI analyzes patterns across your data and surfaces actionable recommendations. See trends you'd otherwise miss, get alerts for anomalies, and receive plain-English explanations of complex metrics.
                   </p>
-                  <blockquote className="border-l-4 pl-6 italic text-xl text-gray-900" style={{ borderLeftColor: accentColor }}>
+                  <blockquote className="border-l-4 pl-6 italic text-xl text-gray-900 dark:text-gray-100" style={{ borderLeftColor: accentColor }}>
                     "It's like having a business analyst on call 24/7."
                   </blockquote>
-                  <p className="text-base text-gray-600"> Small business owner, 15 employees</p>
+                  <p className="text-base text-gray-600 dark:text-gray-400"> Small business owner, 15 employees</p>
                 </div>
               </div>
               <div className="rounded-xl overflow-hidden">
@@ -316,17 +316,17 @@ export default function GrowthOpsPage() {
               </div>
             </div>
             <div className="space-y-6">
-              <blockquote className="border-l-4 pl-6 py-4 bg-gray-50" style={{ borderLeftColor: accentColor }}>
+              <blockquote className="border-l-4 pl-6 py-4 bg-gray-50 dark:bg-gray-800/50" style={{ borderLeftColor: accentColor }}>
                 <p className="text-xl italic text-gray-900 mb-2">
                   "This is exactly what I've been looking for. I can finally see my whole business at a glance."
                 </p>
-                <p className="text-sm text-gray-600"> E-commerce founder, 8 employees</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400"> E-commerce founder, 8 employees</p>
               </blockquote>
-              <blockquote className="border-l-4 pl-6 py-4 bg-gray-50" style={{ borderLeftColor: accentColor }}>
+              <blockquote className="border-l-4 pl-6 py-4 bg-gray-50 dark:bg-gray-800/50" style={{ borderLeftColor: accentColor }}>
                 <p className="text-xl italic text-gray-900 mb-2">
                   "The AI insights caught a cash flow issue I would have missed until it became critical."
                 </p>
-                <p className="text-sm text-gray-600"> SaaS startup founder</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400"> SaaS startup founder</p>
               </blockquote>
             </div>
           </div>
