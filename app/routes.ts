@@ -8,6 +8,5 @@ export default [
   route("work/vr-emotion", "routes/work/vr-emotion.tsx"),
   route("work/wanderindy", "routes/work/wanderindy.tsx"),
     route("work/growthops", "routes/work/growthops.tsx"),
-  route("work/:projectId", "routes/work/[projectId].tsx"),
   route("contact", "routes/contact.tsx"),
 ] satisfies RouteConfig;

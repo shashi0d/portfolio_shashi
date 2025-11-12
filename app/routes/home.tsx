@@ -152,7 +152,7 @@ export default function Home() {
 
             {/* Subtitle */}
             <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              HCI researcher crafting meaningful interactions through VR, AI, and user-centered design
+              2 years of Product Design and 3 years of Development Experience
             </p>
 
             {/* CTA */}
