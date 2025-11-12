@@ -43,36 +43,33 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white transition-all duration-300 hover:border-gray-300 hover:shadow-xl"
+        className="relative overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:shadow-2xl"
       >
-        {/* Color accent bar */}
-        <div
-          className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{ backgroundColor: project.color }}
-        />
+        {/* Image Container */}
+        <div className="relative overflow-hidden bg-gray-50 aspect-[16/10]">
+          <ImagePlaceholder
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            aspectRatio="wide"
+          />
 
-        {/* Layout: Image on left, Content on right */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
-          {/* Image */}
-          <div className="md:col-span-2 relative overflow-hidden bg-gray-50">
-            <div className="aspect-[4/3] md:aspect-auto md:h-full">
-              <ImagePlaceholder
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                aspectRatio="square"
-              />
-            </div>
-          </div>
+          {/* Color accent border - shows on hover */}
+          <div
+            className="absolute inset-0 border-4 border-transparent group-hover:border-current transition-all duration-300 pointer-events-none"
+            style={{ color: project.color }}
+          />
+        </div>
 
-          {/* Content */}
-          <div className="md:col-span-3 p-8 md:p-10 space-y-4">
-            {/* Category Badges */}
+        {/* Content */}
+        <div className="p-6 md:p-8">
+          {/* Header: Categories + Year */}
+          <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex flex-wrap gap-2">
               {project.categories.map((category) => (
                 <span
                   key={category}
-                  className="px-3 py-1 text-xs font-semibold rounded-md border-2"
+                  className="px-3 py-1 text-xs font-semibold rounded-full border-2"
                   style={{
                     borderColor: project.color,
                     color: project.color,
@@ -83,47 +80,18 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
                 </span>
               ))}
             </div>
-
-            <div className="flex items-start justify-between gap-4">
-              <div className="space-y-2 flex-1">
-                <h3 className="text-2xl md:text-3xl font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <svg
-                  className="w-6 h-6 text-gray-400 group-hover:text-gray-900 transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Meta */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-sm text-gray-500">
-              <span className="font-medium">{project.year}</span>
-              <span className="text-gray-300">•</span>
-              <span>{project.role}</span>
-            </div>
-
-            {/* Tags */}
-            <div className="flex flex-wrap gap-2 pt-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <span className="text-sm font-medium text-gray-500 flex-shrink-0">{project.year}</span>
           </div>
+
+          {/* Title */}
+          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
+            {project.title}
+          </h3>
+
+          {/* Description - Single line */}
+          <p className="text-base md:text-lg text-gray-600 leading-relaxed line-clamp-2">
+            {project.description}
+          </p>
         </div>
       </motion.div>
     </Link>
@@ -212,7 +180,7 @@ export default function Home() {
           </FadeInWhenVisible>
 
           {/* Project Grid */}
-          <div className="grid grid-cols-1 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {PROJECTS.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
