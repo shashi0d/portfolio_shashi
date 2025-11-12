@@ -81,7 +81,7 @@ function ToolCard({ tool, index }: { tool: typeof TOOLS[number]; index: number }
         </div>
 
         {/* Title */}
-        <h3 className="text-xl font-medium text-gray-900 group-hover:text-gray-600 dark:text-gray-400 transition-colors">
+        <h3 className="text-xl font-medium text-gray-900 group-hover:text-gray-600 dark:text-gray-100 dark:group-hover:text-gray-300 transition-colors">
           {tool.name}
         </h3>
 

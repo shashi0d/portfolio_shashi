@@ -77,7 +77,7 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 dark:text-gray-400 transition-colors">
+          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 dark:text-gray-100 dark:group-hover:text-gray-300 transition-colors">
             {project.title}
           </h3>
 

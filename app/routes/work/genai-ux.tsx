@@ -66,7 +66,7 @@ export default function GenaiUxPage() {
         <div className="max-w-5xl mx-auto">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors mb-12 group"
+            className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors mb-12 group"
           >
             <svg className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -80,21 +80,21 @@ export default function GenaiUxPage() {
             transition={{ duration: 0.6 }}
           >
             {/* Title */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium text-gray-900 leading-tight mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium text-gray-900 dark:text-gray-100 leading-tight mb-8">
               Opportunities and Challenges for Generative AI in UX Design
             </h1>
 
             {/* Meta */}
-            <div className="flex flex-wrap items-center gap-4 text-lg text-gray-600 mb-12">
+            <div className="flex flex-wrap items-center gap-4 text-lg text-gray-600 dark:text-gray-400 mb-12">
               <span className="font-medium">2025</span>
-              <span className="text-gray-300">•</span>
+              <span className="text-gray-300 dark:text-gray-600">•</span>
               <span>Secondary Author, Interview Lead</span>
-              <span className="text-gray-300">•</span>
+              <span className="text-gray-300 dark:text-gray-600">•</span>
               <span>Qualitative Research</span>
             </div>
 
             {/* Lede */}
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-12 max-w-4xl">
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed mb-12 max-w-4xl">
               Investigated how UX professionals and students integrate GenAI tools across the design lifecycle through 25 retrospective interviews, revealing stark differences between ideation success and prototyping limitations.
             </p>
 
@@ -102,7 +102,7 @@ export default function GenaiUxPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors font-medium"
               >
                 ACM IUI '26 (Under Review)
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -132,12 +132,12 @@ export default function GenaiUxPage() {
         <div className="px-6 md:px-10 mb-24">
           <div className="max-w-4xl mx-auto">
             <div className="mb-6" style={{ borderLeft: `4px solid ${accentColor}`, paddingLeft: '1.5rem' }}>
-              <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 mb-4">Challenge</h2>
-              <p className="text-3xl md:text-4xl font-light text-gray-900 leading-snug">
+              <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-4">Challenge</h2>
+              <p className="text-3xl md:text-4xl font-light text-gray-900 dark:text-gray-100 leading-snug">
                 GenAI tools like ChatGPT and Midjourney were rapidly transforming how designers work, but we had no clear picture of how they fit into the full design lifecycle.
               </p>
             </div>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               Most research focused only on early-stage ideation, leaving us blind to what was actually happening in prototyping and testing phases.
             </p>
           </div>
@@ -146,10 +146,10 @@ export default function GenaiUxPage() {
 
       {/* Solution */}
       <Section delay={0.2}>
-        <div className="px-6 md:px-10 mb-24 bg-gray-50 py-16">
+        <div className="px-6 md:px-10 mb-24 bg-gray-50 dark:bg-gray-800 py-16">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 mb-6">Approach</h2>
-            <p className="text-xl md:text-2xl text-gray-900 leading-relaxed">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">Approach</h2>
+            <p className="text-xl md:text-2xl text-gray-900 dark:text-gray-100 leading-relaxed">
               We conducted retrospective interviews with <strong>25 UX professionals and students</strong>, asking them to walk through past projects and reflect on exactly how, when, and why they used AI tools. By analyzing their real experiences across research, ideation, prototyping, and testing, we uncovered the true patterns of AI adoption—and its limitations.
             </p>
           </div>
@@ -161,8 +161,8 @@ export default function GenaiUxPage() {
         <div className="px-6 md:px-10 mb-24">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-              <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-6">Students vs. Professionals</h3>
-              <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+              <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">Students vs. Professionals</h3>
+              <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>
                   The divide was striking. Students treated ChatGPT as a research assistant—helping them draft interview questions, generate ideas, and learn domain knowledge. They experimented freely, unbound by organizational constraints.
                 </p>
@@ -187,8 +187,8 @@ export default function GenaiUxPage() {
         <div className="px-6 md:px-10 mb-24">
           <div className="max-w-5xl mx-auto">
             <div className="mb-12">
-              <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-6">Where AI Actually Works</h3>
-              <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+              <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">Where AI Actually Works</h3>
+              <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>
                   AI shined brightest in the early phases. <strong>90% of participants used ChatGPT</strong>, primarily for brainstorming, summarizing research, and structuring ideas. Tools like Perplexity and Claude helped gather domain knowledge quickly.
                 </p>
@@ -210,10 +210,10 @@ export default function GenaiUxPage() {
 
       {/* Fixation Problem */}
       <Section delay={0.1}>
-        <div className="px-6 md:px-10 mb-24 bg-gray-50 py-16">
+        <div className="px-6 md:px-10 mb-24 bg-gray-50 dark:bg-gray-800 py-16">
           <div className="max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-6">The Fixation Problem</h3>
-            <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+            <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">The Fixation Problem</h3>
+            <div className="space-y-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               <p>
                 A recurring theme emerged: design fixation. When designers relied too heavily on AI's first suggestions, they converged too early on mediocre ideas. The AI became a crutch rather than a collaborator.
               </p>
@@ -238,8 +238,8 @@ export default function GenaiUxPage() {
               />
             </div>
             <div>
-              <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-6">My Role</h3>
-              <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+              <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">My Role</h3>
+              <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>
                   As secondary author, I led 5 of the 25 interviews and took charge of deriving themes from the data. The biggest challenge? Managing massive amounts of qualitative data—each 1-hour interview generated extensive transcripts.
                 </p>
@@ -256,8 +256,8 @@ export default function GenaiUxPage() {
       <Section delay={0.1}>
         <div className="px-6 md:px-10 mb-24" style={{ backgroundColor: `${accentColor}10` }}>
           <div className="max-w-5xl mx-auto py-16">
-            <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 mb-12">Impact</h2>
-            <div className="space-y-6 text-lg text-gray-900 leading-relaxed">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-12">Impact</h2>
+            <div className="space-y-6 text-lg text-gray-900 dark:text-gray-100 leading-relaxed">
               <p className="text-2xl font-medium">
                 First comprehensive study of GenAI use across the full UX lifecycle.
               </p>
@@ -276,8 +276,8 @@ export default function GenaiUxPage() {
       <Section delay={0.1}>
         <div className="px-6 md:px-10 mb-32">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 mb-6">Reflection</h2>
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+            <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-6">Reflection</h2>
+            <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed">
               What I'm most proud of is experiencing firsthand the challenges we were researching. Using AI to analyze research about AI taught me its true limitations—it's powerful for speed, but requires constant human judgment to maintain quality and depth.
             </p>
           </div>
@@ -290,12 +290,12 @@ export default function GenaiUxPage() {
           <div className="max-w-5xl mx-auto">
             <Link
               to="/work/vr-emotion"
-              className="group block p-8 border border-gray-200 rounded-2xl hover:border-gray-900 transition-all hover:shadow-lg"
+              className="group block p-8 border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-gray-900 dark:hover:border-gray-100 transition-all hover:shadow-lg"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-500 mb-2">Next Project</p>
-                  <h3 className="text-2xl md:text-3xl font-medium text-gray-900 group-hover:text-gray-600 transition-colors">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-400 mb-2">Next Project</p>
+                  <h3 className="text-2xl md:text-3xl font-medium text-gray-900 group-hover:text-gray-600 dark:text-gray-300 transition-colors">
                     VR Emotion Recognition
                   </h3>
                 </div>
