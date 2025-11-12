@@ -11,17 +11,17 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
       <Footer />
-      
+
       <main id="main-content" className="pt-24 pb-32 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-light text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-5xl font-light text-gray-900 dark:text-gray-100 mb-6">
               Let's collaborate on innovative HCI research
             </h1>
-            <p className="text-xl text-gray-700">
+            <p className="text-xl text-gray-700 dark:text-gray-300">
               Interested in VR development, empathy research, or user-centered design?
             </p>
           </div>
@@ -30,12 +30,12 @@ export default function Contact() {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-2xl font-medium text-gray-900 mb-6">Get in touch</h2>
+                <h2 className="text-2xl font-medium text-gray-900 dark:text-gray-100 mb-6">Get in touch</h2>
                 <div className="space-y-4">
                   <div>
-                    <a 
-                      href="mailto:shashidharprakash33@gmail.com" 
-                      className="text-lg text-gray-900 hover:text-gray-600 transition-colors flex items-center gap-2"
+                    <a
+                      href="mailto:shashidharprakash33@gmail.com"
+                      className="text-lg text-gray-900 dark:text-gray-100 hover:text-gray-600 dark:hover:text-gray-400 transition-colors flex items-center gap-2"
                     >
                       shashidharprakash33@gmail.com ↗
                     </a>
@@ -71,23 +71,23 @@ export default function Contact() {
                 </div>
               </div>
               
-              <div className="pt-8 border-t border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Location</h3>
-                <p className="text-gray-700">Indianapolis, Indiana, United States</p>
+              <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Location</h3>
+                <p className="text-gray-700 dark:text-gray-300">Indianapolis, Indiana, United States</p>
               </div>
-              
-              <div className="pt-8 border-t border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Current Role</h3>
-                <p className="text-gray-700">Graduate VR Research and Development at SETH Lab, Indiana University</p>
+
+              <div className="pt-8 border-t border-gray-200 dark:border-gray-700">
+                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Current Role</h3>
+                <p className="text-gray-700 dark:text-gray-300">Graduate VR Research and Development at SETH Lab, Indiana University</p>
               </div>
             </div>
             
             {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-medium text-gray-900 mb-6">Send a message</h2>
+              <h2 className="text-2xl font-medium text-gray-900 dark:text-gray-100 mb-6">Send a message</h2>
               <form className="space-y-6" aria-label="Contact form">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Name <span className="text-red-600" aria-label="required">*</span>
                   </label>
                   <input
@@ -96,7 +96,7 @@ export default function Contact() {
                     name="name"
                     required
                     aria-required="true"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-colors"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg focus:ring-2 focus:ring-gray-900 dark:focus:ring-gray-100 focus:border-transparent transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -151,7 +151,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gray-900 text-white py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                  className="w-full bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 py-3 px-6 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-300 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 dark:focus:ring-gray-100"
                 >
                   Send Message
                 </button>
