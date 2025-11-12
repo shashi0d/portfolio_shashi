@@ -28,6 +28,26 @@ export function Header() {
               WORK
             </Link>
             <Link
+              to="/tools"
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/tools"
+                  ? "text-gray-900"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              TOOLS
+            </Link>
+            <Link
+              to="/lab"
+              className={`text-sm font-medium transition-colors ${
+                location.pathname === "/lab"
+                  ? "text-gray-900"
+                  : "text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              LAB
+            </Link>
+            <Link
               to="/about"
               className={`text-sm font-medium transition-colors ${
                 location.pathname === "/about"
