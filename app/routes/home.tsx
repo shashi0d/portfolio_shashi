@@ -4,14 +4,39 @@ import { Footer } from "../components/Footer";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { PROJECTS } from "../lib/constants";
+import { PROJECTS, SEO } from "../lib/constants";
 import { ImagePlaceholder } from "../components/ImagePlaceholder";
 import clsx from "clsx";
 
 export function meta({}: Route.MetaArgs) {
+  const title = "Shashidhara Narayanappa - HCI Researcher & Design Enthusiast";
+  const description = "HCI researcher and UX designer bridging technical depth with human insight. Specializing in VR development, AI integration research, and user-centered design at Indiana University.";
+  const url = SEO.siteUrl;
+  const image = `${SEO.siteUrl}${SEO.defaultImage}`;
+
   return [
-    { title: "Shashidhara Narayanappa - HCI Researcher & Design Enthusiast" },
-    { name: "description", content: "Bridging technical depth with human insight. HCI researcher crafting meaningful interactions through VR, AI, and user-centered design." },
+    { title },
+    { name: "description", content: description },
+
+    // Open Graph
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:site_name", content: SEO.siteName },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: SEO.twitterHandle },
+    { name: "twitter:creator", content: SEO.twitterHandle },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // Additional SEO
+    { name: "author", content: SEO.authorName },
+    { name: "keywords", content: "HCI researcher, UX designer, VR development, AI research, user experience, interaction design, qualitative research, Indiana University" },
   ];
 }
 
@@ -43,21 +68,15 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="relative overflow-hidden rounded-2xl bg-white transition-all duration-300 hover:shadow-2xl"
+        className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg"
       >
         {/* Image Container */}
-        <div className="relative overflow-hidden bg-gray-50 aspect-[16/10]">
+        <div className="relative overflow-hidden bg-white aspect-[16/10]">
           <ImagePlaceholder
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out"
             aspectRatio="wide"
-          />
-
-          {/* Color accent border - shows on hover */}
-          <div
-            className="absolute inset-0 border-4 border-transparent group-hover:border-current transition-all duration-300 pointer-events-none"
-            style={{ color: project.color }}
           />
         </div>
 

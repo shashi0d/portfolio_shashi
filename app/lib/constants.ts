@@ -27,12 +27,22 @@ export const PROJECT_CATEGORIES = {
   DEVELOPMENT: 'Development',
 } as const;
 
+// SEO Configuration
+export const SEO = {
+  siteName: "Shashidhara Narayanappa",
+  siteUrl: "https://shashidhara.com", // Update with your actual domain
+  authorName: "Shashidhara Narayanappa",
+  twitterHandle: "@yourhandle", // Update with your Twitter handle
+  defaultImage: "/images/og-default.png",
+} as const;
+
 export const PROJECTS = [
   {
     id: "growthops",
     title: "GrowthOps Dashboard",
     shortTitle: "SMB Operations",
     description: "Unified dashboard transforming operational chaos into clarity for small business founders",
+    seoDescription: "UX case study: Designed unified operations dashboard for small businesses, integrating tools like QuickBooks and Salesforce with AI-powered insights. User research, dashboard design, and technical architecture.",
     year: "2024",
     role: "Technical Architecture & Integration Strategy",
     color: COLORS.growthOps,
@@ -45,6 +55,7 @@ export const PROJECTS = [
     title: "GenAI in UX Design",
     shortTitle: "AI + Design",
     description: "How UX professionals integrate AI tools across the design lifecycle",
+    seoDescription: "Qualitative research study investigating how 25 UX professionals and students integrate GenAI tools like ChatGPT across the design lifecycle. Academic research submitted to ACM IUI '26.",
     year: "2025",
     role: "Research Lead",
     color: COLORS.genai,
@@ -57,6 +68,7 @@ export const PROJECTS = [
     title: "VR Emotion Recognition",
     shortTitle: "Emotion in VR",
     description: "Building the first spontaneous emotion dataset in virtual reality",
+    seoDescription: "VR research project building the first spontaneous emotion recognition dataset in virtual reality. Developing Unity-based VR environments to capture 63 facial action units at 30Hz for emotion analysis.",
     year: "2024",
     role: "Lead Researcher",
     color: COLORS.vrEmotion,
@@ -69,6 +81,7 @@ export const PROJECTS = [
     title: "WanderIndy",
     shortTitle: "Urban Explorer",
     description: "Transforming Indianapolis into an interactive storybook",
+    seoDescription: "UX design case study: Urban exploration wayfinding system transforming Indianapolis into an interactive experience. Mobile app and kiosk design with mood-based trails and stamp challenges.",
     year: "2025",
     role: "UX Lead",
     color: COLORS.wanderIndy,

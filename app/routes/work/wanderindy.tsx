@@ -4,12 +4,32 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ImagePlaceholder } from "../../components/ImagePlaceholder";
-import { COLORS } from "../../lib/constants";
+import { COLORS, SEO, PROJECTS } from "../../lib/constants";
 
 export function meta() {
+  const project = PROJECTS.find(p => p.id === "wanderindy")!;
+  const title = `${project.title} - ${SEO.authorName}`;
+  const description = project.seoDescription;
+  const url = `${SEO.siteUrl}/work/${project.id}`;
+  const image = `${SEO.siteUrl}${project.image}`;
+
   return [
-    { title: "WanderIndy - Shashidhara Narayanappa" },
-    { name: "description", content: "Transforming Indianapolis into an interactive storybook through urban exploration and wayfinding design." },
+    { title },
+    { name: "description", content: description },
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:site_name", content: SEO.siteName },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: SEO.twitterHandle },
+    { name: "twitter:creator", content: SEO.twitterHandle },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+    { name: "author", content: SEO.authorName },
+    { name: "keywords", content: `${project.tags.join(", ")}, HCI research, UX design case study` },
   ];
 }
 

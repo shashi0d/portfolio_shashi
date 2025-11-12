@@ -4,12 +4,38 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ImagePlaceholder } from "../../components/ImagePlaceholder";
-import { COLORS } from "../../lib/constants";
+import { COLORS, SEO, PROJECTS } from "../../lib/constants";
 
 export function meta() {
+  const project = PROJECTS.find(p => p.id === "genai-ux")!;
+  const title = `${project.title} - ${SEO.authorName}`;
+  const description = project.seoDescription;
+  const url = `${SEO.siteUrl}/work/${project.id}`;
+  const image = `${SEO.siteUrl}${project.image}`;
+
   return [
-    { title: "GenAI in UX Design - Shashidhara Narayanappa" },
-    { name: "description", content: "Investigating how UX professionals integrate AI tools across the design lifecycle through qualitative research." },
+    { title },
+    { name: "description", content: description },
+
+    // Open Graph
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    { property: "og:image", content: image },
+    { property: "og:site_name", content: SEO.siteName },
+
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: SEO.twitterHandle },
+    { name: "twitter:creator", content: SEO.twitterHandle },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+
+    // Additional SEO
+    { name: "author", content: SEO.authorName },
+    { name: "keywords", content: `${project.tags.join(", ")}, HCI research, UX design case study` },
   ];
 }
 
