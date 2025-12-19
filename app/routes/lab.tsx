@@ -59,7 +59,7 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="group relative block"
     >
-      <div className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg">
+      <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:border-gray-300 dark:border-gray-600 hover:shadow-lg">
         {/* Image */}
         <div className="relative overflow-hidden bg-white aspect-[16/10]">
           <ImagePlaceholder
@@ -74,7 +74,7 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
         <div className="p-6 md:p-8">
           {/* Year */}
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm font-medium text-gray-500">{project.year}</span>
+            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{project.year}</span>
 
             {/* Links */}
             <div className="flex gap-3">
@@ -83,7 +83,7 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span>Demo</span>
@@ -97,7 +97,7 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 transition-colors"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <span>GitHub</span>
@@ -110,12 +110,12 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
+          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 dark:text-gray-100 dark:group-hover:text-gray-300 transition-colors">
             {project.title}
           </h3>
 
           {/* Description */}
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed mb-4">
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
             {project.description}
           </p>
 
@@ -124,7 +124,7 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-700 rounded-full"
+                className="px-3 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
               >
                 {tag}
               </span>
@@ -138,11 +138,11 @@ function ProjectCard({ project, index }: { project: typeof LAB_PROJECTS[number];
 
 export default function Lab() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pb-24 px-6 md:px-10">
+      <section id="main-content" className="pt-32 pb-16 md:pb-24 px-6 md:px-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -152,7 +152,7 @@ export default function Lab() {
             <h1 className="text-4xl md:text-6xl font-medium text-gray-900 leading-tight mb-6">
               Lab
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl">
               Experimental projects and code explorations. A space for building, learning, and pushing the boundaries of what's possible with modern web technologies.
             </p>
           </motion.div>
@@ -175,7 +175,7 @@ export default function Lab() {
                 <h3 className="text-2xl font-medium text-gray-900 mb-4">
                   Projects Coming Soon
                 </h3>
-                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                   Currently experimenting with new ideas. Check back soon to see what's brewing in the lab!
                 </p>
               </div>

@@ -68,10 +68,10 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 transition-all duration-300 hover:border-gray-300 hover:shadow-lg"
+        className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-lg dark:hover:shadow-2xl"
       >
         {/* Image Container */}
-        <div className="relative overflow-hidden bg-white aspect-[16/10]">
+        <div className="relative overflow-hidden bg-white dark:bg-gray-700 aspect-[16/10]">
           <ImagePlaceholder
             src={project.image}
             alt={project.title}
@@ -99,16 +99,16 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
                 </span>
               ))}
             </div>
-            <span className="text-sm font-medium text-gray-500 flex-shrink-0">{project.year}</span>
+            <span className="text-sm font-medium text-gray-500 dark:text-gray-400 flex-shrink-0">{project.year}</span>
           </div>
 
           {/* Title */}
-          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 mb-3 group-hover:text-gray-600 transition-colors">
+          <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-3 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
             {project.title}
           </h3>
 
           {/* Description - Single line */}
-          <p className="text-base md:text-lg text-gray-600 leading-relaxed line-clamp-2">
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -119,11 +119,11 @@ function ProjectCard({ project, index }: { project: typeof PROJECTS[number]; ind
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center min-h-[90vh] px-6 md:px-10">
+      <section id="main-content" className="relative flex items-center justify-center min-h-[90vh] px-6 md:px-10">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -132,13 +132,13 @@ export default function Home() {
             className="space-y-8"
           >
             {/* Main heading */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-gray-900 leading-[1.1] tracking-tight">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light text-gray-900 dark:text-gray-100 leading-[1.1] tracking-tight">
               Bridging code and
               <span className="block font-medium mt-2">human experience</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto">
               2 years of Product Design and 3 years of Development Experience
             </p>
 
@@ -151,13 +151,13 @@ export default function Home() {
             >
               <a
                 href="#work"
-                className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium"
+                className="px-8 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors font-medium"
               >
                 View Work
               </a>
               <Link
                 to="/contact"
-                className="px-8 py-3 border border-gray-300 text-gray-900 rounded-lg hover:border-gray-900 transition-colors font-medium"
+                className="px-8 py-3 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-gray-100 rounded-lg hover:border-gray-900 dark:hover:border-gray-300 transition-colors font-medium"
               >
                 Get in Touch
               </Link>
@@ -185,14 +185,14 @@ export default function Home() {
       </section>
 
       {/* Work Section */}
-      <section id="work" className="py-24 md:py-32 px-6 md:px-10 bg-gray-50">
+      <section id="work" className="py-24 md:py-32 px-6 md:px-10 bg-gray-50 dark:bg-gray-800/50">
         <div className="max-w-6xl mx-auto">
           <FadeInWhenVisible>
             <div className="mb-16 md:mb-20">
-              <h2 className="text-4xl md:text-5xl font-medium text-gray-900 mb-4">
+              <h2 className="text-4xl md:text-5xl font-medium text-gray-900 dark:text-gray-100 mb-4">
                 Selected Work
               </h2>
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl">
                 Research and design projects exploring the intersection of technology and human behavior
               </p>
             </div>
@@ -244,43 +244,43 @@ export default function Home() {
             <FadeInWhenVisible delay={0.2}>
               <div className="space-y-8">
                 <div>
-                  <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-6">
+                  <h2 className="text-3xl md:text-4xl font-medium text-gray-900 dark:text-gray-100 mb-6">
                     From Developer to HCI Researcher
                   </h2>
-                  <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+                  <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                     <p>
                       I spent three years as a Full Stack Developer, honing technical fundamentals and leading teams in a startup environment. Now I'm pursuing a Master's in Human-Computer Interaction at Indiana University, exploring how HCI complements my engineering background to create better, more thoughtful design solutions.
                     </p>
                     <p>
                       My work bridges research rigor and technical execution—from building VR systems to conducting qualitative studies on AI adoption in design practice.
                     </p>
-                    <p className="font-medium text-gray-900">
+                    <p className="font-medium text-gray-900 dark:text-gray-100">
                       Currently seeking Product Researcher, Product Strategist, and UX Researcher roles.
                     </p>
                   </div>
                 </div>
 
                 {/* Quick Facts */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-gray-200">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-gray-200 dark:border-gray-700">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">Education</h3>
-                    <div className="space-y-2 text-gray-900">
+                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Education</h3>
+                    <div className="space-y-2 text-gray-900 dark:text-gray-100">
                       <p className="font-medium">M.S., Human-Computer Interaction</p>
-                      <p className="text-sm text-gray-600">Indiana University (2026)</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">Indiana University (2026)</p>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-3">Currently</h3>
-                    <div className="space-y-2 text-gray-900">
+                    <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-3">Currently</h3>
+                    <div className="space-y-2 text-gray-900 dark:text-gray-100">
                       <p className="font-medium">VR Research & Development</p>
-                      <p className="text-sm text-gray-600">SETH Lab, IU</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">SETH Lab, IU</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Skills */}
-                <div className="pt-6 border-t border-gray-200">
-                  <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">Capabilities</h3>
+                <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-4">Capabilities</h3>
                   <div className="flex flex-wrap gap-2">
                     {[
                       "Qualitative Research",
@@ -294,7 +294,7 @@ export default function Home() {
                     ].map((skill) => (
                       <span
                         key={skill}
-                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium"
+                        className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium"
                       >
                         {skill}
                       </span>
