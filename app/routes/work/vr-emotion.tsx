@@ -358,14 +358,14 @@ export default function VrEmotionPage() {
         <div className="px-6 md:px-10 mb-16 md:mb-24">
           <div className="max-w-5xl mx-auto">
             <Link
-              to="/work/wanderindy"
+              to="/work/secs"
               className="group block p-6 md:p-8 border border-gray-200 dark:border-gray-700 rounded-2xl hover:border-gray-900 dark:hover:border-gray-100 transition-all hover:shadow-lg"
             >
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-2">Next Project</p>
                   <h3 className="text-xl md:text-3xl font-medium text-gray-900 group-hover:text-gray-600 dark:text-gray-300 transition-colors">
-                    WanderIndy
+                    Mobility as Social Service
                   </h3>
                 </div>
                 <svg className="w-6 h-6 md:w-8 md:h-8 text-gray-400 group-hover:text-gray-900 transition-colors transform group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
