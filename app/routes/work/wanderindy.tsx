@@ -130,7 +130,7 @@ export default function WanderIndyPage() {
               </p>
             </div>
             <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Existing tools—apps, signs, maps—felt impersonal and failed to guide meaningful exploration. Weekend outings lacked the magic of discovery.
+              Existing tools apps, signs, maps felt impersonal and failed to guide meaningful exploration. Weekend outings lacked the magic of discovery.
             </p>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function WanderIndyPage() {
               <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">The Stamp Mechanic</h3>
               <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>
-                  Why four stamps? We spent a day observing Fountain Square, watching what people actually did. Food, music, art, shopping—those four categories dominated. We designed around real behavior, not assumptions.
+                  Why four stamps? We spent a day observing Fountain Square, watching what people actually did. Food, music, art, shopping those four categories dominated. We designed around real behavior, not assumptions.
                 </p>
                 <p>
                   Four stamps meant trails were achievable in one outing. Too few and it felt trivial. Too many and people gave up. We struck the balance between variety and completion.
@@ -189,7 +189,7 @@ export default function WanderIndyPage() {
               <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">Kiosks That Actually Fit</h3>
               <div className="space-y-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>
-                  Inspired by LinkNYC, we designed vertical kiosks for sidewalks. The format wasn't just aesthetic—it solved real problems. Vertical saves sidewalk space. The top-down flow feels natural. Rain and sun protection matter in Indianapolis weather.
+                  Inspired by LinkNYC, we designed vertical kiosks for sidewalks. The format wasn't just aesthetic it solved real problems. Vertical saves sidewalk space. The top-down flow feels natural. Rain and sun protection matter in Indianapolis weather.
                 </p>
                 <p>
                   I took ChatGPT-generated mockups and AI-composited them into actual Fountain Square photos. Seeing the kiosk in context made the concept feel real, even before we built anything physical.
@@ -233,7 +233,7 @@ export default function WanderIndyPage() {
             <div className="mb-12">
               <h3 className="text-2xl md:text-3xl font-medium text-gray-900 dark:text-gray-100 mb-6">The Living Field Guide</h3>
               <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                The app wasn't just about checking boxes—it was about building a personal story. Your field guide grows with every journey, collecting badges, memories, and timestamps. Exploration becomes achievement. The city becomes yours.
+                The app wasn't just about checking boxes it was about building a personal story. Your field guide grows with every journey, collecting badges, memories, and timestamps. Exploration becomes achievement. The city becomes yours.
               </p>
             </div>
             <div className="rounded-xl overflow-hidden">
@@ -270,7 +270,7 @@ export default function WanderIndyPage() {
           <div className="max-w-4xl mx-auto">
             <h2 className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-6">Reflection</h2>
             <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed">
-              What I'm most proud of is balancing ideas across a team of 5 without a formal leader. We each brought different perspectives, but the final concept felt unified. Also, using AI as a partner in rapid prototyping taught me its true value—it's powerful for speed and iteration, but always needs human judgment to guide the vision.
+              What I'm most proud of is balancing ideas across a team of 5 without a formal leader. We each brought different perspectives, but the final concept felt unified. Also, using AI as a partner in rapid prototyping taught me its true value it's powerful for speed and iteration, but always needs human judgment to guide the vision.
             </p>
           </div>
         </div>

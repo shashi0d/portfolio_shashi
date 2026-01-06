@@ -28,7 +28,7 @@ export default function About() {
               </p>
 
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                As a researcher and designer, I aim to understand how emerging technologies reshape human behavior and creative work. I believe the most elegant solutions combine rigorous methodology with thoughtful design—grounded in evidence, refined in details.
+                As a researcher and designer, I aim to understand how emerging technologies reshape human behavior and creative work. I believe the most elegant solutions combine rigorous methodology with thoughtful design grounded in evidence, refined in details.
               </p>
 
               <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">

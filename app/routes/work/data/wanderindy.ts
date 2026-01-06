@@ -18,19 +18,19 @@ export const wanderIndyProject = {
     "/images/wanderindy/field-guide.png"
   ],
   
-  challenge: "Exploring Indianapolis felt broken. Locals and tourists gravitated toward major landmarks while hidden gems stayed invisible. Existing tools—apps, signs, maps—felt impersonal and failed to guide meaningful exploration. Weekend outings lacked the magic of discovery",
+  challenge: "Exploring Indianapolis felt broken. Locals and tourists gravitated toward major landmarks while hidden gems stayed invisible. Existing tools apps, signs, maps felt impersonal and failed to guide meaningful exploration. Weekend outings lacked the magic of discovery",
   
   solution: "We designed WanderIndy: a hybrid physical-digital system that turns Indianapolis into an interactive storybook. Pick a mood-based trail (foodie, artistic, musical, shopping), collect stamps through a 4-stop challenge, and unlock neighborhood stories through interactive kiosks. Every journey becomes an adventure, every outing becomes a memory",
   
   sections: [
     {
       header: "THE STAMP MECHANIC",
-      content: "Why four stamps? We spent a day observing Fountain Square, watching what people actually did. Food, music, art, shopping—those four categories dominated. We designed around real behavior, not assumptions.\n\nFour stamps meant trails were achievable in one outing. Too few and it felt trivial. Too many and people gave up. We struck the balance between variety and completion",
+      content: "Why four stamps? We spent a day observing Fountain Square, watching what people actually did. Food, music, art, shopping those four categories dominated. We designed around real behavior, not assumptions.\n\nFour stamps meant trails were achievable in one outing. Too few and it felt trivial. Too many and people gave up. We struck the balance between variety and completion",
       visual: "/images/wanderindy/stamps.png"
     },
     {
       header: "KIOSKS THAT ACTUALLY FIT",
-      content: "Inspired by LinkNYC, we designed vertical kiosks for sidewalks. The format wasn't just aesthetic—it solved real problems. Vertical saves sidewalk space. The top-down flow feels natural. Rain and sun protection matter in Indianapolis weather.\n\nI took ChatGPT-generated mockups and AI-composited them into actual Fountain Square photos. Seeing the kiosk in context made the concept feel real, even before we built anything physical",
+      content: "Inspired by LinkNYC, we designed vertical kiosks for sidewalks. The format wasn't just aesthetic it solved real problems. Vertical saves sidewalk space. The top-down flow feels natural. Rain and sun protection matter in Indianapolis weather.\n\nI took ChatGPT-generated mockups and AI-composited them into actual Fountain Square photos. Seeing the kiosk in context made the concept feel real, even before we built anything physical",
       visual: "/images/wanderindy/kiosk-design.png"
     },
     {
@@ -40,7 +40,7 @@ export const wanderIndyProject = {
     },
     {
       header: "THE LIVING FIELD GUIDE",
-      content: "The app wasn't just about checking boxes—it was about building a personal story. Your field guide grows with every journey, collecting badges, memories, and timestamps. Exploration becomes achievement. The city becomes yours",
+      content: "The app wasn't just about checking boxes it was about building a personal story. Your field guide grows with every journey, collecting badges, memories, and timestamps. Exploration becomes achievement. The city becomes yours",
       visual: "/images/wanderindy/field-guide.png"
     }
   ],
@@ -50,5 +50,5 @@ export const wanderIndyProject = {
     text: "Complete mobile app prototype (high-fidelity), vertical kiosk interface designs, full brand system (typography, color, iconography, doodles), and feasibility analysis with AI-composited site photos.\n\nSuccessfully designed a comprehensive service system that turns Indianapolis into an interactive game of discovery."
   },
   
-  reflection: "What I'm most proud of is balancing ideas across a team of 5 without a formal leader. We each brought different perspectives, but the final concept felt unified. Also, using AI as a partner in rapid prototyping taught me its true value—it's powerful for speed and iteration, but always needs human judgment to guide the vision."
+  reflection: "What I'm most proud of is balancing ideas across a team of 5 without a formal leader. We each brought different perspectives, but the final concept felt unified. Also, using AI as a partner in rapid prototyping taught me its true value it's powerful for speed and iteration, but always needs human judgment to guide the vision."
 };

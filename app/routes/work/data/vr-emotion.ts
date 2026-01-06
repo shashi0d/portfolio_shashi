@@ -18,19 +18,19 @@ export const vrEmotionProject = {
     "/images/vr-emotion/multimodal-data.png"
   ],
   
-  challenge: "VR research was missing something fundamental. While plenty of studies explored emotions in virtual environments, they all relied on posed, acted expressions. We had no datasets capturing what people's faces actually do when they experience genuine emotions in VR—the spontaneous, natural reactions that matter most",
+  challenge: "VR research was missing something fundamental. While plenty of studies explored emotions in virtual environments, they all relied on posed, acted expressions. We had no datasets capturing what people's faces actually do when they experience genuine emotions in VR the spontaneous, natural reactions that matter most",
   
   solution: "I designed and built a complete research pipeline from scratch. Using the Meta Quest Pro's built-in facial tracking, I'm collecting spontaneous emotional expressions from 50 university students as they watch validated emotional videos in VR. The result: the first dataset of its kind, capturing natural facial expressions across all six basic emotions in an immersive environment",
   
   sections: [
     {
       header: "BUILDING THE SYSTEM",
-      content: "I developed the entire VR environment in Unity, complete with a virtual screen for video playback and real-time avatar mirroring. The Meta Quest Pro captures 63 facial action units at 30 Hz—FACS-compatible data that can support everything from frame-based classification to time-series modeling.\n\nThe technical challenge wasn't just building it—it was building it right. Data synchronization, timestamp alignment, CSV export pipelines. Every detail mattered",
+      content: "I developed the entire VR environment in Unity, complete with a virtual screen for video playback and real-time avatar mirroring. The Meta Quest Pro captures 63 facial action units at 30 Hz FACS-compatible data that can support everything from frame-based classification to time-series modeling.\n\nThe technical challenge wasn't just building it it was building it right. Data synchronization, timestamp alignment, CSV export pipelines. Every detail mattered",
       visual: "/images/vr-emotion/unity-environment.png"
     },
     {
       header: "CHOOSING THE RIGHT STIMULI",
-      content: "Not all emotional videos are created equal. I curated clips from the FilmStim dataset for five emotions (anger, disgust, sadness, surprise, fear) because of their high-definition quality and validated arousal-valence ratings. For happiness, I compiled clips from Friends—testing multiple versions to find what actually made people smile.\n\nBetween each emotional clip, participants see a 20-second neutral animation. Not glamorous, but essential for resetting their baseline state",
+      content: "Not all emotional videos are created equal. I curated clips from the FilmStim dataset for five emotions (anger, disgust, sadness, surprise, fear) because of their high-definition quality and validated arousal-valence ratings. For happiness, I compiled clips from Friends testing multiple versions to find what actually made people smile.\n\nBetween each emotional clip, participants see a 20-second neutral animation. Not glamorous, but essential for resetting their baseline state",
       visual: "/images/vr-emotion/stimuli.png"
     },
     {
@@ -40,7 +40,7 @@ export const vrEmotionProject = {
     },
     {
       header: "MULTI-MODAL DATA",
-      content: "This isn't just a dataset—it's a foundation for future emotion recognition models that understand genuine human reactions in immersive environments. The data supports three recognition strategies: frame-based classification using CNNs on avatar images, time-series modeling of AU vectors using LSTM approaches, and multi-modal fusion for enhanced accuracy",
+      content: "This isn't just a dataset it's a foundation for future emotion recognition models that understand genuine human reactions in immersive environments. The data supports three recognition strategies: frame-based classification using CNNs on avatar images, time-series modeling of AU vectors using LSTM approaches, and multi-modal fusion for enhanced accuracy",
       visual: "/images/vr-emotion/multimodal-data.png"
     }
   ],
@@ -54,5 +54,5 @@ export const vrEmotionProject = {
     text: "First publicly available VR emotion dataset with spontaneous (not posed) expressions. High-fidelity FACS-based tracking across all six basic emotions. Targeting IEEE VR, Meaningful XR, or Empathic Computing conferences."
   },
   
-  reflection: "Leading this project taught me what independent research really means. There's no one to ask \"is this right?\"—you have to know. From designing the study to debugging Unity crashes at 2 AM to explaining consent forms, every decision is mine. It's the best kind of pressure."
+  reflection: "Leading this project taught me what independent research really means. There's no one to ask \"is this right?\" you have to know. From designing the study to debugging Unity crashes at 2 AM to explaining consent forms, every decision is mine. It's the best kind of pressure."
 };

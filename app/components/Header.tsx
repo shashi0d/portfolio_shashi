@@ -8,8 +8,6 @@ export function Header() {
 
   const navLinks = [
     { to: "/work", label: "WORK", match: (path: string) => path.startsWith("/work") },
-    { to: "/tools", label: "TOOLS", match: (path: string) => path === "/tools" },
-    { to: "/lab", label: "LAB", match: (path: string) => path === "/lab" },
     { to: "/about", label: "ABOUT", match: (path: string) => path === "/about" },
     { to: "/contact", label: "CONTACT", match: (path: string) => path === "/contact" },
   ];

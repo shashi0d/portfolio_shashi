@@ -200,7 +200,7 @@ export default function Home() {
 
           {/* Project Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {PROJECTS.map((project, index) => (
+            {PROJECTS.filter(project => project.id !== "wanderindy" && project.id !== "growthops").map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
@@ -252,7 +252,7 @@ export default function Home() {
                       I spent three years as a Full Stack Developer, honing technical fundamentals and leading teams in a startup environment. Now I'm pursuing a Master's in Human-Computer Interaction at Indiana University, exploring how HCI complements my engineering background to create better, more thoughtful design solutions.
                     </p>
                     <p>
-                      My work bridges research rigor and technical execution—from building VR systems to conducting qualitative studies on AI adoption in design practice.
+                      My work bridges research rigor and technical execution from building VR systems to conducting qualitative studies on AI adoption in design practice.
                     </p>
                     <p className="font-medium text-gray-900 dark:text-gray-100">
                       Currently seeking Product Researcher, Product Strategist, and UX Researcher roles.
