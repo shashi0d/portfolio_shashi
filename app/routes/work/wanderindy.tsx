@@ -4,7 +4,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ImagePlaceholder } from "../../components/ImagePlaceholder";
-import { COLORS, SEO, PROJECTS } from "../../lib/constants";
+import { COLORS, SEO, PROJECTS, getOGImageMeta } from "../../lib/constants";
 
 export function meta() {
   const project = PROJECTS.find(p => p.id === "wanderindy")!;
@@ -20,7 +20,7 @@ export function meta() {
     { property: "og:url", content: url },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:image", content: image },
+    ...getOGImageMeta(image),
     { property: "og:site_name", content: SEO.siteName },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:site", content: SEO.twitterHandle },

@@ -1,11 +1,31 @@
 import type { Route } from "./+types/about";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { SEO, getOGImageMeta } from "../lib/constants";
 
 export function meta({}: Route.MetaArgs) {
+  const title = `About - ${SEO.authorName}`;
+  const description = "HCI researcher and UX designer at Indiana University. Leading VR emotion research at SETH Lab while exploring how emerging technologies reshape human behavior and creative work.";
+  const url = `${SEO.siteUrl}/about`;
+  const image = `${SEO.siteUrl}${SEO.defaultImage}`;
+
   return [
-    { title: "About - Shashidhara Narayanappa" },
-    { name: "description", content: "I've been designing and researching at the intersection of technology and human experience since joining Indiana University's HCI program in 2024" },
+    { title },
+    { name: "description", content: description },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    ...getOGImageMeta(image),
+    { property: "og:site_name", content: SEO.siteName },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: SEO.twitterHandle },
+    { name: "twitter:creator", content: SEO.twitterHandle },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+    { name: "author", content: SEO.authorName },
+    { name: "keywords", content: "HCI researcher, UX designer, Indiana University, SETH Lab, VR research, human-computer interaction, user experience design" },
   ];
 }
 

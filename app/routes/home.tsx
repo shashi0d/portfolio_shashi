@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { PROJECTS, SEO } from "../lib/constants";
+import { PROJECTS, SEO, getOGImageMeta } from "../lib/constants";
 import { ImagePlaceholder } from "../components/ImagePlaceholder";
 import clsx from "clsx";
 
@@ -23,7 +23,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:url", content: url },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:image", content: image },
+    ...getOGImageMeta(image),
     { property: "og:site_name", content: SEO.siteName },
 
     // Twitter Card

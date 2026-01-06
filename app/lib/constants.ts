@@ -36,7 +36,23 @@ export const SEO = {
   authorName: "Shashidhara Narayanappa",
   twitterHandle: "@yourhandle", // Update with your Twitter handle
   defaultImage: "/images/og-default.png",
+  // WhatsApp/Open Graph image dimensions (recommended: 1200x630px)
+  ogImageWidth: "1200",
+  ogImageHeight: "630",
 } as const;
+
+// Helper function to generate Open Graph image metadata for WhatsApp compatibility
+// WhatsApp requires og:image:width and og:image:height for proper preview cards
+export function getOGImageMeta(imageUrl: string) {
+  return [
+    { property: "og:image", content: imageUrl },
+    { property: "og:image:url", content: imageUrl }, // WhatsApp sometimes requires this
+    { property: "og:image:width", content: SEO.ogImageWidth },
+    { property: "og:image:height", content: SEO.ogImageHeight },
+    { property: "og:image:type", content: "image/png" },
+    { property: "og:image:alt", content: SEO.siteName }, // Accessibility
+  ];
+}
 
 export const PROJECTS = [
   {

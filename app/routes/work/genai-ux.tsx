@@ -3,7 +3,7 @@ import { Footer } from "../../components/Footer";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { COLORS, SEO, PROJECTS } from "../../lib/constants";
+import { COLORS, SEO, PROJECTS, getOGImageMeta } from "../../lib/constants";
 
 export function meta() {
   const project = PROJECTS.find(p => p.id === "genai-ux")!;
@@ -21,7 +21,7 @@ export function meta() {
     { property: "og:url", content: url },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:image", content: image },
+    ...getOGImageMeta(image),
     { property: "og:site_name", content: SEO.siteName },
 
     // Twitter Card

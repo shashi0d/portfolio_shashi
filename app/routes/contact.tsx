@@ -2,11 +2,31 @@ import type { Route } from "./+types/contact";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { motion } from "framer-motion";
+import { SEO, getOGImageMeta } from "../lib/constants";
 
 export function meta({}: Route.MetaArgs) {
+  const title = `Contact - ${SEO.authorName}`;
+  const description = "Get in touch with Shashidhara Narayanappa for HCI research collaborations, VR development projects, and UX design opportunities. Based in Indianapolis, Indiana.";
+  const url = `${SEO.siteUrl}/contact`;
+  const image = `${SEO.siteUrl}${SEO.defaultImage}`;
+
   return [
-    { title: "Contact - Shashidhara Narayanappa" },
-    { name: "description", content: "Get in touch with Shashidhara Narayanappa for HCI research collaborations and opportunities" },
+    { title },
+    { name: "description", content: description },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: url },
+    { property: "og:title", content: title },
+    { property: "og:description", content: description },
+    ...getOGImageMeta(image),
+    { property: "og:site_name", content: SEO.siteName },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:site", content: SEO.twitterHandle },
+    { name: "twitter:creator", content: SEO.twitterHandle },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: description },
+    { name: "twitter:image", content: image },
+    { name: "author", content: SEO.authorName },
+    { name: "keywords", content: "contact, HCI researcher, UX designer, collaboration, VR development, research opportunities, Indiana University" },
   ];
 }
 

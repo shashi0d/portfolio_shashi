@@ -3,7 +3,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import { PROJECTS, SEO } from "../lib/constants";
+import { PROJECTS, SEO, getOGImageMeta } from "../lib/constants";
 import { ImagePlaceholder } from "../components/ImagePlaceholder";
 
 export function meta({}: Route.MetaArgs) {
@@ -19,7 +19,7 @@ export function meta({}: Route.MetaArgs) {
     { property: "og:url", content: url },
     { property: "og:title", content: title },
     { property: "og:description", content: description },
-    { property: "og:image", content: image },
+    ...getOGImageMeta(image),
     { property: "og:site_name", content: SEO.siteName },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:site", content: SEO.twitterHandle },
