@@ -1,0 +1,946 @@
+/* ===========================================================
+   Case Study — VR Emotion Recognition (MeaningfulXR 2026)
+   Reskin of case-study-mobility.css with a cool, instrument-like
+   blue/teal palette. Warm amber is reserved as the singular accent
+   for the positive finding (happiness).
+   =========================================================== */
+
+/* ---------- Palette tokens (scoped via :root override in app) ---------- */
+:root {
+  --vr-teal:       #5EEAD4;
+  --vr-teal-soft:  rgba(94,234,212,0.18);
+  --vr-cyan:       #67E8F9;
+  --vr-blue:       #93C5FD;
+  --vr-deep:       #1E3A8A;
+  --vr-amber:      #F5C77A;
+  --vr-amber-soft: rgba(245,199,122,0.18);
+  --vr-coral:      #FCA5A5;
+  --vr-coral-deep: #F87171;
+  --vr-ink-warm:   #0B1320;
+}
+
+/* ---------- Override hero radial blooms — cool teal + cyan ---------- */
+.cs-hero::before { background: radial-gradient(closest-side, rgba(94,234,212,0.18), transparent); }
+.cs-hero::after  { background: radial-gradient(closest-side, rgba(103,232,249,0.14), transparent); }
+
+/* Synthesis / dark panel uses same cool tint for capability + points */
+.capability::before { background: radial-gradient(closest-side, rgba(94,234,212,0.18), transparent); }
+.points-callout::before { background: radial-gradient(closest-side, rgba(103,232,249,0.14), transparent); }
+.proto-cta::before { background: radial-gradient(closest-side, rgba(94,234,212,0.22), transparent); }
+.capability-label { color: var(--vr-teal); }
+.finding-num { color: var(--vr-teal); }
+.finding-card:hover { border-color: rgba(94,234,212,0.45); }
+
+/* ---------- Hero image: VR-themed visual ---------- */
+.vr-hero-image {
+  background: var(--bg-dark);
+  padding: 0 var(--section-x);
+}
+.vr-hero-image-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 560px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 28% 50%, rgba(94,234,212,0.18) 0%, transparent 52%),
+    radial-gradient(circle at 72% 38%, rgba(103,232,249,0.14) 0%, transparent 58%),
+    linear-gradient(180deg, #08111F 0%, #060A14 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+.vr-hero-image-inner::before {
+  /* grid */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: 0;
+}
+.vr-hero-image-note {
+  position: absolute;
+  top: 18px; left: 18px;
+  z-index: 3;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.vr-hero-image-readout {
+  position: absolute;
+  bottom: 22px; left: 22px;
+  z-index: 3;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.45);
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px 18px;
+}
+.vr-hero-image-readout .k { color: rgba(255,255,255,0.3); }
+.vr-hero-image-readout .v { color: var(--vr-teal); }
+
+/* The schematic Quest Pro silhouette (pure CSS) */
+.vr-headset {
+  position: relative;
+  z-index: 2;
+  width: 60%;
+  max-width: 620px;
+  aspect-ratio: 5 / 2;
+  border-radius: 70px / 50%;
+  background:
+    linear-gradient(180deg, #1A2434 0%, #0D1422 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 50px 90px -30px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vr-headset::before,
+.vr-headset::after {
+  /* The two lens housings */
+  content: '';
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 26%; aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(94,234,212,0.55) 0%, rgba(94,234,212,0.15) 35%, rgba(0,0,0,0.0) 60%),
+    radial-gradient(circle at 50% 50%, #0A1422 0%, #050810 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+}
+.vr-headset::before { left: 14%; }
+.vr-headset::after  { right: 14%; }
+
+.vr-headset .vr-bridge {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 8%;
+  height: 12%;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.vr-headset .vr-meta-mark {
+  position: absolute;
+  top: 14%; left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: rgba(255,255,255,0.25);
+}
+.vr-headset .vr-au-pulse {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Tracking dots overlay outside the headset to suggest FACS tracking */
+.vr-facs-marks {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.vr-facs-marks circle { fill: var(--vr-teal); }
+.vr-facs-marks line   { stroke: rgba(94,234,212,0.4); stroke-width: 1; stroke-dasharray: 2 3; }
+.vr-facs-marks text   { fill: rgba(255,255,255,0.5); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 8px; letter-spacing: 0.06em; }
+
+/* ---------- Section 2 — Problem (single big statement) ---------- */
+.vr-thesis {
+  padding: 140px var(--section-x);
+  background: var(--bg);
+  text-align: center;
+}
+.vr-thesis-inner { max-width: 880px; margin: 0 auto; }
+.vr-thesis-mark {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 28px;
+}
+.vr-thesis-text {
+  font-size: clamp(28px, 3.2vw, 44px);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.vr-thesis-text em {
+  font-style: italic;
+  background: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* ---------- Section 3 — Background + Role (60/40 split) ---------- */
+.vr-context {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  margin-top: 80px;
+  padding-top: 64px;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.vr-context .cs-body { margin-top: 0; }
+.vr-context-card {
+  padding: 36px 34px 40px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: sticky;
+  top: 96px;
+}
+.vr-contrib {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.vr-contrib:last-child { border-bottom: none; padding-bottom: 0; }
+.vr-contrib .ct-tag {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0EA5E9;
+}
+.vr-contrib .ct-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.vr-contrib .ct-body {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.55;
+}
+.vr-context-card .ct-head {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink);
+  align-self: flex-start;
+}
+
+/* ---------- Section 4 — Process strip (3 columns horizontal) ---------- */
+.vr-process {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.vr-step {
+  padding: 36px 32px 40px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  background: #fff;
+}
+.vr-step:last-child { border-right: none; }
+.vr-step .vs-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #0EA5E9;
+  letter-spacing: 0.1em;
+}
+.vr-step .vs-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+.vr-step .vs-body {
+  font-size: 14px;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+.vr-step .vs-stat {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.vr-step .vs-stat .vss-num {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.vr-step .vs-stat .vss-lbl {
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------- Methodology callout (after process strip) ---------- */
+.vr-meth {
+  margin-top: 96px;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 64px;
+  align-items: start;
+}
+.vr-meth-content .cs-body { margin-top: 18px; }
+.vr-meth-readout {
+  background: var(--bg-dark);
+  color: #FAFAFA;
+  padding: 40px 36px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.vr-meth-readout::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  background: radial-gradient(closest-side, rgba(94,234,212,0.18), transparent);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.vr-meth-readout .mr-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vr-teal);
+  position: relative;
+  z-index: 1;
+}
+.vr-meth-readout .mr-spec {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 24px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  position: relative;
+  z-index: 1;
+  padding-top: 16px;
+  border-top: 1px solid var(--w-08);
+}
+.vr-meth-readout .mr-spec .k {
+  color: var(--w-45);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.vr-meth-readout .mr-spec .v {
+  color: #FAFAFA;
+  letter-spacing: 0;
+}
+.vr-meth-readout .mr-spec .v .acc { color: var(--vr-teal); }
+
+.vr-au-mini {
+  position: relative;
+  z-index: 1;
+  padding-top: 8px;
+}
+.vr-au-mini .ml-h {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--w-30);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* ---------- Section 5 — Insight (dark) custom convergence chart ---------- */
+.vr-chart-block {
+  margin-top: 72px;
+  padding: 56px 48px 56px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--w-08);
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.vr-chart-block::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 360px; height: 360px;
+  background: radial-gradient(closest-side, rgba(94,234,212,0.10), transparent);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.vr-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 44px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.vr-chart-head .vc-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--vr-teal);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.vr-chart-head h3 {
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #FAFAFA;
+  line-height: 1.2;
+  max-width: 28ch;
+}
+.vr-chart-legend {
+  display: flex;
+  gap: 18px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--w-45);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+.vr-chart-legend .lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.vr-chart-legend .lg::before {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  background: var(--vr-blue);
+}
+.vr-chart-legend .lg.amber::before { background: var(--vr-amber); }
+.vr-chart-legend .lg.coral::before { background: var(--vr-coral); }
+
+.vr-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: relative;
+  z-index: 1;
+}
+.vr-bar-row {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+.vr-bar-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FAFAFA;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.vr-bar-track {
+  position: relative;
+  height: 26px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.vr-bar-track::after {
+  /* vertical grid markers at every 25% */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 25% 100%;
+  pointer-events: none;
+}
+.vr-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(147,197,253,0.45) 0%, var(--vr-blue) 100%);
+  position: relative;
+  transition: width 1.2s cubic-bezier(0.16,1,0.3,1);
+  width: 0%;
+}
+.in .vr-bar-fill { width: var(--w, 0%); }
+.vr-bar-row.amber .vr-bar-fill {
+  background: linear-gradient(90deg, rgba(245,199,122,0.55) 0%, var(--vr-amber) 100%);
+}
+.vr-bar-row.coral .vr-bar-fill {
+  background: linear-gradient(90deg, rgba(252,165,165,0.55) 0%, var(--vr-coral-deep) 100%);
+}
+.vr-bar-row.zero .vr-bar-fill {
+  background: rgba(255,255,255,0.18);
+}
+.vr-bar-val {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #FAFAFA;
+  letter-spacing: -0.01em;
+  min-width: 54px;
+  text-align: right;
+}
+.vr-bar-row.amber .vr-bar-val { color: var(--vr-amber); }
+.vr-bar-row.coral .vr-bar-val { color: var(--vr-coral); }
+.vr-bar-row.zero  .vr-bar-val { color: var(--w-45); }
+.vr-bar-axis {
+  display: grid;
+  grid-template-columns: 140px 1fr auto;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--w-08);
+  position: relative;
+  z-index: 1;
+}
+.vr-bar-axis .ax-empty { }
+.vr-bar-axis .ax-ticks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--w-30);
+}
+.vr-bar-axis .ax-ticks span { text-align: right; padding-right: 4px; }
+.vr-bar-axis .ax-ticks span:first-child { text-align: left; padding-right: 0; }
+.vr-bar-axis .ax-unit {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--w-30);
+  letter-spacing: 0.04em;
+  min-width: 54px;
+  text-align: right;
+}
+
+.vr-chart-note {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+}
+.vr-chart-note .cn {
+  padding: 18px 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--w-08);
+  border-radius: 10px;
+}
+.vr-chart-note .cn .cn-key {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--w-45);
+}
+.vr-chart-note .cn .cn-val {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FAFAFA;
+  letter-spacing: -0.015em;
+  margin-top: 6px;
+}
+.vr-chart-note .cn .cn-body {
+  font-size: 12px;
+  color: var(--w-60);
+  margin-top: 8px;
+  line-height: 1.55;
+}
+.vr-chart-note .cn.amber .cn-val { color: var(--vr-amber); }
+.vr-chart-note .cn.coral .cn-val { color: var(--vr-coral); }
+
+/* Insight pull quote */
+.vr-pull {
+  margin-top: 72px;
+  padding: 56px 16px;
+  text-align: center;
+  border-top: 1px solid var(--w-08);
+}
+.vr-pull-mark {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--w-30);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.vr-pull-text {
+  font-size: clamp(28px, 3.6vw, 48px);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  color: #FAFAFA;
+  text-wrap: balance;
+  max-width: 24ch;
+  margin: 0 auto;
+}
+.vr-pull-text em {
+  background: linear-gradient(135deg, #93C5FD 0%, #5EEAD4 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+  font-style: italic;
+}
+.vr-pull-cite {
+  margin-top: 28px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--w-45);
+  text-transform: uppercase;
+}
+
+/* ---------- Section 6 — Implications (light) ---------- */
+.vr-impl-grid {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.vr-impl {
+  background: #fff;
+  padding: 36px 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background 0.25s ease;
+}
+.vr-impl:hover { background: #FAFAFA; }
+.vr-impl .imp-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0EA5E9;
+  letter-spacing: 0.08em;
+}
+.vr-impl .imp-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.vr-impl .imp-body {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+.vr-impl .imp-tag {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+
+/* ---------- Section 7 — Outcomes metric strip ---------- */
+.vr-metrics {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.vr-metric {
+  padding: 40px 28px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vr-metric:last-child { border-right: none; }
+.vr-metric .vm-num {
+  font-size: clamp(64px, 7.5vw, 104px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+  color: var(--ink);
+  background: linear-gradient(135deg, #1E40AF 0%, #06B6D4 60%, #5EEAD4 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+.vr-metric .vm-lbl {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.vr-metric .vm-meta {
+  font-size: 11px;
+  color: var(--ink-3);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Publication footer card ---------- */
+.vr-pub {
+  margin-top: 96px;
+  padding: 48px 56px;
+  background: var(--bg-dark);
+  color: #FAFAFA;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+.vr-pub::before {
+  content: '';
+  position: absolute;
+  bottom: -160px; left: -120px;
+  width: 480px; height: 480px;
+  background: radial-gradient(closest-side, rgba(94,234,212,0.18), transparent);
+  filter: blur(40px);
+  pointer-events: none;
+}
+.vr-pub-tag {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vr-teal);
+  margin-bottom: 16px;
+  position: relative; z-index: 1;
+}
+.vr-pub-title {
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  color: #FAFAFA;
+  line-height: 1.25;
+  max-width: 28ch;
+  position: relative; z-index: 1;
+}
+.vr-pub-meta {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--w-60);
+  line-height: 1.5;
+  position: relative; z-index: 1;
+}
+.vr-pub-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative; z-index: 1;
+}
+.vr-pub-cta .vp-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--w-08);
+  align-items: baseline;
+}
+.vr-pub-cta .vp-row:last-child { border-bottom: none; }
+.vr-pub-cta .vp-k {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--w-30);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.vr-pub-cta .vp-v {
+  font-size: 14px;
+  font-weight: 600;
+  color: #FAFAFA;
+  letter-spacing: -0.005em;
+}
+
+/* ---------- Next project (dual link variant) ---------- */
+.vr-next-grid {
+  background: var(--bg);
+  padding: 96px var(--section-x);
+  border-top: 1px solid var(--border);
+}
+.vr-next-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+.vr-next-inner .np-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  align-self: center;
+  padding-right: 32px;
+  border-right: 1px solid var(--border);
+}
+.vr-next-tile {
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.vr-next-tile:hover {
+  border-color: rgba(14,165,233,0.4);
+  transform: translateY(-2px);
+}
+.vr-next-tile .vnt-eyebrow {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0EA5E9;
+}
+.vr-next-tile .vnt-title {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.vr-next-tile .vnt-meta {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.vr-next-tile .vnt-arrow {
+  margin-top: auto;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-4);
+}
+.vr-next-tile:hover .vnt-arrow { color: var(--ink); }
+
+/* ---------- Stimuli row (small visual variation) ---------- */
+.vr-stim {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+.vr-stim-cell {
+  padding: 16px 14px 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 100px;
+}
+.vr-stim-cell .vsc-emo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #0EA5E9;
+  text-transform: uppercase;
+}
+.vr-stim-cell .vsc-stim {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+.vr-stim-cell .vsc-src {
+  margin-top: auto;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--ink-4);
+  text-transform: uppercase;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .vr-context { grid-template-columns: 1fr; gap: 32px; }
+  .vr-context-card { position: static; }
+  .vr-process { grid-template-columns: 1fr; }
+  .vr-step { border-right: none; border-bottom: 1px solid var(--border); }
+  .vr-step:last-child { border-bottom: none; }
+  .vr-meth { grid-template-columns: 1fr; gap: 32px; }
+  .vr-impl-grid { grid-template-columns: 1fr; }
+  .vr-metrics { grid-template-columns: repeat(2, 1fr); }
+  .vr-metric:nth-child(2) { border-right: none; }
+  .vr-metric:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
+  .vr-stim { grid-template-columns: repeat(3, 1fr); }
+  .vr-pub { grid-template-columns: 1fr; padding: 36px 28px; }
+  .vr-next-inner { grid-template-columns: 1fr; }
+  .vr-next-inner .np-label { padding-right: 0; padding-bottom: 12px; border-right: none; border-bottom: 1px solid var(--border); }
+  .vr-bar-row { grid-template-columns: 110px 1fr 56px; gap: 12px; }
+  .vr-bar-axis { grid-template-columns: 110px 1fr 56px; gap: 12px; }
+  .vr-bar-name { font-size: 12px; }
+  .vr-chart-note { grid-template-columns: 1fr; }
+  .vr-thesis { padding: 96px var(--section-x); }
+  .vr-hero-image-inner { height: 420px; }
+}
+@media (max-width: 700px) {
+  .vr-metrics { grid-template-columns: 1fr; }
+  .vr-metric { border-right: none; border-bottom: 1px solid var(--border); }
+  .vr-metric:last-child { border-bottom: none; }
+  .vr-stim { grid-template-columns: 1fr 1fr; }
+  .vr-bar-row { grid-template-columns: 90px 1fr 50px; }
+  .vr-bar-axis { grid-template-columns: 90px 1fr 50px; }
+  .vr-chart-block { padding: 32px 20px; }
+  .vr-hero-image-inner { height: 320px; }
+  .vr-headset { width: 80%; }
+}

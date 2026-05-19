@@ -1,6 +1,0 @@
-Place your 3 mobile Framer images for WanderIndy here:
-- image1.png
-- image2.png  
-- image3.png
-
-These should be mobile screenshots or mockups of your WanderIndy project.
