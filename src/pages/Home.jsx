@@ -98,10 +98,10 @@ const PROJECTS = [
   },
   {
     num: '04', title: 'VR Emotion Recognition',
-    tags: [{ label: 'Research', kind: 'research' }, { label: 'VR / Engineering', kind: 'engineering' }, { label: 'Published', kind: 'special' }],
-    desc: "A research study examining how accurately facial expressions captured by Meta Quest Pro reflect users' true internal emotional states. Full VR application development, structured user interview sessions, and a published research paper.",
+    tags: [{ label: 'Research', kind: 'research' }, { label: 'VR / Engineering', kind: 'engineering' }, { label: 'Accepted', kind: 'special' }],
+    desc: "A research study examining how accurately facial expressions captured by Meta Quest Pro reflect users' true internal emotional states. Full VR application development, structured user interview sessions, and an accepted research paper.",
     insight: "Discovered that high-arousal emotional states produced the weakest correlation between facial data and self-report, reshaping the study's core hypothesis mid-research.",
-    venue: { label: 'Published · MeaningfulXR 2026', cta: 'Read paper', href: '#' },
+    venue: { label: 'Accepted · MeaningfulXR 2026', cta: 'Read paper', href: '#' },
     caseStudyPath: '/case-study/vr',
   },
   {
@@ -270,7 +270,7 @@ function Publications() {
           <div className="section-label">Research</div>
           <h2 className="section-title" style={{ color: '#FAFAFA' }}>Publications</h2>
           <p style={{ fontSize: '15px', color: 'var(--w-35)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
-            The following papers have been published at peer-reviewed venues.
+            The following papers have been accepted at peer-reviewed venues.
           </p>
         </Reveal>
         <div className="pub-list" style={{ marginTop: '56px' }}>
@@ -287,7 +287,7 @@ function Publications() {
                 <p className="pub-title">{p.title}</p>
                 <div className="pub-authors">{p.role}</div>
               </div>
-              <div className="pub-badge">Published</div>
+              <div className="pub-badge">Accepted</div>
             </Reveal>
           ))}
         </div>
@@ -317,7 +317,7 @@ function About() {
               I am a Design Engineer with 3.5 years of full-stack development and a Master&rsquo;s in Human-Computer Interaction.
               I <span className="pop">research</span> human problems, <span className="pop">design</span> the experience, and <span className="pop">ship</span> the product.
             </p>
-            <p>Published HCI researcher. Believer in designs that are not just beautiful, but feasible and viable.</p>
+            <p>HCI researcher with accepted publications. Believer in designs that are not just beautiful, but feasible and viable.</p>
           </Reveal>
           <Reveal className="skills" delay={0.15}>
             {SKILLS.map((g) => (
