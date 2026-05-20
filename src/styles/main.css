@@ -39,7 +39,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; overflow-x: hidden; }
 
 body {
   background: var(--bg);
@@ -921,6 +921,7 @@ section { padding: 96px var(--section-x); position: relative; }
   .hero-stats { gap: 18px; }
   .hero-stats .divider { display: none; }
   .work-label-wrap { padding-bottom: 28px; }
+  .hero-name { font-size: clamp(38px, 10vw, 56px); }
 }
 @media (max-width: 400px) {
   .nav { padding: 16px 20px; }
