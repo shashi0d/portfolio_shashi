@@ -8,6 +8,108 @@ import Nav from '../components/Nav';
 
 
 
+/* ---------- Hero photo stack ---------- */
+const HERO_PHOTOS = [
+  '/images/gallery/1.jpeg',
+  '/images/gallery/2.jpeg',
+  '/images/gallery/3.jpeg',
+  '/images/gallery/4.jpeg',
+  '/images/gallery/5.jpeg',
+  '/images/gallery/6.jpeg',
+  '/images/gallery/7.jpg',
+  '/images/gallery/8.jpg',
+  '/images/gallery/9.jpg',
+];
+
+// Position 0 = back, 1 = middle, 2 = front
+// Tighter 9° spread, staggered left offset, darker back cards for depth
+const CARD_POSITIONS = [
+  { rot: '2deg',  zIndex: 1, leftOffset: '0px',  brightness: 0.55 },
+  { rot: '11deg', zIndex: 2, leftOffset: '6px',  brightness: 0.75 },
+  { rot: '20deg', zIndex: 3, leftOffset: '12px', brightness: 1.0  },
+];
+
+function HeroPhotos() {
+  // order[posIdx] = cardIdx — which card occupies which position slot
+  const orderRef = useRef([0, 1, 2]);
+  const [order, setOrder]       = useState([0, 1, 2]);
+  const [images, setImages]     = useState([0, 1, 2]); // images[cardIdx] = photoIdx
+  const [fadingCard, setFadingCard] = useState(null);  // cardIdx fading out before swap
+
+  useEffect(() => {
+    let nextPhoto = 3;
+    const id = setInterval(() => {
+      const backCardIdx = orderRef.current[0]; // card currently at the back
+
+      // 1. Fade out the back card so image swap is invisible
+      setFadingCard(backCardIdx);
+
+      setTimeout(() => {
+        // 2. Silently swap image on the (now invisible) back card
+        setImages(prev => {
+          const copy = [...prev];
+          copy[backCardIdx] = nextPhoto % HERO_PHOTOS.length;
+          return copy;
+        });
+
+        // 3. Rotate positions: mid→back, front→mid, back→front
+        //    Back card sweeps from ~4deg to ~27deg (springs to front)
+        const cur = orderRef.current;
+        const newOrder = [cur[1], cur[2], cur[0]];
+        orderRef.current = newOrder;
+        setOrder(newOrder);
+
+        // 4. Unfade — card fades in while sweeping to front
+        setFadingCard(null);
+        nextPhoto++;
+      }, 280);
+    }, 5000);
+
+    return () => clearInterval(id);
+  }, []);
+
+  // Build reverse map: cardToPos[cardIdx] = posIdx
+  const cardToPos = [0, 0, 0];
+  order.forEach((cardIdx, posIdx) => { cardToPos[cardIdx] = posIdx; });
+
+  return (
+    <div className="hero-photos" aria-hidden="true">
+      <svg style={{ display: 'none' }}>
+        <defs>
+          <filter id="rough-border" x="-8%" y="-8%" width="116%" height="116%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="8" result="turbulence" />
+            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
+      {[0, 1, 2].map(cardIdx => {
+        const pos = CARD_POSITIONS[cardToPos[cardIdx]];
+        return (
+          <div
+            key={cardIdx}
+            className={`hero-photo${fadingCard === cardIdx ? ' is-fading' : ''}`}
+            style={{
+              width: '275px',
+              height: '385px',
+              '--slot-rot': pos.rot,
+              zIndex: pos.zIndex,
+              left: pos.leftOffset,
+              filter: `brightness(${pos.brightness})`,
+            }}
+          >
+            <img src={HERO_PHOTOS[images[cardIdx]]} alt="" className="hero-photo-img" />
+            <svg className="photo-border" viewBox="0 0 275 385" preserveAspectRatio="none" aria-hidden="true">
+              <rect x="2" y="2" width="271" height="381" rx="6"
+                fill="none" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"
+                filter="url(#rough-border)" />
+            </svg>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 /* ---------- Hero ---------- */
 function Hero() {
   const heroRef = useRef(null);
@@ -18,20 +120,38 @@ function Hero() {
   return (
     <section className="hero" id="top" ref={heroRef}>
       <div className="hero-inner">
-        <div className="hero-eyebrow">Design Engineer / HCI Researcher</div>
-        <h1 className="hero-name">
-          <span className="l1">Shashidhara</span>
-          <span className="l2">Narayanappa</span>
-        </h1>
-
-        <p className="hero-tagline">
-          I research human problems, design the experience, and build the product.
-        </p>
-        <div className="hero-tags">
-          <span className="hero-tag">Research</span>
-          <span className="hero-tag">Design</span>
-          <span className="hero-tag">Engineering</span>
+        <div className="hero-text">
+          <div className="hero-eyebrow">Design Engineer / HCI Researcher</div>
+          <h1 className="hero-name">
+            <span className="l1">Shashidhara</span>
+            <span className="l2">Narayanappa</span>
+          </h1>
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <span className="num">3.5 yrs</span>
+              <span className="lbl">Engineering</span>
+            </div>
+            <div className="divider" />
+            <div className="hero-stat">
+              <span className="num">2</span>
+              <span className="lbl">Papers accepted</span>
+            </div>
+            <div className="divider" />
+            <div className="hero-stat">
+              <span className="num">5</span>
+              <span className="lbl">Projects shipped</span>
+            </div>
+          </div>
+          <p className="hero-tagline">
+            I research human problems, design the experience, and build the product.
+          </p>
+          <div className="hero-tags">
+            <span className="hero-tag">Research</span>
+            <span className="hero-tag">Design</span>
+            <span className="hero-tag">Engineering</span>
+          </div>
         </div>
+        {/* <HeroPhotos /> */}
       </div>
     </section>
   );
@@ -199,7 +319,11 @@ function WorkTop() {
   return (
     <section className="work-zone-a" id="work">
       <Reveal className="work-label-wrap">
-        <div className="work-label">Selected Work</div>
+        <div className="section-label">Work</div>
+        <h2 className="section-title" style={{ marginTop: '12px' }}>Selected Work</h2>
+        <p style={{ fontSize: '15px', color: 'var(--ink-3)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
+          A selection of research-driven projects from concept to shipped product.
+        </p>
       </Reveal>
       <HeroRowAV />
       <HeroRowVR />
@@ -352,7 +476,7 @@ function Contact() {
         </Reveal>
         <Reveal className="contact-links" delay={0.25}>
           <a className="contact-link" href="mailto:shashidharprakash33@gmail.com">Email <span className="arr">↗</span></a>
-          <a className="contact-link" href="https://www.linkedin.com/feed/" target="_blank" rel="noreferrer">LinkedIn <span className="arr">↗</span></a>
+          <a className="contact-link" href="https://www.linkedin.com/in/meetshashi/" target="_blank" rel="noreferrer">LinkedIn <span className="arr">↗</span></a>
           <a className="contact-link" href="https://linktr.ee/meetshashi" target="_blank" rel="noreferrer">Linktree <span className="arr">↗</span></a>
         </Reveal>
         <div className="contact-foot">
@@ -368,7 +492,7 @@ function Contact() {
 const DEFAULTS = { accent: '#6366F1', gradient: 'indigo-violet-pink', density: 'default', showCursor: true, showStrip: true };
 const ACCENT_OPTIONS = ['#6366F1', '#7C3AED', '#0EA5E9', '#10B981', '#F43F5E'];
 const GRADIENTS = {
-  'indigo-violet-pink': 'linear-gradient(135deg, #A5B4FC 0%, #C084FC 50%, #F9A8D4 100%)',
+  'indigo-violet-pink': 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
   'blue-cyan':          'linear-gradient(135deg, #93C5FD 0%, #67E8F9 100%)',
   'violet-rose':        'linear-gradient(135deg, #C4B5FD 0%, #FDA4AF 100%)',
   'emerald-cyan':       'linear-gradient(135deg, #6EE7B7 0%, #67E8F9 100%)',
