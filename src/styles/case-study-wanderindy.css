@@ -298,6 +298,286 @@ html[data-page="wanderindy"] .skill-chip {
   object-fit: cover;
 }
 
+/* ─────────────────────────────────────────────────────────
+   WANDER INDY — Visual Structure CSS
+   Append to case-study-wanderindy.css
+   Three new devices: process map, phase header, chapter break
+───────────────────────────────────────────────────────── */
+
+/* ── 1. PROCESS MAP ───────────────────────────────────────
+   Horizontal strip before the 4 process sections.
+   Shows the full process as a connected sequence.
+───────────────────────────────────────────────────────── */
+.wi-process-map {
+  border-top: 1px solid var(--rule, rgba(0,0,0,0.08));
+  border-bottom: 1px solid var(--rule, rgba(0,0,0,0.08));
+  padding: 40px 0;
+  background: var(--surface-alt, rgba(176,123,60,0.03));
+}
+
+.wi-pm-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.wi-pm-eyebrow {
+  font-family: var(--font-ui, 'Syne', sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent, #B07B3C);
+}
+
+.wi-pm-desc {
+  font-family: var(--font-ui, 'Syne', sans-serif);
+  font-size: 12px;
+  color: var(--ink-3, #999);
+  letter-spacing: 0.02em;
+}
+
+.wi-pm-phases {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  position: relative;
+}
+
+.wi-pm-phase {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.wi-pm-n {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--accent, #B07B3C);
+  opacity: 0.35;
+}
+
+.wi-pm-name {
+  font-family: var(--font-ui, 'Syne', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink, #1a1a1a);
+}
+
+.wi-pm-sub {
+  font-family: var(--font-ui, 'Syne', sans-serif);
+  font-size: 11px;
+  color: var(--ink-3, #999);
+  letter-spacing: 0.02em;
+}
+
+/* Arrow between phases */
+.wi-pm-arrow {
+  position: absolute;
+  right: -4px;
+  top: 16px;
+  font-size: 14px;
+  color: var(--ink-3, #bbb);
+  transform: translateX(50%);
+  z-index: 1;
+}
+
+/* ── 2. PHASE HEADER ──────────────────────────────────────
+   Replaces wi-phase-pill in each process section.
+   Full-width. Large muted number on left, label right.
+   Thin gold top rule marks the start of each phase.
+───────────────────────────────────────────────────────── */
+.wi-phase-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1.5px solid var(--accent, #B07B3C);
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+
+.wi-ph-n {
+  font-family: var(--font-display, 'Cormorant Garamond', serif);
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 300;
+  line-height: 0.85;
+  color: var(--accent, #B07B3C);
+  opacity: 0.18;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+
+.wi-ph-label {
+  font-family: var(--font-ui, 'Syne', sans-serif);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent, #B07B3C);
+  padding-bottom: 4px;
+}
+
+/* ── 3. CHAPTER BREAK ─────────────────────────────────────
+   Full-width divider between major narrative blocks.
+   (Process → Solution, Solution → Outcomes)
+   Thin rules framing a centered label.
+───────────────────────────────────────────────────────── */
+.wi-chapter-break {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px 0;
+  margin: 0;
+  border-top: 1px solid var(--rule, rgba(0,0,0,0.08));
+  border-bottom: 1px solid var(--rule, rgba(0,0,0,0.08));
+  /* Full viewport width */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-left: max(var(--edge, 40px), calc((100vw - var(--max-w, 1100px)) / 2 + var(--edge, 40px)));
+  padding-right: max(var(--edge, 40px), calc((100vw - var(--max-w, 1100px)) / 2 + var(--edge, 40px)));
+  box-sizing: border-box;
+}
+
+.wi-chapter-break::before,
+.wi-chapter-break::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule, rgba(0,0,0,0.08));
+}
+
+.wi-chapter-label {
+  font-family: var(--font-ui, 'Syne', sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3, #aaa);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── 4. PROCESS SECTION BACKGROUND ───────────────────────
+   Subtle warm tint groups the 4 process sections visually.
+   Applied via .wi-process-section class.
+───────────────────────────────────────────────────────── */
+.wi-process-section {
+  background: rgba(176, 123, 60, 0.025);
+}
+
+/* ── 5. FULL-BLEED IMAGE ──────────────────────────────────
+   Breaks out of cs-inner to span full viewport.
+───────────────────────────────────────────────────────── */
+.wi-fullbleed {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 64px;
+  line-height: 0;
+}
+
+.wi-fullbleed img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── 6. KIOSK IMAGE ROW ───────────────────────────────────  */
+.wi-kiosk-img-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.wi-kiosk-img-row img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* ── 7. SLIDESHOW ─────────────────────────────────────────  */
+.wi-slideshow {
+  border: 1px solid var(--rule, rgba(0,0,0,0.08));
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface, #fff);
+}
+
+.wi-slideshow-stage { position: relative; width: 100%; }
+
+.wi-slideshow-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wi-slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--rule, rgba(0,0,0,0.1));
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink, #1a1a1a);
+  transition: background 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  z-index: 2;
+}
+
+.wi-slideshow-arrow:hover { background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+.wi-slideshow-arrow--prev { left: 16px; }
+.wi-slideshow-arrow--next { right: 16px; }
+
+.wi-slideshow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  border-top: 1px solid var(--rule, rgba(0,0,0,0.06));
+}
+
+.wi-slideshow-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--rule, rgba(0,0,0,0.15));
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.wi-slideshow-dot.active {
+  background: var(--accent, #B07B3C);
+  transform: scale(1.25);
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────  */
+@media (max-width: 768px) {
+  .wi-pm-phases { flex-direction: column; gap: 24px; }
+  .wi-pm-arrow { display: none; }
+  .wi-kiosk-img-row { grid-template-columns: 1fr; gap: 12px; }
+  .wi-chapter-break { padding-left: var(--edge, 24px); padding-right: var(--edge, 24px); }
+}
+
 @media (max-width: 860px) {
   .wi-test-body-row {
     grid-template-columns: 1fr;
@@ -883,4 +1163,233 @@ html[data-page="wanderindy"] .skill-chip {
   .wi-phone-frame::before { width: 46px; height: 15px; border-radius: 0 0 9px 9px; }
   .wi-kiosk-img-row    { gap: 6px; }
   .wi-slideshow-arrow  { width: 32px; height: 32px; font-size: 14px; }
+}
+/* ===========================================================
+   WANDER INDY — v7 ADDITIONS
+   Append to case-study-wanderindy.css
+   Covers the structured components introduced in the
+   product-thinking rewrite: research findings, persona
+   implications, behavioural loop, product impact, and the
+   "Design response" label inside the testing finding cards.
+   Uses existing tokens — no new palette.
+   =========================================================== */
+
+/* =====================================================
+   RESEARCH FINDINGS  (.wi-rfindings)
+   Analytical numbered list — findings that became constraints.
+   ===================================================== */
+.wi-rfindings {
+  margin-top: 40px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.wi-rfinding {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
+}
+.wi-rfinding:last-child { border-bottom: none; }
+.wi-rfinding:hover { background: var(--accent-soft); }
+.wi-rfinding-n {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  flex: 0 0 auto;
+  padding-top: 2px;
+}
+.wi-rfinding-text {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* =====================================================
+   PERSONA IMPLICATIONS  (.wi-implications)
+   Behaviour → design decision mapping.
+   trait │ → │ design implication
+   ===================================================== */
+.wi-implications {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.wi-implication {
+  display: grid;
+  grid-template-columns: 1fr 32px 1.4fr;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 28px;
+  border-bottom: 1px solid var(--border);
+}
+.wi-implication:last-child { border-bottom: none; }
+.wi-impl-trait {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.wi-impl-arrow {
+  font-size: 16px;
+  color: var(--accent);
+  text-align: center;
+  font-weight: 700;
+}
+.wi-impl-design {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* =====================================================
+   BEHAVIOURAL LOOP  (.wi-loop)
+   Discover → Activate → Visit → Collect → Unlock → Expand
+   ===================================================== */
+.wi-loop {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.wi-loop::-webkit-scrollbar { display: none; }
+.wi-loop-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+.wi-loop-n {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--wi-blue, #00427C);
+  color: #fff;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.wi-loop-label {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.wi-loop-arrow {
+  font-size: 14px;
+  color: var(--ink-4);
+  margin: 0 16px;
+  flex: 0 0 auto;
+}
+
+/* =====================================================
+   DESIGN RESPONSE label inside testing finding cards
+   (.wi-finding-action span)
+   Overrides the earlier single-line rule.
+   ===================================================== */
+.wi-finding-action {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.003em;
+  line-height: 1.5;
+}
+.wi-finding-action span {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* =====================================================
+   PRODUCT IMPACT GRID  (.wi-impact-grid)
+   resident / business / city
+   ===================================================== */
+.wi-impact-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.wi-impact-item {
+  padding: 28px 26px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  border-top: 2px solid var(--accent);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.wi-impact-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(176, 123, 60, 0.07);
+}
+.wi-impact-who {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.wi-impact-what {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 860px) {
+  .wi-impact-grid { grid-template-columns: 1fr; }
+  .wi-implication {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    text-align: left;
+  }
+  .wi-impl-arrow {
+    text-align: left;
+    transform: rotate(90deg);
+    width: 16px;
+  }
+}
+@media (max-width: 700px) {
+  .wi-rfinding { padding: 18px 20px; gap: 14px; }
+  .wi-rfinding-text { font-size: 15px; }
+  .wi-loop { padding: 20px 16px; }
+  .wi-loop-arrow { margin: 0 10px; }
 }

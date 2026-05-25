@@ -18,49 +18,26 @@ function WISlideshow({ images }) {
   const prev = () => setIdx(i => (i - 1 + images.length) % images.length);
   const next = () => setIdx(i => (i + 1) % images.length);
   const cur = images[idx];
-
   useEffect(() => {
     if (paused || images.length <= 1) return;
     const id = setInterval(() => setIdx(i => (i + 1) % images.length), 3500);
     return () => clearInterval(id);
   }, [paused, images.length]);
-
   return (
-    <div
-      className="wi-slideshow"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
+    <div className="wi-slideshow" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="wi-slideshow-stage">
         <img src={cur.src} alt={cur.alt} className="wi-slideshow-img" />
         {images.length > 1 && (
           <>
-            <button
-              className="wi-slideshow-arrow wi-slideshow-arrow--prev"
-              onClick={prev}
-              aria-label="Previous slide"
-            >
-              &#8592;
-            </button>
-            <button
-              className="wi-slideshow-arrow wi-slideshow-arrow--next"
-              onClick={next}
-              aria-label="Next slide"
-            >
-              &#8594;
-            </button>
+            <button className="wi-slideshow-arrow wi-slideshow-arrow--prev" onClick={prev} aria-label="Previous slide">&#8592;</button>
+            <button className="wi-slideshow-arrow wi-slideshow-arrow--next" onClick={next} aria-label="Next slide">&#8594;</button>
           </>
         )}
       </div>
       {images.length > 1 && (
         <div className="wi-slideshow-dots">
           {images.map((_, i) => (
-            <button
-              key={i}
-              className={`wi-slideshow-dot${i === idx ? ' active' : ''}`}
-              onClick={() => setIdx(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
+            <button key={i} className={`wi-slideshow-dot${i === idx ? ' active' : ''}`} onClick={() => setIdx(i)} aria-label={`Go to slide ${i + 1}`} />
           ))}
         </div>
       )}
@@ -69,26 +46,11 @@ function WISlideshow({ images }) {
 }
 
 const DESIGN_GUIDE_SLIDES = [
-  {
-    src: '/images/wanderindy/styleguide1.png',
-    alt: 'Brand style guide overview WanderIndy logo, illustrated city skyline, and product positioning.',
-  },
-  {
-    src: '/images/wanderindy/styleguide2.png',
-    alt: 'Color system Indy Blue (#00427C) primary, Warm Coral (#E4572E) accent, Off-White (#F9F7F2) background, with secondary palette.',
-  },
-  {
-    src: '/images/wanderindy/styleguide3.png',
-    alt: 'Typography Urbanist, a geometric sans-serif chosen for clarity, versatility, and calm personality across app, kiosk, and signage.',
-  },
-  {
-    src: '/images/wanderindy/styleguide4.png',
-    alt: 'Iconography NextUI Design Kit, Line Duotone variation. Clean modern outline with subtle depth.',
-  },
-  {
-    src: '/images/wanderindy/styleguide5.png',
-    alt: 'Doodle elements hand-drawn accents used in onboarding, empty states, and badge screens to add warmth without clutter.',
-  },
+  { src: '/images/wanderindy/styleguide1.png', alt: 'Brand style guide overview logo, illustrated city skyline, product positioning.' },
+  { src: '/images/wanderindy/styleguide2.png', alt: 'Color system Indy Blue (#00427C) primary, Warm Coral (#E4572E) accent, Off-White (#F9F7F2) background.' },
+  { src: '/images/wanderindy/styleguide3.png', alt: 'Typography Urbanist, geometric sans-serif chosen for fast legibility across app, kiosk, and signage.' },
+  { src: '/images/wanderindy/styleguide4.png', alt: 'Iconography NextUI Line Duotone for clean outline forms with subtle depth.' },
+  { src: '/images/wanderindy/styleguide5.png', alt: 'Doodle elements hand-drawn accents for onboarding, empty states, and reward screens.' },
 ];
 
 /* ── 1 HERO ── */
@@ -101,13 +63,11 @@ function WIHero() {
   return (
     <section className="cs-hero hero" ref={heroRef} id="top" data-screen-label="01 Hero">
       <div className="cs-hero-inner">
-        <Link className="cs-back" to="/">
-          <span>←</span><span>Back to portfolio</span>
-        </Link>
+        <Link className="cs-back" to="/"><span>←</span><span>Back to portfolio</span></Link>
         <div className="cs-eyebrow">
           <span className="cs-eyebrow-pill">Interaction Design</span>
-          <span className="cs-eyebrow-pill">Prototyping</span>
-          <span className="cs-eyebrow-pill">Phygital Systems</span>
+          <span className="cs-eyebrow-pill">Service &amp; Systems</span>
+          <span className="cs-eyebrow-pill">Phygital Product</span>
           <span className="cs-eyebrow-pill">2024—2025</span>
         </div>
         <h1 className="cs-title">
@@ -115,27 +75,15 @@ function WIHero() {
           <span className="l2">Indy.</span>
         </h1>
         <p className="cs-sub">
-          A discovery system that transforms Indianapolis into your own living field guide
-          across mobile and physical space.
+          A mobile and kiosk platform that helps Indianapolis residents discover overlooked
+          local places and turns city exploration into visible, rewarding progress.
         </p>
-        <div className="cs-meta">
-          <div className="cs-meta-cell">
-            <span className="k">Context</span>
-            <span className="v">Interaction Design, Indianapolis</span>
-          </div>
-          <div className="cs-meta-cell">
-            <span className="k">Team</span>
-            <span className="v">Agastya · Karuna · Shashidhara · Shraddha · Shwetha</span>
-          </div>
-          <div className="cs-meta-cell">
-            <span className="k">Role</span>
-            <span className="v">Interaction Designer &amp; Prototyper</span>
-          </div>
-          <div className="cs-meta-cell">
-            <span className="k">Fidelity Range</span>
-            <span className="v">Paper → Mid-Fi → Hi-Fi</span>
-          </div>
-        </div>
+        {/* <div className="cs-meta">
+          <div className="cs-meta-cell"><span className="k">Context</span><span className="v">Interaction Design, Indianapolis</span></div>
+          <div className="cs-meta-cell"><span className="k">Team</span><span className="v">Agastya · Karuna · Shashidhara · Shraddha · Shwetha</span></div>
+          <div className="cs-meta-cell"><span className="k">Role</span><span className="v">Interaction Designer &amp; Prototyper</span></div>
+          <div className="cs-meta-cell"><span className="k">Scope</span><span className="v">Research → Hi-Fi prototype (mobile + kiosk)</span></div>
+        </div> */}
       </div>
     </section>
   );
@@ -157,102 +105,38 @@ function WIHeroBand() {
   );
 }
 
-/* ── 3 PROBLEM ── */
+/* ── 3 PROBLEM + CONTEXT ──────────────────────────────────────
+   Behavioral framing, not poetic. States the market gap, the
+   resulting user behavior, and the HMW. Role/methods on the right.
+───────────────────────────────────────────────────────────── */
 function WIProblem() {
   return (
     <section className="cs-section" data-screen-label="02 Problem">
       <div className="cs-inner">
         <WIReveal>
-          <div className="cs-label">The Challenge</div>
+          <div className="cs-label">The Problem</div>
         </WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            Designing for a city that hides<br />
-            its best stories.
-          </h2>
+          <h2 className="cs-h2">Residents explore a fraction of their own city.</h2>
         </WIReveal>
         <WIReveal delay={0.1} className="brief-context">
           <div>
-            <div className="brief-col-label">About the project</div>
-            <div className="cs-body" style={{ margin: 0, maxWidth: '44ch' }}>
+            {/* <div className="brief-col-label">The problem</div> */}
+            <div className="cs-body" style={{ margin: 0 }}>
               <p>
-              Indianapolis has hidden gems murals, pop-up music corners, independent shops tucked
-              behind major landmarks. But the tools people use to explore the city are built around
-              efficiency, not discovery. Mobile apps route you to the well-known. Signage tells you
-              where you are, not what you might find. Locals and visitors alike default to the obvious,
-              not because they want to, but because nothing surfaces anything else.
-            </p>
-            <p>
-              The question we started with: <strong>how do you design for serendipity?</strong>
-            </p>
-            </div>
-          </div>
-          <div>
-            <div className="skill-block">
-              <div className="skill-block-label">My Role</div>
-              <div className="cs-body" style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)' }}>
-                Interaction design, journey mapping, prototyping (mid-fi to hi-fi), user testing
-              </div>
-            </div>
-            <div className="skill-block">
-              <div className="skill-block-label">Methods</div>
-              <div className="skill-chips">
-                {[
-                  'Persona Development', 'User Journey Mapping', 'Storyboarding',
-                  'Paper Prototyping', 'Mid-Fi Wireframing', 'Hi-Fi Prototyping',
-                  'Usability Testing', 'Design System Authorship',
-                ].map(t => (
-                  <span key={t} className="skill-chip">{t}</span>
-                ))}
-              </div>
-            </div>
-            <div className="skill-block">
-              <div className="skill-block-label">Deliverables</div>
-              <div className="skill-chips">
-                {[
-                  'Clickable hi-fi prototype (mobile + kiosk)',
-                  'Style guide',
-                  'Kiosk placement map',
-                ].map(t => (
-                  <span key={t} className="skill-chip">{t}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </WIReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ── 4 CONTEXT ── */
-function WIContext() {
-  return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="03 Context & Role">
-      <div className="cs-inner">
-        <WIReveal>
-          <div className="cs-label">Context</div>
-        </WIReveal>
-        <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            Designing for a city that hides<br />
-            its best stories.
-          </h2>
-        </WIReveal>
-        <WIReveal delay={0.1} className="brief-context">
-          <div>
-            <div className="brief-col-label">About the project</div>
-            <div className="cs-body" style={{ margin: 0, maxWidth: '44ch' }}>
-              <p>
-                We set out to design a discovery system for Indianapolis one that surfaces the
-                stories hiding behind the city's major landmarks and routes people toward the
-                unexpected. The brief required both a mobile application and a physical kiosk
-                component, designed as a coherent phygital system.
+                Indianapolis has a dense local culture independent shops, murals, pop-up venues 
+                but the tools people use to get around optimize for efficiency: shortest route,
+                most popular destination, known landmark. None of them optimize for exploration.
               </p>
               <p>
-                The team of five brought together design, research, and engineering perspectives.
-                We defined the concept, ran the full research and design process, and delivered
-                a clickable hi-fi prototype across both form factors.
+                The behavioral result is predictable. Residents revisit the same handful of places,
+                smaller businesses stay outside the foot-traffic path, and there's no reward or
+                continuity to going somewhere new. Exploration is possible it's just never
+                surfaced, structured, or remembered.
+              </p>
+              <p style={{ marginBottom: 0 }}>
+                <strong>How might we encourage intentional exploration while making progress
+                visible and rewarding?</strong>
               </p>
             </div>
           </div>
@@ -260,17 +144,13 @@ function WIContext() {
             <div className="skill-block">
               <div className="skill-block-label">My Role</div>
               <div className="cs-body" style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)' }}>
-                Interaction design, journey mapping, prototyping (mid-fi to hi-fi), user testing
+                Interaction design, journey mapping, prototyping (mid-fi to hi-fi), usability testing
               </div>
             </div>
             <div className="skill-block">
               <div className="skill-block-label">Methods</div>
               <div className="skill-chips">
-                {[
-                  'Persona Development', 'User Journey Mapping', 'Storyboarding',
-                  'Paper Prototyping', 'Mid-Fi Wireframing', 'Hi-Fi Prototyping',
-                  'Usability Testing', 'Design System Authorship',
-                ].map(t => (
+                {['Competitive Analysis', 'Behavioral Segmentation', 'Journey Mapping', 'Paper Prototyping', 'Mid-Fi Wireframing', 'Hi-Fi Prototyping', 'Usability Testing', 'Design System'].map(t => (
                   <span key={t} className="skill-chip">{t}</span>
                 ))}
               </div>
@@ -278,11 +158,7 @@ function WIContext() {
             <div className="skill-block">
               <div className="skill-block-label">Deliverables</div>
               <div className="skill-chips">
-                {[
-                  'Clickable hi-fi prototype (mobile + kiosk)',
-                  'Style guide',
-                  'Kiosk placement map',
-                ].map(t => (
+                {['Clickable hi-fi prototype (mobile + kiosk)', 'Interaction system', 'Kiosk placement strategy', 'Design system'].map(t => (
                   <span key={t} className="skill-chip">{t}</span>
                 ))}
               </div>
@@ -290,54 +166,76 @@ function WIContext() {
           </div>
         </WIReveal>
       </div>
+
+      {/* <WIReveal delay={0.15}>
+        <div className="wi-fullbleed">
+          <img
+            src="/images/wanderindy/problem.png"
+            alt="Problem framing: navigation tools optimize for efficiency, hidden local places stay invisible, and residents default to familiar landmarks."
+          />
+        </div>
+      </WIReveal> */}
     </section>
   );
 }
 
-/* ── 5A PROCESS: RESEARCH ──────────────────────────────────────────────────
-   Image: prelimresearch.png
-   Shows: Pinterest-style research board access points (Indianapolis tourism,
-   Cultural Trail, Downtown Indy, IU wayfinding), wayfinding exemplars
-   (Legible London, LinkNYC), interactive kiosk deployments, best-in-class
-   wayfinding features. Phase renamed from "Understand" to "Research" to
-   match the image content.
-───────────────────────────────────────────────────────────────────────────── */
+/* ── 4 RESEARCH ───────────────────────────────────────────────
+   Analytical, not poetic. Four categories studied → four
+   findings that became design constraints.
+───────────────────────────────────────────────────────────── */
 function WIProcessResearch() {
+  const findings = [
+    'Existing systems optimize navigation, not curiosity.',
+    'Public kiosks are treated as information terminals, rarely as engagement tools.',
+    'Discovery experiences lack persistence nothing carries between visits.',
+    'Few products create any sense of ownership over place.',
+  ];
   return (
-    <section className="cs-section" data-screen-label="04 Research">
+    <section className="cs-section" data-screen-label="03 Research">
       <div className="cs-inner">
         <WIReveal>
           <span className="wi-phase-pill">01 · Research</span>
         </WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            We looked at how cities<br />
-            already guide people.
-          </h2>
+          <h2 className="cs-h2">We studied how cities already move people through space.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              Before defining the problem, we mapped the landscape. Legible London demonstrated
-              what pedestrian wayfinding looks like at urban scale a full system, not just a sign.
-              LinkNYC showed how a kiosk becomes urban infrastructure, not a tourism afterthought.
-              The Indianapolis Cultural Trail proved the city had already committed to guided
-              discovery in physical space.
-            </p>
-            <p>
-              The gap was consistent across every reference: existing systems tell you where you
-              are. None of them tell you what's worth finding.
+              We analyzed four categories: municipal wayfinding systems, tourism platforms,
+              public interactive kiosks, and neighborhood discovery products. Legible London and
+              LinkNYC anchored the urban-scale references; the Indianapolis Cultural Trail showed
+              the city had already invested in guided discovery in physical space.
             </p>
           </div>
         </WIReveal>
-        <WIReveal delay={0.15}>
-          <div className="cs-label" style={{ marginTop: 72, marginBottom: 12 }}>
-            Fig. 3.1 · Preliminary Research Board
+        <WIReveal delay={0.12}>
+          <div className="wi-rfindings">
+            {findings.map((f, i) => (
+              <div key={i} className="wi-rfinding">
+                <span className="wi-rfinding-n">{String(i + 1).padStart(2, '0')}</span>
+                <span className="wi-rfinding-text">{f}</span>
+              </div>
+            ))}
+          </div>
+        </WIReveal>
+        <WIReveal delay={0.16}>
+          <div className="cs-body" style={{ marginTop: 32 }}>
+            <p style={{ marginBottom: 0 }}>
+              Each finding became a constraint. The persistence gap mattered most it pointed us
+              toward a system that <em>remembers</em>: a map that fills in over time, so exploration
+              accumulates instead of resetting.
+            </p>
+          </div>
+        </WIReveal>
+        <WIReveal delay={0.2}>
+          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>
+            Fig. 3.1 · Competitive &amp; Reference Analysis
           </div>
           <div className="wi-journey-map" style={{ boxShadow: 'none' }}>
             <img
               src="/images/wanderindy/prelimresearch.png"
-              alt="Preliminary research board: access points related to Indianapolis (wayfinding systems, Cultural Trail, Downtown Indy), wayfinding exemplars (Legible London, LinkNYC), interactive kiosk deployments, and best-in-class features research."
+              alt="Research board: municipal wayfinding (Legible London, LinkNYC), Indianapolis access points and Cultural Trail, interactive kiosk deployments, and discovery-product feature analysis."
               style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
             />
           </div>
@@ -347,50 +245,55 @@ function WIProcessResearch() {
   );
 }
 
-/* ── 5B PROCESS: UNDERSTAND ────────────────────────────────────────────────
-   Image: persona.png
-   Shows: Jordan Mitchell persona card + 8-stage journey map (Stages, Actions,
-   Thoughts, Touchpoints, Emotions, Opportunities). Phase renamed from "Define"
-   to "Understand" to match image content. Caption updated from
-   "Journey Flow + Hand-drawn Storyboard" to "User Persona + Journey Map".
-───────────────────────────────────────────────────────────────────────────── */
+/* ── 5 UNDERSTAND ─────────────────────────────────────────────
+   Behavioral segmentation tied to design implications, not a
+   character study.
+───────────────────────────────────────────────────────────── */
 function WIProcessUnderstand() {
+  const traits = [
+    { trait: 'Knows the city at a surface level', impl: 'Surface familiarity, not depth → reveal the overlooked, not the obvious' },
+    { trait: 'Wants lightweight, self-directed activity', impl: 'Low planning tolerance → no itineraries; flexible, non-linear trails' },
+    { trait: 'Needs a low-friction entry point', impl: 'Hesitates to commit → one-tap activation, no setup' },
+  ];
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="05 Understand">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="04 Understand">
       <div className="cs-inner">
         <WIReveal>
           <span className="wi-phase-pill">02 · Understand</span>
         </WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            We built one user to keep<br />
-            the whole team honest.
-          </h2>
+          <h2 className="cs-h2">We designed for curiosity without commitment.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              Before sketching anything, we aligned on who we were designing for. Jordan Mitchell —
-              a young professional who knows the city well enough to be bored by it, curious enough
-              to want something new, and busy enough that exploration has to feel effortless. She
-              already lives in Indianapolis. She doesn't want a tour. She wants a discovery.
-            </p>
-            <p>
-              The 8-stage journey map we built for Jordan wasn't documentation it was a design
-              constraint. Every time a feature idea emerged, we checked it against her arc: would
-              this help her move from "Interested" at Stage 1 to "Happy" at Stage 7? Would it avoid
-              leaving her "Confused" at Stage 8?
+              Our primary user already knows the city at a surface level, prefers self-directed
+              activity over planned itineraries, and has low tolerance for friction at the entry
+              point. Jordan Mitchell, our persona, represented that pattern familiarity without
+              depth, interest without a plan. The 8-stage journey map turned her into a working
+              constraint: every feature had to move her toward action without adding planning overhead.
             </p>
           </div>
         </WIReveal>
-        <WIReveal delay={0.15}>
-          <div className="cs-label" style={{ marginTop: 72, marginBottom: 12 }}>
-            Fig. 4.1 · User Persona + Journey Map
+        <WIReveal delay={0.12}>
+          <div className="wi-implications">
+            {traits.map((t, i) => (
+              <div key={i} className="wi-implication">
+                <span className="wi-impl-trait">{t.trait}</span>
+                <span className="wi-impl-arrow" aria-hidden="true">→</span>
+                <span className="wi-impl-design">{t.impl}</span>
+              </div>
+            ))}
+          </div>
+        </WIReveal>
+        <WIReveal delay={0.16}>
+          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>
+            Fig. 4.1 · Persona + 8-Stage Journey Map
           </div>
           <div className="wi-journey-map" style={{ boxShadow: 'none' }}>
             <img
               src="/images/wanderindy/persona.png"
-              alt="Jordan Mitchell persona card and 8-stage journey map: Stages, Actions, Thoughts, Touchpoints, Emotions, and Opportunities across her full exploration arc from Planning Her Day to Post Visit Reflection."
+              alt="Jordan Mitchell persona and 8-stage journey map: Actions, Thoughts, Touchpoints, Emotions, and Opportunities from planning through post-visit reflection."
               style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
             />
           </div>
@@ -400,56 +303,36 @@ function WIProcessUnderstand() {
   );
 }
 
-/* ── 5C PROCESS: BUILD ── */
+/* ── 6 BUILD ──────────────────────────────────────────────────
+   Less prose, more process intelligence. One sharp observation
+   from paper testing carries the narrative.
+───────────────────────────────────────────────────────────── */
 function WIProcessBuild() {
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="06 Build">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="05 Build">
       <div className="cs-inner">
         <WIReveal>
           <span className="wi-phase-pill">03 · Build</span>
         </WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">Paper first. Always.</h2>
+          <h2 className="cs-h2">Three rounds of prototyping, each validating one layer.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              Three prototyping rounds, each answering a different question.
-            </p>
-            <p>
-              Paper prototypes tested the core flow without visual noise. We built mobile screens
-              for the full journey splash, area selection, map, pass categories, directions,
-              arrival and physical kiosk screens on real hardware mockups. Testing the kiosk
-              physically revealed something digital wireframes never would have: people hesitated
-              before tapping. The kiosk needed a welcome state something that made the interaction
-              feel invited, not cold.
-            </p>
-            <p>
-              Mid-fi moved us to digital wireframes. Map interactions got structured. Onboarding
-              emerged as its own flow. At this fidelity we could already see that the map's visual
-              language wasn't distinguishing explored from unexplored neighbourhoods clearly enough —
-              a finding user testing would later confirm.
+              Testing the paper kiosk by hand surfaced something screens never would have people
+              hesitated before tapping a device in public. That one observation added a welcome
+              state to the kiosk's entry flow, and shaped how we thought about activation for the
+              rest of the project.
             </p>
           </div>
         </WIReveal>
         <WIReveal delay={0.15}>
           <div className="wi-fidelity-steps">
             {[
-              {
-                n: '01',
-                label: 'Paper',
-                desc: 'Core flow validation without visual noise. Mobile screens + physical kiosk mockups built from cardboard and sticky notes.',
-              },
-              {
-                n: '02',
-                label: 'Mid-Fi',
-                desc: 'Digital wireframes. Map interactions structured. Onboarding emerged as a standalone flow. Visual language stress-tested.',
-              },
-              {
-                n: '03',
-                label: 'Hi-Fi',
-                desc: 'Pixel-perfect clickable prototype across mobile and kiosk. Design system applied. Three testing findings implemented.',
-              },
+              { n: '01', label: 'Paper', desc: 'Validated kiosk interaction, navigation clarity, trail structure, and mobile-to-kiosk continuity.' },
+              { n: '02', label: 'Mid-Fi', desc: 'Focused on map hierarchy, interaction affordances, onboarding logic, and state visibility.' },
+              { n: '03', label: 'Hi-Fi', desc: 'Integrated the visual system, reward mechanics, neighbourhood progression, and cross-platform consistency.' },
             ].map(s => (
               <div key={s.n} className="wi-fidelity-step">
                 <span className="wi-fidelity-n">{s.n}</span>
@@ -459,24 +342,20 @@ function WIProcessBuild() {
             ))}
           </div>
         </WIReveal>
-        <WIReveal delay={0.2} >
-          <div className="cs-label" style={{ marginTop: 72, marginBottom: 12 }}>
-            Fig. 4.2 · Paper Prototypes Mobile + Kiosk
-          </div>
+        <WIReveal delay={0.2}>
+          <div className="cs-label" style={{ marginTop: 72, marginBottom: 12 }}>Fig. 4.2 · Paper Prototypes Mobile + Kiosk</div>
           <img
             src="/images/wanderindy/paper.png"
-            alt="Paper prototype spread: 10 mobile phone-frame screens (splash, area selection, map, pass categories, directions, arrival, QR scan) and 3 physical kiosk mockups with hand-off documentation on a tray."
+            alt="Paper prototype spread: 10 mobile screens and 3 physical kiosk mockups with hand-off documentation."
             style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
           />
         </WIReveal>
         <WIReveal delay={0.25}>
-          <div className="cs-label" style={{ marginTop: 48, marginBottom: 12 }}>
-            Fig. 4.3 · Mid-Fi Wireframes Mobile + Kiosk
-          </div>
+          <div className="cs-label" style={{ marginTop: 48, marginBottom: 12 }}>Fig. 4.3 · Mid-Fi Wireframes Mobile + Kiosk</div>
           <img
             src="/images/wanderindy/midfi.png"
-            alt="Mid-fi wireframe spread: mobile screens covering onboarding, city map, neighbourhood selection, trail list, and QR scan plus kiosk wireframes for landing, trail activation, restaurant menu, and dish detail."
-            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' ,boxShadow:'none'}}
+            alt="Mid-fi wireframe spread: mobile and kiosk screens covering the full flow."
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain', boxShadow: 'none' }}
           />
         </WIReveal>
       </div>
@@ -484,192 +363,117 @@ function WIProcessBuild() {
   );
 }
 
-/* ── 5D PROCESS: TEST ── */
+/* ── 7 TEST ───────────────────────────────────────────────────
+   The strongest pattern in the case study finding → design
+   response, made visible as structured cards.
+───────────────────────────────────────────────────────────── */
 function WIProcessTest() {
   const findings = [
     {
       n: '01',
-      title: "Users didn't know how to start.",
-      body: "The map launched straight into content without explaining what a trail was or how the stamp system worked. Users had no frame for what they were building toward.",
-      action: 'Added dedicated 2-screen onboarding before the home map',
+      title: 'Users lacked orientation.',
+      body: 'Participants entered the map without understanding what a trail was, what progress meant, or what action was expected.',
+      action: 'Introduced a lightweight onboarding sequence before map entry.',
     },
     {
       n: '02',
-      title: 'Tap targets were too small.',
-      body: "Users tapped at neighbourhoods without confidence. The interaction was unclear people weren't sure whether they were selecting, exploring, or navigating.",
-      action: 'Increased target areas + explicit visual affordances for tappable regions',
+      title: 'Map interactions lacked confidence.',
+      body: 'Users hesitated selecting neighbourhoods affordances were too weak to signal what was tappable.',
+      action: 'Expanded tap targets and added stronger interactive states.',
     },
     {
       n: '03',
-      title: 'Explored and unexplored looked identical.',
-      body: "The central promise your map grows as you explore was invisible. Users couldn't tell what they'd seen from what was still waiting. The motivation to continue was broken.",
-      action: 'Faded outlines for unexplored, signature colour fill for explored',
+      title: 'Progress was invisible.',
+      body: 'Explored and unexplored districts looked identical, which removed the motivation to keep going.',
+      action: 'Built a progressive map-fill: outlined inactive districts, colour-filled completed ones.',
     },
   ];
-
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="07 Test">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="06 Test">
       <div className="cs-inner">
         <WIReveal>
           <div className="wi-test-body-row">
             <div className="wi-test-text">
               <span className="wi-phase-pill">04 · Test</span>
-              <h2 className="cs-h2">
-                Three findings.<br />
-                Three decisions.
-              </h2>
+              <h2 className="cs-h2">Three findings. Three structural decisions.</h2>
               <div className="cs-body" style={{ margin: 0 }}>
                 <p>
-                  We ran usability sessions on the mid-fi prototype. Three findings shaped the hi-fi
-                  significantly not as minor tweaks, but as structural changes that altered the
-                  core interaction model.
+                  Usability testing on the mid-fi surfaced three issues none cosmetic. Each one
+                  changed the interaction model, not just the visuals.
                 </p>
               </div>
             </div>
             <div className="wi-test-photo">
-              <img
-                src="/images/wanderindy/testing.png"
-                alt="Team member testing the Wander Indy mid-fi prototype during usability session."
-              />
+              <img src="/images/wanderindy/testing.png" alt="Usability testing session with the mid-fi prototype." />
             </div>
           </div>
         </WIReveal>
-        {/* <WIReveal delay={0.15}>
+        <WIReveal delay={0.12}>
           <div className="wi-findings">
             {findings.map(f => (
               <div key={f.n} className="wi-finding">
                 <span className="wi-finding-n">Finding {f.n}</span>
                 <div className="wi-finding-title">{f.title}</div>
                 <div className="wi-finding-body">{f.body}</div>
-                <div className="wi-finding-action">→ {f.action}</div>
+                <div className="wi-finding-action"><span>Design response</span>{f.action}</div>
               </div>
             ))}
           </div>
-        </WIReveal> */}
-        <WIReveal delay={0.2}>
-          <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>
-            Fig. 4.4 · User Testing Insights
-          </div>
+        </WIReveal>
+        {/* <WIReveal delay={0.2}>
+          <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>Fig. 4.4 · User Testing Insights</div>
           <img
             src="/images/wanderindy/userinsights.png"
-            alt="User testing insights: three findings illustrated onboarding clarity (users needed context before the map), map tap target redesign, and explored vs. unexplored visual distinction."
+            alt="Three testing insights: orientation/onboarding, map tap-target confidence, and explored vs. unexplored progress visibility."
             style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
           />
-        </WIReveal>
+        </WIReveal> */}
       </div>
     </section>
   );
 }
 
-/* ── 6 INSIGHT ── */
-function WIInsight() {
-  return (
-    <section className="wi-insight" data-screen-label="08 Insight">
-      <div className="wi-insight-inner">
-        <WIReveal>
-          <div className="wi-insight-label">What Testing Revealed</div>
-        </WIReveal>
-        <WIReveal delay={0.05}>
-          <h2 className="wi-insight-headline">
-            The map was supposed to<br />
-            motivate exploration.<br />
-            Testing showed users{' '}
-            <em>couldn't read it.</em>
-          </h2>
-        </WIReveal>
-        <WIReveal delay={0.1}>
-          <div className="wi-insight-body">
-            <p>
-              The central promise of Wander Indy is your personal field guide a city map that
-              fills in as you explore, growing more yours with every trail you complete. That
-              progression is the reason to come back. It's what separates Wander Indy from
-              simply opening Google Maps.
-            </p>
-            <p>
-              When we tested the mid-fi prototype, that core loop was broken. Explored and
-              unexplored neighbourhoods looked nearly identical. Users couldn't tell what they'd
-              already seen from what was still waiting. The feedback they were supposed to feel —
-              "my map is growing" wasn't visible. Neither was the motivation to continue.
-            </p>
-            <p>
-              The fix in the hi-fi was structural:{' '}
-              <strong>
-                unexplored neighbourhoods render as faded outlines; explored ones fill with colour.
-              </strong>{' '}
-              A small change in the visual language, but it restored the entire motivational logic
-              of the app. Progress has to be legible for it to mean anything.
-            </p>
-            <p>
-              A second finding reinforced the same principle: users who launched straight into the
-              map had no frame for what a trail was, how stamps worked, or what they were building
-              toward. The onboarding sequence we added two screens, one action each wasn't
-              about explanation. It was about making the destination visible before the journey starts.
-            </p>
-          </div>
-        </WIReveal>
-      </div>
-    </section>
-  );
-}
-
-/* ── 7A SOLUTION: FEATURES ── */
+/* ── 8 SOLUTION behavioral loop + system parts ──────────────
+   Reframed from feature marketing to interaction system.
+───────────────────────────────────────────────────────────── */
 function WISolutionFeatures() {
+  const loop = ['Discover', 'Activate', 'Visit', 'Collect', 'Unlock', 'Expand'];
   const features = [
-    {
-      n: '01',
-      title: 'Dynamic Field Guide Map',
-      tag: 'Core loop',
-      body: "The home screen. Every neighborhood starts as unexplored territory. Your map fills in as you visit a personal record of the city you know.",
-    },
-    {
-      n: '02',
-      title: 'Mood-Based Trails',
-      tag: 'Discovery',
-      body: 'Four categories: Art, Food, Music, Shopping. Choose one and the app builds a curated route. No forced sequence pick your own order.',
-    },
-    {
-      n: '03',
-      title: '4-Stamp Discovery Challenge',
-      tag: 'Engagement',
-      body: 'Each trail has four locations to unlock. The constraint creates focus: not "explore everything," but "find these four things."',
-    },
-    {
-      n: '04',
-      title: 'Sensor-Activated Kiosks',
-      tag: 'Phygital',
-      body: 'Physical kiosks at neighborhood entry points. Tap your phone to activate the trail and access hyper-local content about each spot.',
-    },
-    {
-      n: '05',
-      title: 'Celebratory Badges and Memories',
-      tag: 'Reward',
-      body: 'Complete a trail and your neighborhood fills in. A badge unlocks. Your field guide grows.',
-    },
+    { n: '01', title: 'Dynamic Field Guide Map', tag: 'Persistence layer', body: 'The home screen and the memory of the system. Neighbourhoods fill in as you visit, so exploration accumulates across sessions instead of resetting.' },
+    { n: '02', title: 'Mood-Based Trails', tag: 'Curation layer', body: 'Art, Food, Music, Shopping. The app builds a curated, non-linear route from a single choice structure without an itinerary.' },
+    { n: '03', title: '4-Stamp Challenge', tag: 'Focus mechanic', body: 'A bounded goal four locations, not "everything." The constraint lowers the cognitive cost of starting.' },
+    { n: '04', title: 'Sensor-Activated Kiosks', tag: 'Activation layer', body: 'Physical entry points that start a trail on tap and serve hyper-local content tied to where you are.' },
+    { n: '05', title: 'Badges & Memories', tag: 'Reward layer', body: 'Completion fills a district, unlocks a badge, and adds to a personal record closing the loop and inviting the next one.' },
   ];
-
   return (
-    <section className="cs-section" data-screen-label="09 Solution Features">
+    <section className="cs-section" data-screen-label="07 Solution">
       <div className="cs-inner">
         <WIReveal>
           <div className="cs-label">The Solution</div>
         </WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            A phygital discovery system<br />
-            in five parts.
-          </h2>
+          <h2 className="cs-h2">One behavioral loop, five system parts.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              Every feature was evaluated against one question: does this make Jordan feel like
-              she's discovering something? The five that made the cut work together as a complete
-              loop the map motivates, the trail guides, the kiosk activates, the stamp rewards,
-              and the badge proves she was there.
+              WanderIndy is built around a single loop that turns a one-time visit into a
+              repeatable habit. Each system part maps to a stage in that loop.
             </p>
           </div>
         </WIReveal>
-        {/* <WIReveal delay={0.15}>
+        <WIReveal delay={0.12}>
+          <div className="wi-loop">
+            {loop.map((step, i) => (
+              <div key={step} className="wi-loop-step">
+                <span className="wi-loop-n">{i + 1}</span>
+                <span className="wi-loop-label">{step}</span>
+                {i < loop.length - 1 && <span className="wi-loop-arrow" aria-hidden="true">→</span>}
+              </div>
+            ))}
+          </div>
+        </WIReveal>
+        <WIReveal delay={0.15}>
           <div className="wi-features">
             {features.map(f => (
               <div key={f.n} className="wi-feature-card">
@@ -680,14 +484,12 @@ function WISolutionFeatures() {
               </div>
             ))}
           </div>
-        </WIReveal> */}
+        </WIReveal>
         <WIReveal delay={0.2}>
-          <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>
-            Fig. 6.1 · Key Features Overview
-          </div>
+          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>Fig. 6.1 · System Overview</div>
           <img
             src="/images/wanderindy/keyfeatures.png"
-            alt="Five key features illustrated: Dynamic Field Guide Map, Mood-Based Trails, 4-Stamp Discovery Challenge, Sensor-Activated Kiosks, and Celebratory Badges and Memories."
+            alt="The five system parts: Field Guide Map, Mood-Based Trails, 4-Stamp Challenge, Sensor-Activated Kiosks, and Badges & Memories."
             style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
           />
         </WIReveal>
@@ -696,36 +498,23 @@ function WISolutionFeatures() {
   );
 }
 
-/* ── 7B SOLUTION: MOBILE ── */
+/* ── 9 MOBILE ── */
 function WISolutionMobile() {
-  const screens = [
-    'Splash',
-    'Explore & Fill Your Map',
-    'Collect Stamps & Unlock Offers',
-    'Learn the Stories',
-    'Welcome back, Jordan',
-  ];
-
+  const screens = ['Splash', 'Explore & Fill Your Map', 'Collect Stamps & Unlock Offers', 'Learn the Stories', 'Welcome back, Jordan'];
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="10 Hi-Fi Mobile">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="08 Mobile">
       <div className="cs-inner">
-        <WIReveal>
-          <div className="cs-label">Mobile</div>
-        </WIReveal>
+        <WIReveal><div className="cs-label">Mobile</div></WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            The app that tracks your city,<br />
-            one neighbourhood at a time.
-          </h2>
+          <h2 className="cs-h2">Where the testing decisions became interface.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              Five screens, one coherent flow. The onboarding sequence frames what the app is and
-              what it's building before the map opens directly addressing the testing finding
-              that users had no frame for what they were working toward. The home map is the
-              centrepiece: every neighbourhood a territory waiting to be claimed, explored ones
-              filled with colour, unexplored ones waiting as outlines.
+              The onboarding sequence resolves the orientation finding it frames trails and
+              progress before the map opens. The home map resolves the visibility finding 
+              completed neighbourhoods fill with colour, inactive ones stay as outlines, so
+              progress reads at a glance from the first session.
             </p>
           </div>
         </WIReveal>
@@ -733,11 +522,7 @@ function WISolutionMobile() {
           <div className="wi-phone-row">
             {screens.map((label, i) => (
               <div key={i} className="wi-phone-frame">
-                <img
-                  className="wi-phone-screen"
-                  src={`/images/wanderindy/hifi${i + 1}.png`}
-                  alt={`Wander Indy hi-fi screen: ${label}`}
-                />
+                <img className="wi-phone-screen" src={`/images/wanderindy/hifi${i + 1}.png`} alt={`Hi-fi screen: ${label}`} />
               </div>
             ))}
           </div>
@@ -747,60 +532,42 @@ function WISolutionMobile() {
   );
 }
 
-/* ── 7C SOLUTION: KIOSK ── */
+/* ── 10 KIOSK leads with the decision rationale ─────────────
+   Answers the audit's biggest gap: why physical activation
+   over QR signage or geo-fencing.
+───────────────────────────────────────────────────────────── */
 function WISolutionKiosk() {
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="11 Hi-Fi Kiosk">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="09 Kiosk">
       <div className="cs-inner">
-        <WIReveal>
-          <div className="cs-label">Kiosk</div>
-        </WIReveal>
+        <WIReveal><div className="cs-label">Kiosk</div></WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            The moment the<br />
-            city opens up.
-          </h2>
+          <h2 className="cs-h2">Why a physical kiosk not a QR code.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              The kiosk prototype was built to real dimensions, modeled after LinkNYC's vertical
-              format. The full kiosk experience for World Famous HotBoys in Fountain Square includes
-              a landing screen, brand story, menu navigation, and signature dish detail view.
+              The kiosk wasn't a given. We weighed it against the two obvious alternatives.
+              QR signage only works if you already know to look for it it can't prompt behaviour.
+              Geo-fencing triggers passively, which is easy to ignore and quietly erodes trust when
+              an app acts without being asked.
             </p>
             <p>
-              The <strong>Switch to Mobile</strong> button connects both experiences start on the
-              kiosk, continue on your phone. Tapping your phone at a kiosk outside Fountain Square
-              is categorically different from scrolling a list at home. The physical touchpoint is
-              what makes the discovery feel <em>earned.</em>
+              A kiosk does what neither can: it creates a deliberate, located moment of entry.
+              Standing at a kiosk at a neighbourhood's edge is an act of intent and intent was
+              exactly the friction we saw in testing, where users hesitated to commit. Making the
+              start of a trail a clear public gesture resolves that hesitation. The <strong>Switch
+              to Mobile</strong> handoff then carries that intent onto the phone, where the journey
+              continues.
             </p>
           </div>
         </WIReveal>
         <WIReveal delay={0.2}>
-          <div className="cs-label" style={{ marginTop: 48, marginBottom: 12 }}>
-            Fig. 6.2 · Hi-Fi Kiosk Prototype
-          </div>
+          <div className="cs-label" style={{ marginTop: 48, marginBottom: 12 }}>Fig. 6.2 · Hi-Fi Kiosk Prototype</div>
           <div className="wi-kiosk-img-row">
-            <img
-              src="/images/wanderindy/kiosk1.png"
-              alt="Kiosk landing screen World Famous HotBoys main menu with Signature Dish, Merch, Menu, Gallery, Reviews, and Offers."
-            />
-            <img
-              src="/images/wanderindy/kiosk2.png"
-              alt="Kiosk brand story World Famous HotBoys origin, founders, and community involvement at Fountain Square."
-            />
-            <img
-              src="/images/wanderindy/kiosk3.png"
-              alt="Kiosk signature dish detail The Sando with what makes it special, toppings, accolades, and Order Now CTA."
-            />
-          </div>
-        </WIReveal>
-        <WIReveal delay={0.25}>
-          <div className="wi-product-callout">
-            The kiosk in its current form is informational it surfaces the story of every place
-            near it. The mobile screen alone can't replicate the feeling of stumbling upon something
-            surprising. The kiosk became the <strong>activation mechanism</strong> that turned
-            passive browsing into an intentional, place-anchored moment.
+            <img src="/images/wanderindy/kiosk1.png" alt="Kiosk landing neighbourhood entry and trail activation." />
+            <img src="/images/wanderindy/kiosk2.png" alt="Kiosk place story local business context." />
+            <img src="/images/wanderindy/kiosk3.png" alt="Kiosk detail view with primary action." />
           </div>
         </WIReveal>
       </div>
@@ -808,85 +575,62 @@ function WISolutionKiosk() {
   );
 }
 
-/* ── 7D SOLUTION: SPATIAL ── */
+/* ── 11 SPATIAL ── */
 function WISolutionSpatial() {
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="12 Spatial Design">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="10 Spatial Design">
       <div className="cs-inner">
-        <WIReveal>
-          <div className="cs-label">Spatial Design</div>
-        </WIReveal>
+        <WIReveal><div className="cs-label">Spatial Design</div></WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            Where the kiosk stands matters<br />
-            as much as what it shows.
-          </h2>
+          <h2 className="cs-h2">Placement is an interaction decision.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              Four kiosk placements across Fountain Square, positioned at neighborhood entry points
-              and high foot-traffic intersections. Vertical format saves sidewalk space. Top-down
-              layout supports natural content scanning. Entry-point placement ensures first contact
-              happens before exploration begins, not midway through it.
+              Four kiosks across Fountain Square, sited at neighbourhood entry points and
+              high-traffic intersections so first contact happens <em>before</em> exploration
+              begins, not midway through it. The vertical form, modeled on LinkNYC, saves sidewalk
+              space and reads from a distance.
             </p>
           </div>
         </WIReveal>
         <WIReveal delay={0.15}>
-          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>
-            Fig. 6.3 · Kiosk Placement Map Fountain Square
-          </div>
+          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>Fig. 6.3 · Kiosk Placement Map Fountain Square</div>
           <div className="wi-map-card">
-            <img
-              src="/images/wanderindy/kiosk4.png"
-              alt="Google Maps overlay of Fountain Square with four kiosk positions marked at neighbourhood entry points and high foot-traffic intersections."
-              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
-            />
+            <img src="/images/wanderindy/kiosk4.png" alt="Map of Fountain Square with four kiosk positions at entry points and intersections." style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }} />
           </div>
         </WIReveal>
         <WIReveal delay={0.2}>
-          <div className="cs-label" style={{ marginTop: 48, marginBottom: 12 }}>
-            Fig. 6.4 · Kiosk Design Considerations
-          </div>
-          <img
-            src="/images/wanderindy/kiosk5.png"
-            alt="Three kiosk renders in the outdoor Fountain Square context with HotBoys storefront behind illustrating vertical format, LinkNYC-modeled design, and entry-point placement rationale."
-            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
-          />
+          <div className="cs-label" style={{ marginTop: 48, marginBottom: 12 }}>Fig. 6.4 · Kiosk in Context</div>
+          <img src="/images/wanderindy/kiosk5.png" alt="Kiosk renders in the outdoor Fountain Square context vertical form, entry-point siting." style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }} />
         </WIReveal>
       </div>
     </section>
   );
 }
 
-/* ── 7E SOLUTION: DESIGN SYSTEM ── */
+/* ── 12 DESIGN SYSTEM environmental + accessibility reasoning ── */
 function WISolutionDesignSystem() {
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="13 Design System">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="11 Design System">
       <div className="cs-inner">
-        <WIReveal>
-          <div className="cs-label">Design Language</div>
-        </WIReveal>
+        <WIReveal><div className="cs-label">Design Language</div></WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            A style guide built for place.
-          </h2>
+          <h2 className="cs-h2">A system that holds up on a phone and a sidewalk.</h2>
         </WIReveal>
         <WIReveal delay={0.1}>
           <div className="cs-body">
             <p>
-              We designed Wander Indy's visual identity as a deliberate system not a mood board,
-              but a set of decisions with rationale. Urbanist for its geometric friendliness across
-              app and signage. Indy Blue (#00427C) as the primary anchoring the brand to the city.
-              A secondary palette built for legibility across both screens and outdoor contexts.
-              Doodle elements to keep the experience warm without undermining clarity.
+              The same visual language had to work on a handheld screen and a sunlit outdoor kiosk.
+              That dual context drove the decisions: high-contrast hierarchy for readability at
+              distance and in variable light, large touch targets for public use, simplified
+              iconography that reads fast, and a palette anchored by Indy Blue for brand recall
+              across both surfaces.
             </p>
           </div>
         </WIReveal>
         <WIReveal delay={0.15}>
-          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>
-            Fig. 6.5 · Style Guide
-          </div>
+          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>Fig. 6.5 · Design System</div>
           <WISlideshow images={DESIGN_GUIDE_SLIDES} />
         </WIReveal>
       </div>
@@ -894,54 +638,56 @@ function WISolutionDesignSystem() {
   );
 }
 
-/* ── 8 OUTCOMES ── */
-function WIOutcomes() {
-  const outcomes = [
-    {
-      title: 'Earn badges by completing trails.',
-      body: 'Completion is rewarded without making exploration feel transactional.',
-    },
-    {
-      title: 'Fill your personal Field Guide with memories.',
-      body: 'Every place you visit becomes a permanent part of your city map.',
-    },
-    {
-      title: 'Turn Indianapolis into your own living storybook.',
-      body: "The city isn't a destination. It's a collection of stories you've accumulated.",
-    },
+/* ── 13 IMPACT strategic close, replaces emotional outcomes ── */
+function WIImpact() {
+  const impacts = [
+    { who: 'For residents', what: 'More neighbourhoods explored, repeat engagement, and stronger attachment to place.' },
+    { who: 'For local business', what: 'Visibility for spots that sit outside the tourist and foot-traffic path.' },
+    { who: 'For the city', what: 'Distributed foot traffic and activated cultural districts beyond the core.' },
   ];
-
   return (
-    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="14 Outcomes">
+    <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="12 Impact">
       <div className="cs-inner">
-        <WIReveal>
-          <div className="cs-label">What It Delivers</div>
-        </WIReveal>
+        <WIReveal><div className="cs-label">Impact</div></WIReveal>
         <WIReveal delay={0.05}>
-          <h2 className="cs-h2">Celebrating every journey.</h2>
+          <h2 className="cs-h2">What the system is designed to change.</h2>
         </WIReveal>
-        {/* <WIReveal delay={0.1}>
-          <div className="wi-outcomes">
-            {outcomes.map(o => (
-              <div key={o.title} className="wi-outcome-card">
-                <span className="wi-outcome-arrow">→</span>
-                <div className="wi-outcome-title">{o.title}</div>
-                <div className="wi-outcome-body">{o.body}</div>
+        <WIReveal delay={0.1}>
+          <div className="cs-body">
+            <p>
+              As a concept, WanderIndy targets behavioural and civic outcomes not just a better
+              map, but a measurable shift in how people move through the city.
+            </p>
+          </div>
+        </WIReveal>
+        <WIReveal delay={0.12}>
+          <div className="wi-impact-grid">
+            {impacts.map(x => (
+              <div key={x.who} className="wi-impact-item">
+                <div className="wi-impact-who">{x.who}</div>
+                <div className="wi-impact-what">{x.what}</div>
               </div>
             ))}
           </div>
-        </WIReveal> */}
-        <WIReveal delay={0.15}>
-          <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>
-            Fig. 7.1 · Outcomes
+        </WIReveal>
+        <WIReveal delay={0.16}>
+          <div className="cs-body" style={{ marginTop: 32 }}>
+            <p style={{ marginBottom: 0 }}>
+              The phygital model also opens a platform layer. The kiosk network becomes
+              infrastructure other programs can plug into event-based trails, seasonal
+              activations, and local sponsorship so the system grows beyond its first deployment.
+            </p>
           </div>
+        </WIReveal>
+        <WIReveal delay={0.2}>
+          <div className="cs-label" style={{ marginTop: 56, marginBottom: 12 }}>Fig. 7.1 · What It Delivers</div>
           <img
             src="/images/wanderindy/outcomes.png"
-            alt="Three outcome illustrations: trail completion badge, memory-filled personal field guide, and Indianapolis city storybook celebrating every journey."
+            alt="User-facing outcomes: complete trails to earn badges, build a personal field guide, and accumulate a record of the city explored."
             style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
           />
         </WIReveal>
-        <WIReveal delay={0.2}>
+        <WIReveal delay={0.24}>
           <div className="wi-closing-quote">
             <div className="wi-closing-quote-text">
               "We didn't design an app. We designed the feeling of discovering a city
@@ -955,10 +701,10 @@ function WIOutcomes() {
   );
 }
 
-/* ── 9 NEXT ── */
+/* ── 14 NEXT ── */
 function WINext() {
   return (
-    <section className="next-project" data-screen-label="15 Navigation">
+    <section className="next-project" data-screen-label="13 Navigation">
       <div className="next-project-inner">
         <span className="np-label">Next Project</span>
         <div>
@@ -986,18 +732,16 @@ export default function WanderIndy() {
       <WIHero />
       <WIHeroBand />
       <WIProblem />
-      {/* <WIContext /> */}
       <WIProcessResearch />
       <WIProcessUnderstand />
       <WIProcessBuild />
       <WIProcessTest />
-      {/* <WIInsight /> */}
       <WISolutionFeatures />
       <WISolutionMobile />
       <WISolutionKiosk />
       <WISolutionSpatial />
       <WISolutionDesignSystem />
-      <WIOutcomes />
+      <WIImpact />
       <WINext />
       <TweaksPanel tweaks={tweaks} />
     </>
