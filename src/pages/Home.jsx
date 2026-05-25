@@ -253,10 +253,71 @@ function RevealX({ children, from = 'left', delay = 0, className = '', ...rest }
 }
 
 /* ---------- Hero rows (Zone A) ---------- */
-function HeroRowVR() {
-  const p = PROJECTS[0];
+function HeroRowWanderIndy() {
   return (
     <div className="hero-row light" data-row="01">
+      <RevealX from="right" className="visual">
+        <img
+          src="/images/wanderindy/hero.png"
+          alt="Wander Indy — phygital discovery system for Indianapolis"
+          className="hero-row-img"
+        />
+      </RevealX>
+      <RevealX from="left" delay={0.15} className="content">
+        <div className="hr-num">Project 01</div>
+        <div className="hr-tags">
+          <span className="pill design">Interaction Design</span>
+          <span className="pill design">Prototyping</span>
+          <span className="pill engineering">Phygital Systems</span>
+        </div>
+        <h3 className="hr-title">Wander Indy</h3>
+        <p className="hr-desc">
+          A phygital discovery system that transforms Indianapolis into a living field guide — designing for serendipity across a mobile app and physical kiosks placed at neighbourhood entry points.
+        </p>
+        <p className="hr-insight">
+          Usability testing revealed the core motivational loop was broken: explored and unexplored neighbourhoods looked identical, making the app's central promise invisible to users.
+        </p>
+        <Link to="/case-study/wander-indy" className="hr-cta">View case study <span>→</span></Link>
+      </RevealX>
+    </div>
+  );
+}
+
+function HeroRowFreetown() {
+  const p = PROJECTS[1];
+  return (
+    <div className="hero-row dark flip" data-row="02">
+      <RevealX from="right" delay={0.15} className="content">
+        <div className="hr-num">Project 02</div>
+        <div className="hr-tags">
+          <span className="pill research-dark">UX Research</span>
+          <span className="pill design-dark">Product Design</span>
+          <span className="pill design-dark">Cultural Technology</span>
+        </div>
+        <h3 className="hr-title">{p.title}</h3>
+        <p className="hr-desc">
+          Research-driven product design for Freetown Village helping young African Americans find cultural grounding through verified history, watch parties, and a personal artifact museum.
+        </p>
+        <p className="hr-insight">
+          The audience didn't distrust history they distrusted the messengers. That insight reframed the entire product strategy around institutional credibility.
+        </p>
+        <Link to="/case-study/freetown" className="hr-cta">View case study <span>→</span></Link>
+      </RevealX>
+      <RevealX from="left" className="visual placeholder-dark" aria-hidden="true">
+        <img
+          src="/images/freetown/hero.png"
+          alt="Freetown Village · Cultural Platform"
+          className="hero-row-img"
+        />
+      </RevealX>
+    </div>
+  );
+}
+
+function HeroRowMobility() {
+  const p = PROJECTS[0];
+  return (
+    <div className="hero-row light" data-row="03">
       <RevealX from="right" className="visual">
         <img
           src="/images/mobility/hero.png"
@@ -264,8 +325,8 @@ function HeroRowVR() {
           className="hero-row-img"
         />
       </RevealX>
-       <RevealX from="left" delay={0.15} className="content">
-        <div className="hr-num">Project 02</div>
+      <RevealX from="left" delay={0.15} className="content">
+        <div className="hr-num">Project 03</div>
         <div className="hr-tags">
           <span className="pill research">Research</span>
           <span className="pill design">Service Design</span>
@@ -284,37 +345,6 @@ function HeroRowVR() {
   );
 }
 
-function HeroRowAV() {
-  const p = PROJECTS[1];
-  return (
-    <div className="hero-row dark flip" data-row="02">
-      <RevealX from="right" delay={0.15} className="content">
-        <div className="hr-num">Project 01</div>
-        <div className="hr-tags">
-          <span className="pill research-dark">UX Research</span>
-          <span className="pill design-dark">Product Design</span>
-          <span className="pill design-dark">Cultural Technology</span>
-        </div>
-        <h3 className="hr-title">{p.title}</h3>
-        <p className="hr-desc">
-          Research-driven product design for Freetown Village helping young African Americans find cultural grounding through verified history, watch parties, and a personal artifact museum.
-        </p>
-        <p className="hr-insight">
-          The audience didn't distrust history they distrusted the messengers. That insight reframed the entire product strategy around institutional credibility.
-        </p>
-        <Link to="/case-study/freetown" className="hr-cta">View case study <span>→</span></Link>
-      </RevealX>
-      <RevealX from="left" className="visual placeholder-dark" aria-hidden="true">
-        <img
-          src="/images/freetown/hero.png"
-          alt="Freetown Village · Cultural Platfor"
-          className="hero-row-img"
-        />
-      </RevealX>
-    </div>
-  );
-}
-
 function WorkTop() {
   return (
     <section className="work-zone-a" id="work">
@@ -325,8 +355,9 @@ function WorkTop() {
           A selection of research-driven projects from concept to shipped product.
         </p>
       </Reveal>
-      <HeroRowAV />
-      <HeroRowVR />
+      <HeroRowWanderIndy />
+      <HeroRowFreetown />
+      <HeroRowMobility />
     </section>
   );
 }
