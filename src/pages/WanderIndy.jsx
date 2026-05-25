@@ -14,11 +14,23 @@ const WIReveal = Reveal;
 /* ── Slideshow ── */
 function WISlideshow({ images }) {
   const [idx, setIdx] = useState(0);
+  const [paused, setPaused] = useState(false);
   const prev = () => setIdx(i => (i - 1 + images.length) % images.length);
   const next = () => setIdx(i => (i + 1) % images.length);
   const cur = images[idx];
+
+  useEffect(() => {
+    if (paused || images.length <= 1) return;
+    const id = setInterval(() => setIdx(i => (i + 1) % images.length), 3500);
+    return () => clearInterval(id);
+  }, [paused, images.length]);
+
   return (
-    <div className="wi-slideshow">
+    <div
+      className="wi-slideshow"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <div className="wi-slideshow-stage">
         <img src={cur.src} alt={cur.alt} className="wi-slideshow-img" />
         {images.length > 1 && (
@@ -155,13 +167,15 @@ function WIProblem() {
         </WIReveal>
         <WIReveal delay={0.05}>
           <h2 className="cs-h2">
-            The city is full of stories<br />
-            no one told you about.
+            Designing for a city that hides<br />
+            its best stories.
           </h2>
         </WIReveal>
-        <WIReveal delay={0.1}>
-          <div className="cs-body">
-            <p>
+        <WIReveal delay={0.1} className="brief-context">
+          <div>
+            <div className="brief-col-label">About the project</div>
+            <div className="cs-body" style={{ margin: 0, maxWidth: '44ch' }}>
+              <p>
               Indianapolis has hidden gems murals, pop-up music corners, independent shops tucked
               behind major landmarks. But the tools people use to explore the city are built around
               efficiency, not discovery. Mobile apps route you to the well-known. Signage tells you
@@ -171,15 +185,39 @@ function WIProblem() {
             <p>
               The question we started with: <strong>how do you design for serendipity?</strong>
             </p>
+            </div>
           </div>
-        </WIReveal>
-        <WIReveal delay={0.15}>
-          <div className="wi-artifact" style={{ marginTop: 56, boxShadow: 'none' }}>
-            <img
-              src="/images/wanderindy/problem.png"
-              alt="Problem framing: three pain points exploration tools feel disconnected, hidden gems remain invisible without real-time discovery, and locals navigate only to major landmarks missing deeper stories."
-              style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
-            />
+          <div>
+            <div className="skill-block">
+              <div className="skill-block-label">My Role</div>
+              <div className="cs-body" style={{ margin: 0, fontSize: 15, color: 'var(--ink-2)' }}>
+                Interaction design, journey mapping, prototyping (mid-fi to hi-fi), user testing
+              </div>
+            </div>
+            <div className="skill-block">
+              <div className="skill-block-label">Methods</div>
+              <div className="skill-chips">
+                {[
+                  'Persona Development', 'User Journey Mapping', 'Storyboarding',
+                  'Paper Prototyping', 'Mid-Fi Wireframing', 'Hi-Fi Prototyping',
+                  'Usability Testing', 'Design System Authorship',
+                ].map(t => (
+                  <span key={t} className="skill-chip">{t}</span>
+                ))}
+              </div>
+            </div>
+            <div className="skill-block">
+              <div className="skill-block-label">Deliverables</div>
+              <div className="skill-chips">
+                {[
+                  'Clickable hi-fi prototype (mobile + kiosk)',
+                  'Style guide',
+                  'Kiosk placement map',
+                ].map(t => (
+                  <span key={t} className="skill-chip">{t}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </WIReveal>
       </div>
@@ -421,7 +459,7 @@ function WIProcessBuild() {
             ))}
           </div>
         </WIReveal>
-        <WIReveal delay={0.2}>
+        <WIReveal delay={0.2} >
           <div className="cs-label" style={{ marginTop: 72, marginBottom: 12 }}>
             Fig. 4.2 · Paper Prototypes Mobile + Kiosk
           </div>
@@ -438,7 +476,7 @@ function WIProcessBuild() {
           <img
             src="/images/wanderindy/midfi.png"
             alt="Mid-fi wireframe spread: mobile screens covering onboarding, city map, neighbourhood selection, trail list, and QR scan plus kiosk wireframes for landing, trail activation, restaurant menu, and dish detail."
-            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'contain' ,boxShadow:'none'}}
           />
         </WIReveal>
       </div>
@@ -473,24 +511,30 @@ function WIProcessTest() {
     <section className="cs-section" style={{ paddingTop: 0 }} data-screen-label="07 Test">
       <div className="cs-inner">
         <WIReveal>
-          <span className="wi-phase-pill">04 · Test</span>
-        </WIReveal>
-        <WIReveal delay={0.05}>
-          <h2 className="cs-h2">
-            Three findings.<br />
-            Three decisions.
-          </h2>
-        </WIReveal>
-        <WIReveal delay={0.1}>
-          <div className="cs-body">
-            <p>
-              We ran usability sessions on the mid-fi prototype. Three findings shaped the hi-fi
-              significantly not as minor tweaks, but as structural changes that altered the
-              core interaction model.
-            </p>
+          <div className="wi-test-body-row">
+            <div className="wi-test-text">
+              <span className="wi-phase-pill">04 · Test</span>
+              <h2 className="cs-h2">
+                Three findings.<br />
+                Three decisions.
+              </h2>
+              <div className="cs-body" style={{ margin: 0 }}>
+                <p>
+                  We ran usability sessions on the mid-fi prototype. Three findings shaped the hi-fi
+                  significantly not as minor tweaks, but as structural changes that altered the
+                  core interaction model.
+                </p>
+              </div>
+            </div>
+            <div className="wi-test-photo">
+              <img
+                src="/images/wanderindy/testing.png"
+                alt="Team member testing the Wander Indy mid-fi prototype during usability session."
+              />
+            </div>
           </div>
         </WIReveal>
-        <WIReveal delay={0.15}>
+        {/* <WIReveal delay={0.15}>
           <div className="wi-findings">
             {findings.map(f => (
               <div key={f.n} className="wi-finding">
@@ -501,7 +545,7 @@ function WIProcessTest() {
               </div>
             ))}
           </div>
-        </WIReveal>
+        </WIReveal> */}
         <WIReveal delay={0.2}>
           <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>
             Fig. 4.4 · User Testing Insights
@@ -625,7 +669,7 @@ function WISolutionFeatures() {
             </p>
           </div>
         </WIReveal>
-        <WIReveal delay={0.15}>
+        {/* <WIReveal delay={0.15}>
           <div className="wi-features">
             {features.map(f => (
               <div key={f.n} className="wi-feature-card">
@@ -636,7 +680,7 @@ function WISolutionFeatures() {
               </div>
             ))}
           </div>
-        </WIReveal>
+        </WIReveal> */}
         <WIReveal delay={0.2}>
           <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>
             Fig. 6.1 · Key Features Overview
@@ -876,7 +920,7 @@ function WIOutcomes() {
         <WIReveal delay={0.05}>
           <h2 className="cs-h2">Celebrating every journey.</h2>
         </WIReveal>
-        <WIReveal delay={0.1}>
+        {/* <WIReveal delay={0.1}>
           <div className="wi-outcomes">
             {outcomes.map(o => (
               <div key={o.title} className="wi-outcome-card">
@@ -886,7 +930,7 @@ function WIOutcomes() {
               </div>
             ))}
           </div>
-        </WIReveal>
+        </WIReveal> */}
         <WIReveal delay={0.15}>
           <div className="cs-label" style={{ marginTop: 64, marginBottom: 12 }}>
             Fig. 7.1 · Outcomes
@@ -942,12 +986,12 @@ export default function WanderIndy() {
       <WIHero />
       <WIHeroBand />
       <WIProblem />
-      <WIContext />
+      {/* <WIContext /> */}
       <WIProcessResearch />
       <WIProcessUnderstand />
       <WIProcessBuild />
       <WIProcessTest />
-      <WIInsight />
+      {/* <WIInsight /> */}
       <WISolutionFeatures />
       <WISolutionMobile />
       <WISolutionKiosk />

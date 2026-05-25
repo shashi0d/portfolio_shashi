@@ -245,10 +245,10 @@ html[data-page="wanderindy"] .skill-chip {
 .wi-journey-map {
   margin-top: 56px;
   width: 100%;
-  border: 1px solid var(--border);
+  /* border: 1px solid var(--border); */
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+  /* box-shadow: 0 4px 32px rgba(0,0,0,0.06); */
 }
 .wi-journey-map img {
   display: block;
@@ -267,6 +267,43 @@ html[data-page="wanderindy"] .skill-chip {
   align-items: start;
 }
 .wi-two-col .cs-img { width: 100%; }
+
+/* =====================================================
+   TEST SECTION — BODY + PHOTO SIDE BY SIDE
+   ===================================================== */
+.wi-test-body-row {
+  display: grid;
+  grid-template-columns: 4fr 8fr;
+  gap: 48px;
+  align-items: center;
+}
+.wi-test-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wi-test-text .cs-h2 {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.wi-test-photo {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.10);
+}
+.wi-test-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  .wi-test-body-row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
 
 /* =====================================================
    THREE TESTING FINDINGS
@@ -471,9 +508,6 @@ html[data-page="wanderindy"] .skill-chip {
   overflow: hidden;
   aspect-ratio: 9 / 19.5;
   position: relative;
-  box-shadow:
-    0 16px 48px rgba(0,0,0,0.28),
-    inset 0 1px 0 rgba(255,255,255,0.08);
 }
 /* Notch */
 .wi-phone-frame::before {
