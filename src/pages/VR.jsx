@@ -592,16 +592,16 @@ function VRNext() {
     <section className="vr-next-grid" data-screen-label="08 Next">
       <div className="vr-next-inner">
         <span className="np-label">Next case studies</span>
+        <Link className="vr-next-tile" to="/case-study/wander-indy">
+          <span className="vnt-eyebrow">Interaction Design · Prototyping</span>
+          <span className="vnt-title">Wander Indy</span>
+          <span className="vnt-meta">Phygital discovery system for Indianapolis · mobile + kiosk</span>
+          <span className="vnt-arrow">View case study  →</span>
+        </Link>
         <Link className="vr-next-tile" to="/case-study/freetown">
           <span className="vnt-eyebrow">UX Research · Product</span>
           <span className="vnt-title">Reconnecting Roots — Freetown Village</span>
           <span className="vnt-meta">Cultural belonging through digital community design</span>
-          <span className="vnt-arrow">View case study  →</span>
-        </Link>
-        <Link className="vr-next-tile" to="/case-study/mobility">
-          <span className="vnt-eyebrow">Service Design · Research</span>
-          <span className="vnt-title">Mobility as a Social Service</span>
-          <span className="vnt-meta">Autonomous vehicles as civic infrastructure · TMF × SECS</span>
           <span className="vnt-arrow">View case study  →</span>
         </Link>
       </div>

@@ -526,10 +526,10 @@ function CSNext() {
       <div className="next-project-inner">
         <span className="np-label">Next Case Study</span>
         <div>
-          <div className="np-title">↓ Reconnecting Roots — Freetown Village</div>
-          <div className="np-meta">UX Research · Product Design · Cultural Technology · 2025–2026</div>
+          <div className="np-title">↓ Wander Indy</div>
+          <div className="np-meta">Interaction Design · Prototyping · Phygital Systems · 2024—2025</div>
         </div>
-        <Link className="np-link" to="/case-study/freetown">Read case study <span>→</span></Link>
+        <Link className="np-link" to="/case-study/wander-indy">Read case study <span>→</span></Link>
       </div>
     </section>
   );

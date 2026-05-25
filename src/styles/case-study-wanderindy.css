@@ -1,0 +1,852 @@
+/* ===========================================================
+   Case Study — Wander Indy
+   Phygital Discovery System for Indianapolis
+   Palette: warm editorial off-white · Indy Blue #00427C · warm gold
+   WanderIndy brand (Indy Blue + Coral #E4572E) lives inside
+   artifact cards — the editorial container stays neutral.
+   Layered on top of main.css + case-study-mobility.css.
+   =========================================================== */
+
+/* ---------- Palette overrides (scoped to this page) ---------- */
+html[data-page="wanderindy"] {
+  --bg:             #F7F4EE;
+  --bg-dark:        #002D57;
+  --surface:        #FFFCF7;
+  --ink:            #0E0D0B;
+  --ink-2:          #37302A;
+  --ink-3:          #6A5E52;
+  --ink-4:          #9E9080;
+  --border:         rgba(14, 13, 11, 0.08);
+  --border-2:       rgba(14, 13, 11, 0.04);
+
+  --accent:         #B07B3C;
+  --accent-soft:    rgba(176, 123, 60, 0.07);
+  --accent-warm:    #D4A848;
+
+  /* Product-brand colours (used only inside artifact cards) */
+  --wi-blue:        #00427C;
+  --wi-coral:       #E4572E;
+
+  --grad: linear-gradient(135deg, #F4D7A2 0%, #E8A87A 45%, #D4A848 100%);
+}
+
+/* ---------- Hero: Indy Blue override ---------- */
+html[data-page="wanderindy"] .cs-hero {
+  background: #002D57;
+}
+html[data-page="wanderindy"] .cs-hero::before {
+  background: radial-gradient(closest-side, rgba(228, 87, 46, 0.18), transparent);
+}
+html[data-page="wanderindy"] .cs-hero::after {
+  background: radial-gradient(closest-side, rgba(244, 215, 162, 0.13), transparent);
+}
+
+/* Hero gradient text: warm gold against Indy Blue */
+html[data-page="wanderindy"] .cs-title .l2 {
+  background: linear-gradient(135deg, #F4D7A2 0%, #E8C990 50%, #D4A848 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+
+/* ---------- Paper texture on light sections ---------- */
+html[data-page="wanderindy"] .cs-section:not(.dark) {
+  background:
+    radial-gradient(circle at 1px 1px, rgba(176, 123, 60, 0.04) 1px, transparent 1px) 0 0 / 20px 20px,
+    var(--bg);
+}
+
+/* ---------- Skill chip accent warm-up ---------- */
+html[data-page="wanderindy"] .skill-block-label { color: var(--accent); }
+html[data-page="wanderindy"] .skill-chip {
+  background: var(--surface);
+  border-color: var(--border);
+}
+
+/* =====================================================
+   HERO BAND — appears immediately after the dark hero
+   ===================================================== */
+.wi-hero-band {
+  background: #002D57;
+  padding: 0 var(--section-x);
+}
+.wi-hero-band-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: auto;
+  /* border-radius: 0 0 16px 16px; */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wayfinding grid — evokes a city map */
+.wi-hero-band-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); */
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+.wi-hero-band-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* background:
+    radial-gradient(ellipse 60% 70% at 50% 50%, rgba(0, 66, 124, 0.0) 0%, rgba(0, 29, 56, 0.6) 100%); */
+  pointer-events: none;
+}
+
+.wi-hero-band-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 0;
+}
+
+.wi-hero-band-cap {
+  position: absolute;
+  top: 20px;
+  left: 24px;
+  z-index: 2;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 215, 162, 0.65);
+  background: rgba(0, 29, 56, 0.55);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(244, 215, 162, 0.14);
+}
+
+/* City-map decorative element (CSS-only) */
+.wi-hero-map-art {
+  position: relative;
+  z-index: 1;
+  width: 520px;
+  height: 320px;
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .wi-hero-band-inner { height: auto; aspect-ratio: 16 / 9; }
+  .wi-hero-map-art { width: 280px; height: 200px; }
+}
+
+/* =====================================================
+   PHASE LABEL pill (Understand / Define / Build / Test)
+   ===================================================== */
+.wi-phase-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border: 1px solid rgba(176, 123, 60, 0.28);
+  border-radius: 100px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  margin-bottom: 32px;
+}
+
+/* =====================================================
+   ARTIFACT IMAGE WRAPPER
+   Full-width, minimal chrome, breathe room
+   ===================================================== */
+.wi-artifact {
+  margin-top: 56px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.07);
+  position: relative;
+}
+.wi-artifact img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wi-artifact-cap {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.72);
+  background: rgba(0,0,0,0.42);
+  backdrop-filter: blur(6px);
+  padding: 5px 12px;
+  border-radius: 100px;
+  z-index: 1;
+}
+
+/* =====================================================
+   PROTOTYPING FIDELITY STEPS
+   ===================================================== */
+.wi-fidelity-steps {
+  margin-top: 48px;
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.wi-fidelity-step {
+  flex: 1;
+  padding: 24px 28px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.wi-fidelity-step:last-child { border-right: none; }
+.wi-fidelity-n {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.wi-fidelity-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wi-fidelity-desc {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.6;
+  margin-top: 2px;
+}
+
+/* =====================================================
+   JOURNEY MAP IMAGE (full-width, no card constraint)
+   ===================================================== */
+.wi-journey-map {
+  margin-top: 56px;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+}
+.wi-journey-map img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =====================================================
+   TWO-COLUMN ARTIFACT LAYOUT
+   ===================================================== */
+.wi-two-col {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+.wi-two-col .cs-img { width: 100%; }
+
+/* =====================================================
+   THREE TESTING FINDINGS
+   ===================================================== */
+.wi-findings {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.wi-finding {
+  padding: 32px 28px 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+.wi-finding:hover {
+  border-color: rgba(176, 123, 60, 0.35);
+  transform: translateY(-2px);
+}
+.wi-finding-n {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.wi-finding-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.wi-finding-body {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  flex: 1;
+}
+.wi-finding-action {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.003em;
+  color: var(--accent);
+}
+
+/* =====================================================
+   INSIGHT — deep navy, typographic centrepiece
+   ===================================================== */
+.wi-insight {
+  background: #001A35;
+  padding: 140px var(--section-x);
+  position: relative;
+  overflow: hidden;
+}
+.wi-insight::before {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  top: -200px; right: -160px;
+  background: radial-gradient(closest-side, rgba(228, 87, 46, 0.14), transparent);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.wi-insight::after {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  bottom: -200px; left: -80px;
+  background: radial-gradient(closest-side, rgba(0, 66, 124, 0.55), transparent);
+  filter: blur(60px);
+  pointer-events: none;
+}
+.wi-insight-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.wi-insight-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(244, 215, 162, 0.55);
+  margin-bottom: 40px;
+}
+.wi-insight-headline {
+  font-size: clamp(36px, 4.8vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  color: #F7F4EE;
+  max-width: 20ch;
+  text-wrap: pretty;
+  margin-bottom: 56px;
+}
+.wi-insight-headline em {
+  font-style: normal;
+  background: linear-gradient(135deg, #F4D7A2 0%, #E4572E 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+.wi-insight-body {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(247, 244, 238, 0.65);
+  line-height: 1.7;
+  max-width: 66ch;
+}
+.wi-insight-body p + p { margin-top: 22px; }
+.wi-insight-body strong { color: #F7F4EE; font-weight: 700; }
+
+/* =====================================================
+   FIVE FEATURE CARDS
+   ===================================================== */
+.wi-features {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.wi-feature-card {
+  padding: 32px 28px 36px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.wi-feature-card:hover {
+  border-color: rgba(176, 123, 60, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(176, 123, 60, 0.07);
+}
+.wi-feature-n {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.wi-feature-title {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.wi-feature-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(0, 66, 124, 0.09);
+  color: #00427C;
+  align-self: flex-start;
+}
+.wi-feature-body {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  flex: 1;
+}
+
+/* =====================================================
+   PHONE MOCKUP ROW (hi-fi mobile)
+   ===================================================== */
+.wi-phone-row {
+  margin-top: 56px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scrollbar-width: none;
+}
+.wi-phone-row::-webkit-scrollbar { display: none; }
+
+.wi-phone-frame {
+  flex: 0 0 auto;
+  width: clamp(160px, 17vw, 210px);
+  background: #111;
+  border-radius: 34px;
+  border: 6px solid #222;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+  position: relative;
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.08);
+}
+/* Notch */
+.wi-phone-frame::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px; height: 22px;
+  background: #111;
+  border-radius: 0 0 14px 14px;
+  z-index: 2;
+}
+.wi-phone-screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: top center;
+  display: block;
+}
+.wi-phone-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #00427C 0%, #002D57 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 14px;
+}
+.wi-phone-placeholder-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(244, 215, 162, 0.4);
+}
+.wi-phone-placeholder-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(244, 215, 162, 0.55);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   KIOSK MOCKUP ROW (hi-fi kiosk)
+   ===================================================== */
+.wi-kiosk-row {
+  margin-top: 56px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.wi-kiosk-frame {
+  flex: 0 0 auto;
+  width: clamp(180px, 19vw, 250px);
+  background: #111;
+  border-radius: 20px;
+  border: 5px solid #222;
+  overflow: hidden;
+  aspect-ratio: 9 / 18;
+  position: relative;
+  box-shadow: 0 16px 56px rgba(0,0,0,0.28);
+}
+.wi-kiosk-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #001F3D 0%, #000D1A 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 16px;
+}
+.wi-kiosk-placeholder-bar {
+  width: 60%;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(228, 87, 46, 0.45);
+}
+.wi-kiosk-placeholder-block {
+  width: 80%;
+  height: 28px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.07);
+}
+.wi-kiosk-placeholder-label {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(244, 215, 162, 0.45);
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* =====================================================
+   SPATIAL MAP CARD
+   ===================================================== */
+.wi-map-card {
+  margin-top: 56px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.05);
+}
+.wi-map-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =====================================================
+   KIOSK INSIGHT CALLOUT
+   ===================================================== */
+.wi-product-callout {
+  margin-top: 48px;
+  padding: 28px 36px;
+  background: rgba(0, 66, 124, 0.07);
+  border-left: 3px solid #00427C;
+  border-radius: 0 8px 8px 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink);
+  max-width: 72ch;
+}
+.wi-product-callout strong { color: var(--wi-blue); }
+
+/* =====================================================
+   DESIGN SYSTEM CARD
+   ===================================================== */
+.wi-style-guide {
+  margin-top: 56px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.05);
+}
+.wi-style-guide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* =====================================================
+   OUTCOME CARDS
+   ===================================================== */
+.wi-outcomes {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.wi-outcome-card {
+  padding: 36px 30px 40px;
+  background: linear-gradient(160deg, #F4E5C4 0%, #EDD8A8 100%);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.wi-outcome-card::after {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.26) 0%, transparent 70%);
+  pointer-events: none;
+}
+.wi-outcome-arrow {
+  font-size: 20px;
+  font-weight: 800;
+  color: #7A5018;
+  position: relative;
+}
+.wi-outcome-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1E1006;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  position: relative;
+}
+.wi-outcome-body {
+  font-size: 13px;
+  color: #3C2408;
+  line-height: 1.65;
+  position: relative;
+}
+
+/* =====================================================
+   CLOSING PULL QUOTE
+   ===================================================== */
+.wi-closing-quote {
+  margin-top: 80px;
+  padding: 72px 64px;
+  background: #001A35;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.wi-closing-quote::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 70% at 100% 45%, rgba(228, 87, 46, 0.13) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 80% at 0% 100%, rgba(244, 215, 162, 0.09) 0%, transparent 60%);
+  pointer-events: none;
+}
+.wi-closing-quote-text {
+  font-size: clamp(26px, 3.2vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.22;
+  background: linear-gradient(135deg, #F4D7A2 0%, #F0C990 50%, #FAFAF8 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+  max-width: 28ch;
+  text-wrap: balance;
+  position: relative;
+  padding-right: 0.06em;
+}
+.wi-closing-quote-attr {
+  margin-top: 32px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(244, 215, 162, 0.45);
+  position: relative;
+}
+
+/* =====================================================
+   REFLECTION quote left-bar style
+   ===================================================== */
+.wi-reflection-note {
+  margin: 48px 0 40px;
+  padding: 0 0 0 28px;
+  border-left: 3px solid var(--accent);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  color: var(--ink);
+  max-width: 30ch;
+  text-wrap: balance;
+}
+.wi-reflection-note em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+
+
+/* =====================================================
+   KIOSK IMAGE ROW (3 images side by side)
+   ===================================================== */
+.wi-kiosk-img-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.wi-kiosk-img-row img {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* =====================================================
+   DESIGN GUIDE SLIDESHOW
+   ===================================================== */
+.wi-slideshow {
+  margin-top: 56px;
+  user-select: none;
+}
+.wi-slideshow-stage {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.05);
+}
+.wi-slideshow-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.wi-slideshow-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 2;
+}
+.wi-slideshow-arrow:hover { background: rgba(0,0,0,0.68); }
+.wi-slideshow-arrow--prev { left: 14px; }
+.wi-slideshow-arrow--next { right: 14px; }
+.wi-slideshow-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 14px;
+}
+.wi-slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.wi-slideshow-dot.active {
+  background: var(--accent);
+  transform: scale(1.25);
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+  .wi-findings      { grid-template-columns: 1fr; }
+  .wi-outcomes      { grid-template-columns: 1fr; }
+  .wi-two-col       { grid-template-columns: 1fr; }
+  .wi-kiosk-row     { gap: 14px; }
+  .wi-kiosk-frame   { width: clamp(160px, 22vw, 230px); }
+  .wi-features      { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .wi-hero-band-inner  { height: auto; aspect-ratio: 16 / 9; }
+  .wi-insight          { padding: 80px var(--section-x); }
+  .wi-features         { grid-template-columns: 1fr; }
+  .wi-fidelity-steps   { flex-direction: column; }
+  .wi-fidelity-step    { border-right: none; border-bottom: 1px solid var(--border); }
+  .wi-fidelity-step:last-child { border-bottom: none; }
+  .wi-kiosk-row        { flex-wrap: wrap; justify-content: center; }
+  .wi-closing-quote    { padding: 44px 28px; }
+  .wi-phone-row        { gap: 10px; justify-content: flex-start; padding-left: 2px; }
+  .wi-phone-frame      { width: clamp(130px, 36vw, 155px); border-radius: 20px; border-width: 4px; }
+  .wi-phone-frame::before { width: 46px; height: 15px; border-radius: 0 0 9px 9px; }
+  .wi-kiosk-img-row    { gap: 6px; }
+  .wi-slideshow-arrow  { width: 32px; height: 32px; font-size: 14px; }
+}
