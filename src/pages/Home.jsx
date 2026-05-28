@@ -8,104 +8,45 @@ import Nav from '../components/Nav';
 
 
 
-/* ---------- Hero photo stack ---------- */
+/* ---------- Hero carousel ---------- */
 const HERO_PHOTOS = [
-  '/images/gallery/1.jpeg',
-  '/images/gallery/2.jpeg',
-  '/images/gallery/3.jpeg',
-  '/images/gallery/4.jpeg',
-  '/images/gallery/5.jpeg',
-  '/images/gallery/6.jpeg',
-  '/images/gallery/7.jpg',
-  '/images/gallery/8.jpg',
-  '/images/gallery/9.jpg',
+  { src: '/images/gallery/1.jpeg', caption: '' },
+  { src: '/images/gallery/2.jpeg', caption: '' },
+  { src: '/images/gallery/3.jpeg', caption: '' },
+  { src: '/images/gallery/4.jpeg', caption: '' },
+  { src: '/images/gallery/5.jpeg', caption: '' },
+  { src: '/images/gallery/6.jpeg', caption: '' },
+  { src: '/images/gallery/7.jpg',  caption: '' },
+  { src: '/images/gallery/8.jpg',  caption: '' },
+  { src: '/images/gallery/9.jpg',  caption: '' },
 ];
 
-// Position 0 = back, 1 = middle, 2 = front
-// Tighter 9° spread, staggered left offset, darker back cards for depth
-const CARD_POSITIONS = [
-  { rot: '2deg',  zIndex: 1, leftOffset: '0px',  brightness: 0.55 },
-  { rot: '11deg', zIndex: 2, leftOffset: '6px',  brightness: 0.75 },
-  { rot: '20deg', zIndex: 3, leftOffset: '12px', brightness: 1.0  },
-];
-
-function HeroPhotos() {
-  // order[posIdx] = cardIdx — which card occupies which position slot
-  const orderRef = useRef([0, 1, 2]);
-  const [order, setOrder]       = useState([0, 1, 2]);
-  const [images, setImages]     = useState([0, 1, 2]); // images[cardIdx] = photoIdx
-  const [fadingCard, setFadingCard] = useState(null);  // cardIdx fading out before swap
+function HeroCarousel() {
+  const [active, setActive] = useState(0);
 
   useEffect(() => {
-    let nextPhoto = 3;
-    const id = setInterval(() => {
-      const backCardIdx = orderRef.current[0]; // card currently at the back
-
-      // 1. Fade out the back card so image swap is invisible
-      setFadingCard(backCardIdx);
-
-      setTimeout(() => {
-        // 2. Silently swap image on the (now invisible) back card
-        setImages(prev => {
-          const copy = [...prev];
-          copy[backCardIdx] = nextPhoto % HERO_PHOTOS.length;
-          return copy;
-        });
-
-        // 3. Rotate positions: mid→back, front→mid, back→front
-        //    Back card sweeps from ~4deg to ~27deg (springs to front)
-        const cur = orderRef.current;
-        const newOrder = [cur[1], cur[2], cur[0]];
-        orderRef.current = newOrder;
-        setOrder(newOrder);
-
-        // 4. Unfade — card fades in while sweeping to front
-        setFadingCard(null);
-        nextPhoto++;
-      }, 280);
-    }, 5000);
-
+    const id = setInterval(() => setActive(i => (i + 1) % HERO_PHOTOS.length), 4200);
     return () => clearInterval(id);
   }, []);
 
-  // Build reverse map: cardToPos[cardIdx] = posIdx
-  const cardToPos = [0, 0, 0];
-  order.forEach((cardIdx, posIdx) => { cardToPos[cardIdx] = posIdx; });
+  const caption = HERO_PHOTOS[active].caption;
 
   return (
-    <div className="hero-photos" aria-hidden="true">
-      <svg style={{ display: 'none' }}>
-        <defs>
-          <filter id="rough-border" x="-8%" y="-8%" width="116%" height="116%">
-            <feTurbulence type="fractalNoise" baseFrequency="0.055" numOctaves="3" seed="8" result="turbulence" />
-            <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
-          </filter>
-        </defs>
-      </svg>
-      {[0, 1, 2].map(cardIdx => {
-        const pos = CARD_POSITIONS[cardToPos[cardIdx]];
-        return (
-          <div
-            key={cardIdx}
-            className={`hero-photo${fadingCard === cardIdx ? ' is-fading' : ''}`}
-            style={{
-              width: '275px',
-              height: '385px',
-              '--slot-rot': pos.rot,
-              zIndex: pos.zIndex,
-              left: pos.leftOffset,
-              filter: `brightness(${pos.brightness})`,
-            }}
-          >
-            <img src={HERO_PHOTOS[images[cardIdx]]} alt="" className="hero-photo-img" />
-            <svg className="photo-border" viewBox="0 0 275 385" preserveAspectRatio="none" aria-hidden="true">
-              <rect x="2" y="2" width="271" height="381" rx="6"
-                fill="none" stroke="rgba(255,255,255,0.78)" strokeWidth="2.5"
-                filter="url(#rough-border)" />
-            </svg>
-          </div>
-        );
-      })}
+    <div className="hero-carousel" aria-hidden="true">
+      {HERO_PHOTOS.map(({ src }, i) => (
+        <img key={src} src={src} alt="" className={`hc-img${i === active ? ' hc-active' : ''}`} />
+      ))}
+      {caption && <span className="hc-caption">{caption}</span>}
+      <div className="hc-indicator">
+        {HERO_PHOTOS.map((_, i) => (
+          <button
+            key={i}
+            className={`hc-pip${i === active ? ' hc-pip-active' : ''}`}
+            onClick={() => setActive(i)}
+            tabIndex={-1}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -121,38 +62,18 @@ function Hero() {
     <section className="hero" id="top" ref={heroRef}>
       <div className="hero-inner">
         <div className="hero-text">
-          <div className="hero-eyebrow">Design Engineer / HCI Researcher</div>
+          <div className="hero-eyebrow">Design Engineer</div>
           <h1 className="hero-name">
             <span className="l1">Shashidhara</span>
             <span className="l2">Narayanappa</span>
           </h1>
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <span className="num">3.5 yrs</span>
-              <span className="lbl">Engineering</span>
-            </div>
-            <div className="divider" />
-            <div className="hero-stat">
-              <span className="num">2</span>
-              <span className="lbl">Papers accepted</span>
-            </div>
-            <div className="divider" />
-            <div className="hero-stat">
-              <span className="num">5</span>
-              <span className="lbl">Projects shipped</span>
-            </div>
-          </div>
           <p className="hero-tagline">
-            I research human problems, design the experience, and build the product.
+            I design and build products end to end. Research is the foundation. Code is the finish line.
           </p>
-          <div className="hero-tags">
-            <span className="hero-tag">Research</span>
-            <span className="hero-tag">Design</span>
-            <span className="hero-tag">Engineering</span>
-          </div>
+          <a href="#work" className="hero-cta">See the work <span className="hero-cta-arr">↓</span></a>
         </div>
-        {/* <HeroPhotos /> */}
       </div>
+      <HeroCarousel />
     </section>
   );
 }
@@ -231,6 +152,134 @@ const PROJECTS = [
     insight: 'The core friction was not visual design but the mental model mismatch between how editors thought about content and how the system modeled it.',
   },
 ];
+
+/* ---------- Selected Work data ---------- */
+const SELECTED_WORK = [
+  {
+    num: '01',
+    title: 'Freetown Village',
+    tags: [
+      { label: 'UX Research', kind: 'research' },
+      { label: 'Product Design', kind: 'design' },
+      { label: 'Cultural Technology', kind: 'design' },
+    ],
+    mainLine: 'Designed a cultural platform from research through to deployed product — helping young African Americans connect with verified history.',
+    activities: ['User research', 'Product design', 'Business modelling', 'Shipped to production'],
+    insight: "The audience didn't distrust history. They distrusted the messengers. That single finding rewrote the entire product strategy.",
+    image: '/images/freetown/hero.png',
+    theme: 'light',
+    ctaPath: '/case-study/freetown',
+    liveUrl: 'freetown-village.vercel.app',
+  },
+  {
+    num: '02',
+    title: 'Wander Indy',
+    tags: [
+      { label: 'Interaction Design', kind: 'design-dark' },
+      { label: 'Service & Systems', kind: 'design-dark' },
+      { label: 'Phygital Product', kind: 'engineering-dark' },
+    ],
+    mainLine: 'Designed a mobile and kiosk system that turns Indianapolis into a discoverable field guide — one experience across two form factors.',
+    activities: ['Interaction design', 'Design system', 'Usability testing', 'Kiosk prototyping'],
+    insight: "Usability testing revealed the motivational loop was broken — explored and unexplored neighbourhoods looked identical, making the app's core promise invisible.",
+    image: '/images/wanderindy/hero.png',
+    theme: 'dark',
+    ctaPath: '/case-study/wander-indy',
+  },
+  {
+    num: '03',
+    title: 'Autonomous Mobility as a Social Service',
+    tags: [
+      { label: 'Research', kind: 'research' },
+      { label: 'Service Design', kind: 'design' },
+      { label: 'Speculative Design', kind: 'design' },
+    ],
+    mainLine: 'Led participatory design workshops to reframe autonomous vehicles as equitable social infrastructure — from research to a deployed stakeholder-facing experience.',
+    activities: ['Workshop facilitation', 'Stakeholder research', 'Service blueprinting', 'Speculative design'],
+    insight: 'Stakeholders never mentioned efficiency. Every conversation came back to trust and equity — which redirected the entire design direction.',
+    image: '/images/mobility/hero.png',
+    theme: 'light',
+    ctaPath: '/case-study/mobility',
+    liveUrl: 'mobility-as-social-service.vercel.app',
+  },
+];
+
+/* ---------- Activity rotator ---------- */
+function ActivityRotator({ activities, dark }) {
+  const [idx, setIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIdx(i => (i + 1) % activities.length);
+        setVisible(true);
+      }, 350);
+    }, 2800);
+    return () => clearInterval(id);
+  }, [activities.length]);
+
+  return (
+    <div className="ar-wrap">
+      <span className={`ar-pulse${dark ? ' ar-pulse-dark' : ''}`} />
+      <span className="ar-label">Currently</span>
+      <span className={`ar-text${visible ? ' ar-in' : ''}${dark ? ' ar-text-dark' : ''}`}>
+        {activities[idx]}
+      </span>
+    </div>
+  );
+}
+
+/* ---------- Project card ---------- */
+function ProjectCard({ p }) {
+  const isDark = p.theme === 'dark';
+  return (
+    <Reveal className={`proj-card ${isDark ? 'proj-dark' : 'proj-light'}`} threshold={0.08}>
+      <div className="proj-img-wrap">
+        <img src={p.image} alt={p.title} className="proj-img" />
+      </div>
+      <div className="proj-content">
+        <span className="proj-num">Project {p.num}</span>
+        <div className="proj-tags">
+          {p.tags.map(t => <span key={t.label} className={`pill ${t.kind}`}>{t.label}</span>)}
+        </div>
+        <h3 className="proj-title">{p.title}</h3>
+        <p className="proj-insight"><span aria-hidden="true">★ </span>{p.insight}</p>
+        <p className="proj-main">{p.mainLine}</p>
+        <ActivityRotator activities={p.activities} dark={isDark} />
+        <div className="proj-footer">
+          <Link to={p.ctaPath} className="proj-cta">
+            View case study <span className="proj-arr">→</span>
+          </Link>
+          {p.liveUrl && (
+            <a href={`https://${p.liveUrl}`} target="_blank" rel="noreferrer" className="proj-live">
+              {p.liveUrl} ↗
+            </a>
+          )}
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+/* ---------- Selected Work section ---------- */
+function SelectedWork() {
+  return (
+    <section className="selected-work" id="work">
+      <div className="sw-header">
+        <Reveal>
+          <div className="section-label">Work</div>
+          <h2 className="section-title" style={{ marginTop: '12px' }}>Selected Work</h2>
+          <p style={{ fontSize: '15px', color: 'var(--ink-3)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
+            A selection of research-driven projects from concept to shipped product.
+          </p>
+        </Reveal>
+      </div>
+      {SELECTED_WORK.map(p => <ProjectCard key={p.num} p={p} />)}
+    </section>
+  );
+}
 
 /* ---------- Horizontal reveal ---------- */
 function RevealX({ children, from = 'left', delay = 0, className = '', ...rest }) {
@@ -520,7 +569,7 @@ function Contact() {
 }
 
 /* ---------- App ---------- */
-const DEFAULTS = { accent: '#6366F1', gradient: 'indigo-violet-pink', density: 'default', showCursor: true, showStrip: true };
+const DEFAULTS = { accent: '#6366F1', gradient: 'indigo-violet-pink', density: 'default', showCursor: true, showStrip: false };
 const ACCENT_OPTIONS = ['#6366F1', '#7C3AED', '#0EA5E9', '#10B981', '#F43F5E'];
 const GRADIENTS = {
   'indigo-violet-pink': 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
@@ -559,7 +608,7 @@ export default function Home() {
       <main>
         <Hero />
         {t.showStrip && <WhatIDo />}
-        <WorkTop />
+        <SelectedWork />
         {/* <WorkBottom /> */}
         <Publications />
         <About />
