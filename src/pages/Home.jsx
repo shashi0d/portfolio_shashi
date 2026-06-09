@@ -441,7 +441,6 @@ function Publications() {
                 <p className="pub-title">{p.title}</p>
                 <div className="pub-authors">{p.role}</div>
               </div>
-              <div className="pub-badge">Accepted</div>
             </Reveal>
           ))}
         </div>
