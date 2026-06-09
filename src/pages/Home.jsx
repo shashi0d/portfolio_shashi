@@ -337,7 +337,7 @@ function HeroRowMobility() {
           <span className="pill">Qualitative Coding</span>
         </div>
         <div className="hr-section-label">My Role</div>
-        <p className="hr-role">Research Lead + Service Designer + Co-Design Facilitation</p>
+        <p className="hr-role">Researcher + Service Designer + Co-Design Facilitation</p>
         <Link to="/case-study/mobility" className="hr-cta">View case study <span>→</span></Link>
       </RevealX>
     </div>
