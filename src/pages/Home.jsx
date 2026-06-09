@@ -121,35 +121,36 @@ function Hero() {
     <section className="hero" id="top" ref={heroRef}>
       <div className="hero-inner">
         <div className="hero-text">
-          <div className="hero-eyebrow">Design Engineer / HCI Researcher</div>
+          <div className="hero-eyebrow">Shashidhara Narayanappa</div>
           <h1 className="hero-name">
-            <span className="l1">Shashidhara</span>
-            <span className="l2">Narayanappa</span>
+            {/* <span className="l1">I <span className="l2">research</span> human problems, <span className="l2">design</span> the experience, and <span className="l2">build</span> the product.</span> */}
+            {/* <span className="l2">Narayanappa</span> */}
+            <span className='l1'>Research, design, and engineering, accelerated by AI. <span className='l2'>0 -&gt; 1 </span></span>
           </h1>
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="num">3.5 yrs</span>
-              <span className="lbl">Engineering</span>
+              <span className="lbl">Software Development</span>
             </div>
             <div className="divider" />
             <div className="hero-stat">
               <span className="num">2</span>
-              <span className="lbl">Papers accepted</span>
+              <span className="lbl">Published Papers</span>
             </div>
             <div className="divider" />
             <div className="hero-stat">
-              <span className="num">5</span>
+              <span className="num">8+</span>
               <span className="lbl">Projects shipped</span>
             </div>
           </div>
-          <p className="hero-tagline">
-            I research human problems, design the experience, and build the product.
-          </p>
-          <div className="hero-tags">
+          {/* <p className="hero-tagline">
+           Shashidhara Narayanappa
+          </p> */}
+          {/* <div className="hero-tags">
             <span className="hero-tag">Research</span>
             <span className="hero-tag">Design</span>
             <span className="hero-tag">Engineering</span>
-          </div>
+          </div> */}
         </div>
         {/* <HeroPhotos /> */}
       </div>
@@ -160,22 +161,22 @@ function Hero() {
 /* ---------- What I Do ---------- */
 function WhatIDo() {
   const cols = [
-    {
-      title: 'Research',
-      tagline: 'HCI methods that surface what users feel, not just what they say.',
-      chips: ['User interviews', 'Co-design', 'Thematic synthesis', '2 papers'],
-    },
-    {
-      title: 'Design',
-      tagline: 'From service blueprints to high-fidelity interaction — the whole experience, not just the screens.',
-      chips: ['Figma', 'Service design', 'Interaction design', '0→1'],
-    },
-    {
-      title: 'Build',
-      tagline: 'I ship what I design. The prototype already knows what it can become.',
-      chips: ['React', 'Unity', 'Python', '3.5 yrs exp'],
-    },
-  ];
+  {
+    title: 'Research',
+    tagline: 'HCI-trained. 100+ participants, two published papers, and AI-moderated interviews built into the process.',
+    chips: ['User interviews', 'Co-design', 'Speculative design', '2 publications'],
+  },
+  {
+    title: 'Design',
+    tagline: 'Service blueprints to XR interaction. I design for the edge cases most people forget exist.',
+    chips: ['Figma', 'Service design', 'XR / Immersive UX', '0→1 products'],
+  },
+  {
+    title: 'Build',
+    tagline: 'I don\'t hand off to engineers. Four years shipping production apps, building responsive web applications.',
+    chips: ['React + TypeScript', 'Three.js / Unity', 'Firebase', '4 yrs exp'],
+  },
+];
   return (
     <section className="whatido">
       <div className="whatido-grid">
@@ -255,28 +256,28 @@ function RevealX({ children, from = 'left', delay = 0, className = '', ...rest }
 /* ---------- Hero rows (Zone A) ---------- */
 function HeroRowWanderIndy() {
   return (
-    <div className="hero-row light" data-row="01">
-      <RevealX from="right" className="visual">
+    <div className="hero-row" data-row="01">
+      <RevealX from="left" className="visual">
         <img
           src="/images/wanderindy/hero.png"
-          alt="Wander Indy — phygital discovery system for Indianapolis"
+          alt="Wander Indy — phygital city discovery system for Indianapolis"
           className="hero-row-img"
         />
       </RevealX>
-      <RevealX from="left" delay={0.15} className="content">
-        <div className="hr-num">Project 01</div>
+      <RevealX from="right" delay={0.1} className="content">
+        <div className="hr-eyebrow">01 / Interaction Design</div>
+        <h3 className="hr-title">A phygital city discovery system. Mobile app and physical kiosks across Indianapolis.</h3>
+        <p className="hr-desc">Behavioral loop design turning city exploration into visible, rewarding progress through discovery, visits, collection, and expansion.</p>
+        <div className="hr-section-label">Methods Used</div>
         <div className="hr-tags">
-          <span className="pill design">Interaction Design</span>
-          <span className="pill design">Prototyping</span>
-          <span className="pill engineering">Phygital Systems</span>
+          <span className="pill">Journey Mapping</span>
+          <span className="pill">Paper Prototyping</span>
+          <span className="pill">Hi-Fi Prototyping</span>
+          <span className="pill">Usability Testing</span>
+          <span className="pill">Design System</span>
         </div>
-        <h3 className="hr-title">Wander Indy</h3>
-        <p className="hr-desc">
-          A phygital discovery system that transforms Indianapolis into a living field guide — designing for serendipity across a mobile app and physical kiosks placed at neighbourhood entry points.
-        </p>
-        <p className="hr-insight">
-          Usability testing revealed the core motivational loop was broken: explored and unexplored neighbourhoods looked identical, making the app's central promise invisible to users.
-        </p>
+        <div className="hr-section-label">My Role</div>
+        <p className="hr-role">Interaction Designer + Prototyper + Usability Testing</p>
         <Link to="/case-study/wander-indy" className="hr-cta">View case study <span>→</span></Link>
       </RevealX>
     </div>
@@ -284,29 +285,28 @@ function HeroRowWanderIndy() {
 }
 
 function HeroRowFreetown() {
-  const p = PROJECTS[1];
   return (
-    <div className="hero-row dark flip" data-row="02">
-      <RevealX from="right" delay={0.15} className="content">
-        <div className="hr-num">Project 02</div>
+    <div className="hero-row flip" data-row="02">
+      <RevealX from="right" delay={0.1} className="content">
+        <div className="hr-eyebrow">02 / UX Research + Product Design</div>
+        <h3 className="hr-title">End-to-end product design for a cultural platform reconnecting young Black Americans to verified history.</h3>
+        <p className="hr-desc">From semi-structured interviews to a live proof of concept, including a navigable 3D artifact museum and streaming UI.</p>
+        <div className="hr-section-label">Methods Used</div>
         <div className="hr-tags">
-          <span className="pill research-dark">UX Research</span>
-          <span className="pill design-dark">Product Design</span>
-          <span className="pill design-dark">Cultural Technology</span>
+          <span className="pill">User Interviews</span>
+          <span className="pill">Affinity Mapping</span>
+          <span className="pill">Persona Development</span>
+          <span className="pill">Product Architecture</span>
+          <span className="pill">Service Roadmapping</span>
         </div>
-        <h3 className="hr-title">{p.title}</h3>
-        <p className="hr-desc">
-          Research-driven product design for Freetown Village helping young African Americans find cultural grounding through verified history, watch parties, and a personal artifact museum.
-        </p>
-        <p className="hr-insight">
-          The audience didn't distrust history they distrusted the messengers. That insight reframed the entire product strategy around institutional credibility.
-        </p>
+        <div className="hr-section-label">My Role</div>
+        <p className="hr-role">UX Researcher + Product Designer + 0 to 1 Product Strategy</p>
         <Link to="/case-study/freetown" className="hr-cta">View case study <span>→</span></Link>
       </RevealX>
-      <RevealX from="left" className="visual placeholder-dark" aria-hidden="true">
+      <RevealX from="left" className="visual">
         <img
           src="/images/freetown/hero.png"
-          alt="Freetown Village · Cultural Platform"
+          alt="Freetown Village — cultural platform"
           className="hero-row-img"
         />
       </RevealX>
@@ -315,30 +315,29 @@ function HeroRowFreetown() {
 }
 
 function HeroRowMobility() {
-  const p = PROJECTS[0];
   return (
-    <div className="hero-row light" data-row="03">
-      <RevealX from="right" className="visual">
+    <div className="hero-row" data-row="03">
+      <RevealX from="left" className="visual">
         <img
           src="/images/mobility/hero.png"
           alt="Mobility as a Social Service — service blueprint"
           className="hero-row-img"
         />
       </RevealX>
-      <RevealX from="left" delay={0.15} className="content">
-        <div className="hr-num">Project 03</div>
+      <RevealX from="right" delay={0.1} className="content">
+        <div className="hr-eyebrow">03 / Service Design + Research</div>
+        <h3 className="hr-title">Reframing autonomous vehicles as civic infrastructure for food-access equity.</h3>
+        <p className="hr-desc">100+ participants, 3 co-design workshops, 11 stakeholder organizations. Reframing transportation as a coordination problem, not a mobility problem.</p>
+        <div className="hr-section-label">Methods Used</div>
         <div className="hr-tags">
-          <span className="pill research">Research</span>
-          <span className="pill design">Service Design</span>
-          <span className="pill engineering">Speculative Design</span>
+          <span className="pill">AI-Moderated Interviews</span>
+          <span className="pill">Co-Design Workshops</span>
+          <span className="pill">Service Blueprinting</span>
+          <span className="pill">Speculative Design</span>
+          <span className="pill">Qualitative Coding</span>
         </div>
-        <h3 className="hr-title">{p.title}</h3>
-        <p className="hr-desc">
-          Service design exploring autonomous vehicles as public social infrastructure. Participatory design facilitation with stakeholders, speculative futures methodology.
-        </p>
-        <p className="hr-insight">
-          Stakeholders consistently ranked equity and trust above efficiency, which redirected the entire design direction.
-        </p>
+        <div className="hr-section-label">My Role</div>
+        <p className="hr-role">Research Lead + Service Designer + Co-Design Facilitation</p>
         <Link to="/case-study/mobility" className="hr-cta">View case study <span>→</span></Link>
       </RevealX>
     </div>
@@ -349,7 +348,7 @@ function WorkTop() {
   return (
     <section className="work-zone-a" id="work">
       <Reveal className="work-label-wrap">
-        <div className="section-label">Work</div>
+        {/* <div className="section-label">Work</div> */}
         <h2 className="section-title" style={{ marginTop: '12px' }}>Selected Work</h2>
         <p style={{ fontSize: '15px', color: 'var(--ink-3)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
           A selection of research-driven projects from concept to shipped product.
@@ -424,11 +423,11 @@ function Publications() {
         <Reveal>
           <div className="section-label">Research</div>
           <h2 className="section-title" style={{ color: '#FAFAFA' }}>Publications</h2>
-          <p style={{ fontSize: '15px', color: 'var(--w-35)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '15px', color: 'var(--w-45)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
             The following papers have been accepted at peer-reviewed venues.
           </p>
         </Reveal>
-        <div className="pub-list" style={{ marginTop: '56px' }}>
+        <div className="pub-list" style={{ marginTop: '32px' }}>
           {PUBLICATIONS.map((p, i) => (
             <Reveal key={i} delay={i * 0.1} className="pub-item">
               <div>

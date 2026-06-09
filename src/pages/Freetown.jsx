@@ -608,9 +608,9 @@ function FTIdeation() {
 }
 
 /* ── Prototype CTA card ── */
-function FTPrototypeCTA({ href = '#' }) {
+function FTPrototypeCTA() {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className="ft-prototype-cta">
+    <a href={'https://freetown-village.netlify.app/'} target="_blank" rel="noopener noreferrer" className="ft-prototype-cta">
       <div className="ft-prototype-cta-glow" />
       <span className="ft-prototype-cta-eyebrow">Fig. 6.4 · Community feature</span>
       <div className="ft-prototype-cta-icon" aria-hidden="true">

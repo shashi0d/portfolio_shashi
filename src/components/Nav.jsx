@@ -39,7 +39,7 @@ export default function Nav({ variant = 'case-study', darkSelectors }) {
       <ul className="nav-links">
         {isHome ? (
           <>
-            <li className="nav-scroll-link"><a href="#work">Work / Research</a></li>
+            <li className="nav-scroll-link"><a href="#work">Work</a></li>
             <li className="nav-scroll-link"><a href="#about">About</a></li>
             <li>
               <a href="mailto:shashidharprakash33@gmail.com?subject=Let%27s%20Schedule%20a%20Call&body=Hi%20Shashi%2C%0A%0AI%27d%20love%20to%20connect%20and%20schedule%20a%20call%20with%20you.%0A%0ALooking%20forward%20to%20hearing%20from%20you%2C%0A">
