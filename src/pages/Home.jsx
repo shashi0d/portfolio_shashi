@@ -129,8 +129,8 @@ function Hero() {
           </h1>
           <div className="hero-stats">
             <div className="hero-stat">
-              <span className="num">3.5 yrs</span>
-              <span className="lbl">Software Development</span>
+              <span className="num">6 yrs</span>
+              <span className="lbl">Building Products</span>
             </div>
             <div className="divider" />
             <div className="hero-stat">
@@ -361,6 +361,82 @@ function WorkTop() {
   );
 }
 
+/* ---------- Projects (external links) ---------- */
+const EXT_PROJECTS = [
+  {
+    title: 'Allcaps Films',
+    href: 'https://www.allcapsfilms.com/',
+    img: '/images/projects/allcaps-films.jpg',
+    status: { label: 'Shipped', kind: 'shipped' },
+    desc: 'Landing page for a movie production company. Led design and development in Framer, including CMS setup, responsive layout, and SEO/AEO.',
+    tags: [
+      { label: 'Design', kind: 'design' },
+      { label: 'Development', kind: 'engineering' },
+      { label: 'Framer CMS', kind: 'research' },
+    ],
+  },
+  {
+    title: 'Zerodistance Landing Page',
+    href: 'https://demos.zerodistance.io:9000/',
+    img: '/images/projects/zerodistance.jpg',
+    status: { label: 'In Progress', kind: 'in-progress' },
+    desc: 'SaaS CX landing page built with Vite, AI-assisted design and development, optimized for SEO/AEO and performance.',
+    tags: [
+      { label: 'Design', kind: 'design' },
+      { label: 'Development', kind: 'engineering' },
+      { label: 'AI-Assisted', kind: 'special' },
+    ],
+  },
+  {
+    title: 'CreditPulse',
+    href: 'https://github.com/shashi0d/credit-pulse-agent',
+    img: '/images/projects/credit-pulse.svg',
+    status: { label: 'Experiment', kind: 'experiment' },
+    desc: "A financial-health assistant where local Ollama agents research, analyse, and compose the UI live — every chart backed by real SEC EDGAR/Finnhub data, rendered via Google's A2UI.",
+    tags: [
+      { label: 'Agentic UI', kind: 'research' },
+      { label: 'AI/ML', kind: 'special' },
+      { label: 'Open Source', kind: 'engineering' },
+    ],
+  },
+];
+
+function ExtCard({ p, idx }) {
+  return (
+    <Reveal as="a" href={p.href} target="_blank" rel="noreferrer" className="ext-card" delay={idx * 0.1}>
+      <div className="ext-card-media">
+        <img className="ext-card-img" src={p.img} alt={p.title} loading="lazy" />
+        <span className={`ext-status ${p.status.kind}`}>{p.status.label}</span>
+        <span className="ext-card-external" aria-hidden="true">↗</span>
+      </div>
+      <div className="ext-card-body">
+        <h3 className="ext-card-title">{p.title}</h3>
+        <p className="ext-card-desc">{p.desc}</p>
+        <div className="ext-tags">
+          {p.tags.map((t) => <span key={t.label} className={`pill ${t.kind}`}>{t.label}</span>)}
+        </div>
+        <span className="ext-cta">Visit project <span>↗</span></span>
+      </div>
+    </Reveal>
+  );
+}
+
+function WorkExternal() {
+  return (
+    <section className="ext-section" id="projects">
+      <Reveal className="work-label-wrap">
+        <h2 className="section-title" style={{ marginTop: '12px' }}>Projects</h2>
+        <p style={{ fontSize: '15px', color: 'var(--ink-3)', marginTop: '12px', maxWidth: '56ch', lineHeight: 1.6 }}>
+          A few things I've shipped, or am currently building.
+        </p>
+      </Reveal>
+      <div className="ext-grid">
+        {EXT_PROJECTS.map((p, i) => <ExtCard p={p} idx={i} key={p.title} />)}
+      </div>
+    </section>
+  );
+}
+
 /* ---------- Supporting grid (Zone B) ---------- */
 function SupCard({ p, idx }) {
   const inner = (
@@ -412,7 +488,7 @@ const PUBLICATIONS = [
     title: 'Co-designing VR for supporting empathy development and social-decision making in children',
     venue: 'IDC — Interaction Design and Children, 2026',
     role: 'Second Author',
-    venueHref: null,
+    venueHref: 'https://dl.acm.org/doi/10.1145/3773077.3812168',
   },
 ];
 
@@ -467,7 +543,7 @@ function About() {
         <div className="about-grid">
           <Reveal className="bio">
             <p>
-              I am a Design Engineer with 3.5 years of full-stack development and a Master&rsquo;s in Human-Computer Interaction.
+              I am a Design Engineer with 6 years of full-stack development and a Master&rsquo;s in Human-Computer Interaction.
               I <span className="pop">research</span> human problems, <span className="pop">design</span> the experience, and <span className="pop">ship</span> the product.
             </p>
             <p>HCI researcher with accepted publications. Believer in designs that are not just beautiful, but feasible and viable.</p>
@@ -558,6 +634,7 @@ export default function Home() {
         <Hero />
         {t.showStrip && <WhatIDo />}
         <WorkTop />
+        <WorkExternal />
         {/* <WorkBottom /> */}
         <Publications />
         <About />

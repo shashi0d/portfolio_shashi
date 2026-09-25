@@ -688,6 +688,103 @@ section { padding: 64px var(--section-x); position: relative; }
 .sup-card .sup-venue + .sup-cta { margin-top: 10px; }
 
 /* ===========================================================
+   WORK · PROJECTS (external links, image cards)
+   =========================================================== */
+.ext-section { background: var(--bg); padding: 80px var(--section-x); }
+.ext-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+.ext-card {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.ext-card:hover {
+  border-color: rgba(99,102,241,0.25);
+  box-shadow: 0 4px 24px rgba(99,102,241,0.08);
+  transform: translateY(-2px);
+}
+
+.ext-card-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--ink); }
+.ext-card-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s var(--ease); }
+.ext-card:hover .ext-card-img { transform: scale(1.06); }
+.ext-card-media::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.ext-card:hover .ext-card-media::after { opacity: 1; }
+
+.ext-status {
+  position: absolute;
+  top: 12px; left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 10px 5px 8px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.92);
+  color: var(--ink-2);
+  backdrop-filter: blur(4px);
+}
+.ext-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.ext-status.shipped::before      { background: #15803D; }
+.ext-status.in-progress::before  { background: #6366F1; }
+.ext-status.experiment::before   { background: #7E22CE; }
+
+.ext-card-external {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  color: var(--ink);
+  font-size: 13px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.ext-card:hover .ext-card-external { opacity: 1; transform: translateY(0); }
+
+.ext-card-body { display: flex; flex-direction: column; padding: 22px 24px 24px; flex-grow: 1; }
+.ext-card-title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; color: var(--ink); margin-bottom: 8px; }
+.ext-card-desc { font-size: 13px; font-weight: 400; color: var(--ink-3); line-height: 1.6; flex-grow: 1; }
+.ext-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.ext-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-4);
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  transition: color 0.2s ease, gap 0.2s ease;
+}
+.ext-card:hover .ext-cta { color: var(--accent); gap: 10px; }
+
+@media (max-width: 1024px) { .ext-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 760px)  { .ext-grid { grid-template-columns: 1fr; } }
+
+/* ===========================================================
    PUBLICATIONS (dark, sandwiched between projects 02 and 03)
    =========================================================== */
 .publications {
