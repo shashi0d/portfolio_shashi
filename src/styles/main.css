@@ -690,7 +690,7 @@ section { padding: 64px var(--section-x); position: relative; }
 /* ===========================================================
    WORK · PROJECTS (external links, image cards)
    =========================================================== */
-.ext-section { background: var(--bg); padding: 80px var(--section-x) 0; }
+.ext-section { background: var(--bg); padding: 80px var(--section-x); }
 .ext-grid {
   max-width: 1100px;
   margin: 0 auto;
