@@ -130,7 +130,7 @@ function Hero() {
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="num">6 yrs</span>
-              <span className="lbl">Software Development</span>
+              <span className="lbl">Building Products</span>
             </div>
             <div className="divider" />
             <div className="hero-stat">
