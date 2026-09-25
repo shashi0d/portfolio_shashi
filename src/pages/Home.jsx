@@ -390,9 +390,9 @@ const EXT_PROJECTS = [
   {
     title: 'CreditPulse',
     href: 'https://github.com/shashi0d/credit-pulse-agent',
-    img: '/images/projects/credit-pulse.jpg',
+    img: '/images/projects/credit-pulse.svg',
     status: { label: 'Experiment', kind: 'experiment' },
-    desc: "Agentic-UI GitHub project pulling SEC EDGAR and Finnhub data, with a local Qwen 4B model driving Google's A2UI to render interactive charts.",
+    desc: "A financial-health assistant where local Ollama agents research, analyse, and compose the UI live — every chart backed by real SEC EDGAR/Finnhub data, rendered via Google's A2UI.",
     tags: [
       { label: 'Agentic UI', kind: 'research' },
       { label: 'AI/ML', kind: 'special' },
