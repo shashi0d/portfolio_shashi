@@ -129,7 +129,7 @@ function Hero() {
           </h1>
           <div className="hero-stats">
             <div className="hero-stat">
-              <span className="num">3.5 yrs</span>
+              <span className="num">6 yrs</span>
               <span className="lbl">Software Development</span>
             </div>
             <div className="divider" />
@@ -543,7 +543,7 @@ function About() {
         <div className="about-grid">
           <Reveal className="bio">
             <p>
-              I am a Design Engineer with 3.5 years of full-stack development and a Master&rsquo;s in Human-Computer Interaction.
+              I am a Design Engineer with 6 years of full-stack development and a Master&rsquo;s in Human-Computer Interaction.
               I <span className="pop">research</span> human problems, <span className="pop">design</span> the experience, and <span className="pop">ship</span> the product.
             </p>
             <p>HCI researcher with accepted publications. Believer in designs that are not just beautiful, but feasible and viable.</p>
