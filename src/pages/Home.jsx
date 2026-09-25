@@ -488,7 +488,7 @@ const PUBLICATIONS = [
     title: 'Co-designing VR for supporting empathy development and social-decision making in children',
     venue: 'IDC — Interaction Design and Children, 2026',
     role: 'Second Author',
-    venueHref: null,
+    venueHref: 'https://dl.acm.org/doi/10.1145/3773077.3812168',
   },
 ];
 
